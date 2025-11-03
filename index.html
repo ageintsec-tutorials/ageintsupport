@@ -6,7 +6,7 @@
     <title>Ageint Security Support Portal</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body {
@@ -17,24 +17,12 @@
             opacity: 0;
         }
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         @keyframes scaleIn {
-            from {
-                opacity: 0;
-                transform: scale(0.8);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
         }
         .fade-in-up {
             opacity: 0;
@@ -77,16 +65,16 @@
             <!-- Welcome View -->
             <div id="welcomeView">
                 <h1 class="text-3xl font-bold mb-4 text-center">Welcome to Your Support Portal</h1>
-                <p class="text-center mb-6 text-gray-600">We're here to help. This portal is designed to prepare you for your remote support session, ensuring we can resolve your issue in a timely and efficient manner.</p>
-                <p class="text-center font-semibold mb-6">To get started, please select your system:</p>
+                <p class="text-center mb-6 text-gray-700 text-lg font-semibold">This portal will prepare you for your remote support session, ensuring a fast and efficient resolution.</p>
+                <p class="text-center font-semibold mb-6 text-xl">To get started, please select your system:</p>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <button id="cameraBtn" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-6 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">
+                    <button id="cameraBtn" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-6 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105 text-lg">
                         Camera System
                     </button>
-                    <button id="accessBtn" class="bg-green-500 hover:bg-green-600 text-white font-bold py-6 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">
+                    <button id="accessBtn" class="bg-green-500 hover:bg-green-600 text-white font-bold py-6 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105 text-lg">
                         Access Control
                     </button>
-                    <button id="alarmBtn" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-6 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">
+                    <button id="alarmBtn" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-6 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105 text-lg">
                         Alarm System
                     </button>
                 </div>
@@ -98,115 +86,154 @@
             <!-- Camera System View -->
             <div id="cameraView" class="hidden">
                 <h1 class="text-3xl font-bold mb-4">Camera System Preparation</h1>
-                <p class="mb-8 text-gray-600">To save you and our technician time on the phone, please follow these steps. This will make your support session as smooth as possible.</p>
+                <p class="mb-8 text-gray-700 text-lg font-semibold">Please follow these steps one by one to ensure your support session is as smooth as possible.</p>
+                <div id="cameraProgress" class="text-center font-bold text-lg text-gray-700 mb-6"></div>
+                <div id="camera-steps">
+                    <!-- Step 1: SN -->
+                    <div id="cameraStep1" class="camera-step">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-full bg-blue-500 text-white font-bold text-lg mr-4">1</div>
+                            <div>
+                                <h3 class="font-semibold text-xl">Locate Serial Number (SN)</h3>
+                                <p class="text-gray-700 font-semibold text-base mt-2">Find the serial number (SN) on the bottom of your main camera box (NVR). Once you have it, please text the SN and your name to us.</p>
+                                <button id="findOnPhoneBtn" class="text-base text-blue-600 hover:underline mt-2 font-semibold">Can I find it on my phone?</button>
+                                <p class="text-center bg-gray-100 p-2 rounded-lg mt-4 font-bold text-gray-800 text-lg">
+                                    <span class="phone-number" data-number="8326106820">832-610-6820</span>
+                                    <button class="phone-action-btn inline-flex align-middle ml-2" data-text-only="true">💬</button>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="mt-8 flex justify-end">
+                            <button class="next-btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-lg text-base">Next</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Locate Hub -->
+                    <div id="cameraStep2" class="camera-step hidden">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-full bg-blue-500 text-white font-bold text-lg mr-4">2</div>
+                            <div>
+                                <h3 class="font-semibold text-xl">Locate Main Hub</h3>
+                                <p class="text-gray-700 font-semibold text-base mt-2">Please locate the main box for your camera system (often called the NVR or DVR).</p>
+                            </div>
+                        </div>
+                        <div class="mt-8 flex justify-between">
+                            <button class="prev-btn bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-lg text-base">Previous</button>
+                            <button class="next-btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-lg text-base">Next</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 3: Power Source -->
+                    <div id="cameraStep3" class="camera-step hidden">
+                        <div class="flex items-start">
+                             <div class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-full bg-blue-500 text-white font-bold text-lg mr-4">3</div>
+                             <div>
+                                 <h3 class="font-semibold text-xl">Find Power Source</h3>
+                                 <p class="text-gray-700 font-semibold text-base mt-2">Find where the camera system plugs in. Is it a backup battery (UPS), a power strip, or the wall?</p>
+                                 <button id="upsInfoBtn" class="text-base text-blue-600 hover:underline mt-2 font-semibold">What does a backup battery look like?</button>
+                             </div>
+                        </div>
+                        <div class="mt-8 flex justify-between">
+                            <button class="prev-btn bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-lg text-base">Previous</button>
+                            <button class="next-btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-lg text-base">Next</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Power Down -->
+                    <div id="cameraStep4" class="camera-step hidden">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-full bg-blue-500 text-white font-bold text-lg mr-4">4</div>
+                            <div>
+                                <h3 class="font-semibold text-xl">Power Down</h3>
+                                <p class="text-gray-700 font-semibold text-base mt-2">Unplug everything from its power source, <span class="font-bold text-red-600">except</span> for the alarm power box (a white box with two wires).</p>
+                                <button id="alarmBoxInfoBtn" class="text-base text-blue-600 hover:underline mt-2 font-semibold">What does the alarm box look like?</button>
+                            </div>
+                        </div>
+                        <div class="bg-red-100 border-l-4 border-red-500 text-red-800 p-4 rounded-r-lg my-4">
+                            <h2 class="font-bold text-lg">Urgent Reminder</h2>
+                            <p class="font-semibold text-base">The white alarm box must not lose power. Do not confuse it with a white box that has antennas.</p>
+                        </div>
+                        <div class="mt-8 flex justify-between">
+                            <button class="prev-btn bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-lg text-base">Previous</button>
+                            <button class="next-btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-lg text-base">Next</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 5: Wait -->
+                    <div id="cameraStep5" class="camera-step hidden">
+                        <div class="flex items-start">
+                             <div class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-full bg-blue-500 text-white font-bold text-lg mr-4">5</div>
+                             <div>
+                                 <h3 class="font-semibold text-xl">Wait 60 Seconds</h3>
+                                 <p class="text-gray-700 font-semibold text-base mt-2">Wait a full minute for the system to shut down completely.</p>
+                             </div>
+                        </div>
+                        <div class="mt-8 flex justify-between">
+                            <button class="prev-btn bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-lg text-base">Previous</button>
+                            <button class="next-btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-lg text-base">Next</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 6: Power On -->
+                    <div id="cameraStep6" class="camera-step hidden">
+                        <div class="flex items-start">
+                             <div class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-full bg-blue-500 text-white font-bold text-lg mr-4">6</div>
+                             <div>
+                                 <h3 class="font-semibold text-xl">Power On</h3>
+                                 <p class="text-gray-700 font-semibold text-base mt-2">Plug the system back in.</p>
+                             </div>
+                        </div>
+                        <div class="mt-8 flex justify-between">
+                            <button class="prev-btn bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-lg text-base">Previous</button>
+                            <button class="next-btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-lg text-base">Next</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 7: Final Info -->
+                    <div id="cameraStep7" class="camera-step hidden">
+                         <div class="bg-blue-100 border-l-4 border-blue-500 text-blue-800 p-4 rounded-r-lg">
+                            <h2 class="font-bold text-lg">Highly Recommended</h2>
+                            <p class="font-semibold text-base">Having a monitor/TV (with HDMI) and a computer mouse nearby will significantly speed up our call.</p>
+                            <button id="monitorInfoBtn" class="text-base text-blue-600 hover:underline mt-2 font-semibold">Why is a monitor helpful?</button>
+                        </div>
+                        <div class="mt-8 flex justify-between">
+                            <button class="prev-btn bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-lg text-base">Previous</button>
+                            <button id="cameraFinishedBtn" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-6 rounded-lg text-base">All Done!</button>
+                        </div>
+                    </div>
+                </div>
                 
-                <div class="space-y-6 mb-8">
-
-                    <!-- Step 1 -->
-                    <div class="flex items-start">
-                        <div class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-full bg-blue-500 text-white font-bold text-lg mr-4">1</div>
-                        <div>
-                            <h3 class="font-semibold text-lg">Locate Serial Number (SN)</h3>
-                            <p class="text-gray-600">Please look on the bottom of your main camera box (the NVR) for a label and find the serial number, often marked as "SN:". This helps us identify your system quickly.</p>
-                        </div>
-                    </div>
-
-                    <!-- Step 2 -->
-                    <div class="flex items-start">
-                        <div class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-full bg-blue-500 text-white font-bold text-lg mr-4">2</div>
-                        <div>
-                            <h3 class="font-semibold text-lg">Locate Main Hub</h3>
-                            <p class="text-gray-600">Please locate the main box where your camera system is installed (this is often called the NVR or DVR).</p>
-                        </div>
-                    </div>
-
-                    <!-- Step 3 -->
-                    <div class="flex items-start">
-                        <div class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-full bg-blue-500 text-white font-bold text-lg mr-4">3</div>
-                        <div>
-                            <h3 class="font-semibold text-lg">Find Power Source</h3>
-                            <p class="text-gray-600">See where the camera system's power cord plugs in. Is it a backup battery (UPS), a power strip, or directly into the wall?</p>
-                        </div>
-                    </div>
-
-                    <!-- Step 4 -->
-                    <div class="flex items-start">
-                        <div class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-full bg-blue-500 text-white font-bold text-lg mr-4">4</div>
-                        <div>
-                            <h3 class="font-semibold text-lg">Power Down</h3>
-                            <p class="text-gray-600">Please unplug the system from its power source (e.g., unplug it from the backup battery, turn off the power strip, or unplug it from the wall).</p>
-                        </div>
-                    </div>
-
-                    <!-- Urgent Reminder -->
-                    <div class="bg-red-100 border-l-4 border-red-500 text-red-800 p-4 rounded-r-lg my-4">
-                        <h2 class="font-bold">Urgent Reminder</h2>
-                        <p>If there is a white box with 2 cables coming out of it, this must not lose power as this is the Alarm power. This is not to be confused with a white box that has 2 antennas.</p>
-                    </div>
-
-                    <!-- Step 5 -->
-                    <div class="flex items-start">
-                        <div class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-full bg-blue-500 text-white font-bold text-lg mr-4">5</div>
-                        <div>
-                            <h3 class="font-semibold text-lg">Wait 60 Seconds</h3>
-                            <p class="text-gray-600">Wait for a full minute to allow the system to shut down completely.</p>
-                        </div>
-                    </div>
-
-                    <!-- Step 6 -->
-                    <div class="flex items-start">
-                        <div class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-full bg-blue-500 text-white font-bold text-lg mr-4">6</div>
-                        <div>
-                            <h3 class="font-semibold text-lg">Power On</h3>
-                            <p class="text-gray-600">Plug the system back in or turn the power strip back on.</p>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="bg-blue-100 border-l-4 border-blue-500 text-blue-800 p-4 rounded-r-lg mb-6">
-                    <h2 class="font-bold">Highly Recommended</h2>
-                    <p>While not required, having a monitor/TV (with an HDMI port) and a computer mouse nearby for our call will significantly improve the process. This allows us to see the system's interface directly and guide you more effectively.</p>
-                    <button id="monitorInfoBtn" class="text-sm text-blue-600 hover:underline mt-2 font-semibold">What would I need the TV/monitor for?</button>
-                </div>
-                <button id="cameraBackBtn" class="w-full bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition flex items-center justify-center gap-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" /></svg>
-                    <span>Back</span>
+                <button id="cameraBackBtn" class="w-full bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition flex items-center justify-center gap-2 mt-8 text-base">
+                    <svg xmlns="http://www.w.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" /></svg>
+                    <span>Back to Main Menu</span>
                 </button>
-            </div>
+           </div>
 
             <!-- Access Control View -->
             <div id="accessControlView" class="hidden">
-                <h1 class="text-3xl font-bold mb-4">Access Control Preparation</h1>
-                <p class="mb-4 text-gray-600">To help us identify your device, please have any details you can find ready for our call. Any information you can gather is a great help!</p>
-                <p class="mb-4 text-gray-600">Please look on the device itself (the keypad, card reader, or main control box) for any of the following:</p>
-                <ul class="list-disc list-inside space-y-2 mb-6 bg-gray-100 p-4 rounded-lg">
-                    <li>Model Number</li>
-                    <li>Model Name</li>
-                    <li>Serial Number</li>
-                    <li>Device Type (e.g., "Keypad," "Card Reader")</li>
-                    <li>Brand Name</li>
-                </ul>
-                <p class="mb-6 text-gray-600">Don't worry if you can't find all of these. Our technicians will assist you during the call, but having this information ready gives us a valuable head start.</p>
-                <button id="accessBackBtn" class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg transition flex items-center justify-center gap-2">
+                 <h1 class="text-3xl font-bold mb-4">Access Control Preparation</h1>
+                 <p class="mb-4 text-gray-700 text-lg font-semibold">To identify your device, please look on the device itself (e.g., keypad, card reader, or garage door motor) for any of the following details:</p>
+                 <ul class="list-disc list-inside space-y-2 mb-6 bg-gray-100 p-6 rounded-lg text-lg font-medium text-gray-800">
+                     <li>Model Number / Name</li>
+                     <li>Serial Number</li>
+                     <li>Brand Name</li>
+                 </ul>
+                 <p class="mb-6 text-gray-700 font-semibold text-base">Don't worry if you can't find these. We'll assist you on the call.</p>
+                 <button id="accessBackBtn" class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg transition flex items-center justify-center gap-2 text-base">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" /></svg>
                     <span>Back</span>
-                </button>
+                 </button>
             </div>
 
             <!-- Alarm Hub View -->
             <div id="alarmHubView" class="hidden">
                 <h1 class="text-3xl font-bold mb-4">Alarm System Preparation</h1>
-                <p class="mb-6 text-gray-600">To help us resolve your alarm issue quickly, please review the section below that best matches your problem. Having this information ready before our call lets us get right to the core of the issue.</p>
+                <p class="mb-6 text-gray-700 text-lg font-semibold">Please choose the option that best matches your problem. This will help us get to the core of the issue faster.</p>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <button id="panelIssuesBtn" class="bg-teal-500 hover:bg-teal-600 text-white font-bold py-6 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">
-                        General Panel Issues
-                    </button>
-                    <button id="sensorIssuesBtn" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-6 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">
-                        Sensor Issues
-                    </button>
+                    <button id="panelIssuesBtn" class="bg-teal-500 hover:bg-teal-600 text-white font-bold py-6 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105 text-lg">General Panel Issues</button>
+                    <button id="sensorIssuesBtn" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-6 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105 text-lg">Sensor Issues</button>
                 </div>
-                <button id="alarmHubBackBtn" class="w-full bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition mt-8 flex items-center justify-center gap-2">
+                <button id="alarmHubBackBtn" class="w-full bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition mt-8 flex items-center justify-center gap-2 text-base">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" /></svg>
                     <span>Back to Main Menu</span>
                 </button>
@@ -215,46 +242,21 @@
             <!-- Alarm - General Panel Issues View -->
             <div id="panelIssuesView" class="hidden">
                 <h1 class="text-3xl font-bold mb-4">General Panel Issues</h1>
-                <p class="mb-6 text-gray-600">For problems like a blank screen, connection errors, or general system unresponsiveness, please follow these steps.</p>
+                <p class="mb-6 text-gray-700 text-lg font-semibold">For a blank screen, connection errors, or an unresponsive system, please follow these steps.</p>
                 <div class="space-y-6 mb-8">
-                    <div class="flex items-start">
-                        <div class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-full bg-teal-500 text-white font-bold text-lg mr-4">1</div>
-                        <div>
-                            <h3 class="font-semibold text-lg">Go to the Panel</h3>
-                            <p class="text-gray-600">Please go to your main IQ Panel 4 screen.</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start">
-                        <div class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-full bg-teal-500 text-white font-bold text-lg mr-4">2</div>
-                        <div>
-                            <h3 class="font-semibold text-lg">Access Reboot Menu</h3>
-                            <p class="text-gray-600">Swipe down from the top of the screen to open the menu. Tap <span class="font-semibold">Settings</span>, then <span class="font-semibold">Advanced Settings</span>.</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start">
-                        <div class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-full bg-teal-500 text-white font-bold text-lg mr-4">3</div>
-                        <div>
-                            <h3 class="font-semibold text-lg">Enter Code</h3>
-                            <p class="text-gray-600">You will need your master code to proceed (this is the main 4-digit code used to arm/disarm).</p>
-                            <p class="text-sm text-gray-500 mt-2">If you do not know your master code, please text us at <span class="font-semibold">832-610-6820</span> to receive it before our call.</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start">
-                        <div class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-full bg-teal-500 text-white font-bold text-lg mr-4">4</div>
-                        <div>
-                            <h3 class="font-semibold text-lg">Reboot Panel</h3>
-                            <p class="text-gray-600">Tap <span class="font-semibold">Reboot Panel</span> and then tap <span class="font-semibold">OK</span> to confirm.</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start">
-                        <div class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-full bg-teal-500 text-white font-bold text-lg mr-4">5</div>
-                        <div>
-                            <h3 class="font-semibold text-lg">Wait 3 Minutes</h3>
-                            <p class="text-gray-600">Do not touch the panel. Please wait for a full 3 minutes to allow the system to restart completely. It will show the home screen when it is ready.</p>
-                        </div>
-                    </div>
+                    <div class="flex items-start"><div class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-full bg-teal-500 text-white font-bold text-lg mr-4">1</div><div><h3 class="font-semibold text-xl">Send Account Name</h3><p class="text-gray-700 font-semibold text-base mt-1">Please text the full name on your Alarm.com account to the number below. This helps us pull up your information before the call.</p>
+                        <p class="text-center bg-gray-100 p-2 rounded-lg mt-4 font-bold text-gray-800 text-lg">
+                            <span class="phone-number" data-number="8326106820">832-610-6820</span>
+                            <button class="phone-action-btn inline-flex align-middle ml-2">📞</button>
+                        </p>
+                    </div></div>
+                    <div class="flex items-start"><div class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-full bg-teal-500 text-white font-bold text-lg mr-4">2</div><div><h3 class="font-semibold text-xl">Go to the Panel</h3><p class="text-gray-700 font-semibold text-base mt-1">Go to your main IQ Panel 4 screen.</p></div></div>
+                    <div class="flex items-start"><div class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-full bg-teal-500 text-white font-bold text-lg mr-4">3</div><div><h3 class="font-semibold text-xl">Access Reboot Menu</h3><p class="text-gray-700 font-semibold text-base mt-1">Swipe down from the top. Tap <span class="font-bold">Settings</span>, then <span class="font-bold">Advanced Settings</span>.</p></div></div>
+                    <div class="flex items-start"><div class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-full bg-teal-500 text-white font-bold text-lg mr-4">4</div><div><h3 class="font-semibold text-xl">Enter Code</h3><p class="text-gray-700 font-semibold text-base mt-1">Enter your 4-digit master code.</p><p class="text-base text-gray-600 mt-2">If you don't know it, text us at <span class="font-bold phone-number" data-number="8326106820">832-610-6820</span><button class="phone-action-btn inline-flex align-middle ml-2">📞</button> to get it before our call.</p></div></div>
+                    <div class="flex items-start"><div class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-full bg-teal-500 text-white font-bold text-lg mr-4">5</div><div><h3 class="font-semibold text-xl">Reboot Panel</h3><p class="text-gray-700 font-semibold text-base mt-1">Tap <span class="font-bold">Reboot Panel</span> and then <span class="font-bold">OK</span> to confirm.</p></div></div>
+                    <div class="flex items-start"><div class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-full bg-teal-500 text-white font-bold text-lg mr-4">6</div><div><h3 class="font-semibold text-xl">Wait 3 Minutes</h3><p class="text-gray-700 font-semibold text-base mt-1">Do not touch the panel while it restarts. It will show the home screen when ready.</p></div></div>
                 </div>
-                <button id="panelIssuesBackBtn" class="w-full bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition flex items-center justify-center gap-2">
+                <button id="panelIssuesBackBtn" class="w-full bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition flex items-center justify-center gap-2 text-base">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" /></svg>
                     <span>Back to Alarm Menu</span>
                 </button>
@@ -263,34 +265,19 @@
             <!-- Alarm - Sensor Issues View -->
             <div id="sensorIssuesView" class="hidden">
                 <h1 class="text-3xl font-bold mb-4">Sensor Issues</h1>
-                <p class="mb-6 text-gray-600">For problems like "sensor open," "low battery," or "sensor tamper" on a specific door, window, or motion detector, please follow these steps.</p>
+                <p class="mb-6 text-gray-700 text-lg font-semibold">For "sensor open," "low battery," or "sensor tamper" errors, please follow these steps.</p>
                 <div class="space-y-6 mb-8">
-                    <div class="flex items-start">
-                        <div class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-full bg-indigo-500 text-white font-bold text-lg mr-4">1</div>
-                        <div>
-                            <h3 class="font-semibold text-lg">Locate the Sensor</h3>
-                            <p class="text-gray-600">Please find the exact sensor that is causing the problem (e.g., "Front Door," "Hallway Motion").</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start">
-                        <div class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-full bg-indigo-500 text-white font-bold text-lg mr-4">2</div>
-                        <div>
-                            <h3 class="font-semibold text-lg">Inspect the Sensor</h3>
-                            <ul class="list-disc list-inside text-gray-600 space-y-1 mt-1">
-                               <li><span class="font-semibold">For Doors/Windows:</span> Look at the sensor and its smaller magnet piece. Are they still aligned? Is the cover on the sensor snapped on tightly?</li>
-                               <li><span class="font-semibold">For Motion Detectors:</span> Is anything blocking its view (a new plant, a stack of boxes)?</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="flex items-start">
-                        <div class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-full bg-indigo-500 text-white font-bold text-lg mr-4">3</div>
-                        <div>
-                            <h3 class="font-semibold text-lg">Test the Sensor</h3>
-                            <p class="text-gray-600">Please open and close the door/window that has the problem sensor. Watch the panel screen. Does the panel's status (open/closed) change, or does it stay "open" the whole time?</p>
-                        </div>
-                    </div>
+                    <div class="flex items-start"><div class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-full bg-indigo-500 text-white font-bold text-lg mr-4">1</div><div><h3 class="font-semibold text-xl">Send Account Name</h3><p class="text-gray-700 font-semibold text-base mt-1">Please text the full name on your Alarm.com account to the number below. This helps us pull up your information before the call.</p>
+                        <p class="text-center bg-gray-100 p-2 rounded-lg mt-4 font-bold text-gray-800 text-lg">
+                            <span class="phone-number" data-number="8326106820">832-610-6820</span>
+                            <button class="phone-action-btn inline-flex align-middle ml-2">📞</button>
+                        </p>
+                    </div></div>
+                    <div class="flex items-start"><div class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-full bg-indigo-500 text-white font-bold text-lg mr-4">2</div><div><h3 class="font-semibold text-xl">Locate the Sensor</h3><p class="text-gray-700 font-semibold text-base mt-1">Find the exact sensor causing the problem (e.g., "Front Door").</p></div></div>
+                    <div class="flex items-start"><div class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-full bg-indigo-500 text-white font-bold text-lg mr-4">3</div><div><h3 class="font-semibold text-xl">Inspect the Sensor</h3><ul class="list-disc list-inside text-gray-700 space-y-2 mt-2 text-base font-semibold"><li><span class="font-bold">Doors/Windows:</span> Are the sensor and magnet aligned? Is the cover tight?</li><li><span class="font-bold">Motion Detectors:</span> Is anything blocking its view?</li></ul></div></div>
+                    <div class="flex items-start"><div class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-full bg-indigo-500 text-white font-bold text-lg mr-4">4</div><div><h3 class="font-semibold text-xl">Test the Sensor</h3><p class="text-gray-700 font-semibold text-base mt-1">Open and close the problem door/window. Does the panel's status change?</p></div></div>
                 </div>
-                <button id="sensorIssuesBackBtn" class="w-full bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition flex items-center justify-center gap-2">
+                <button id="sensorIssuesBackBtn" class="w-full bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition flex items-center justify-center gap-2 text-base">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" /></svg>
                     <span>Back to Alarm Menu</span>
                 </button>
@@ -299,125 +286,229 @@
         </main>
     </div>
 
-    <!-- Info Modal -->
-    <div id="infoModal" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-40">
-        <div class="bg-white rounded-2xl shadow-lg p-8 max-w-lg w-full text-gray-800 border border-gray-200/80 relative">
-            <button id="closeInfoModalBtn" class="absolute top-4 right-4 text-2xl text-gray-600 hover:text-gray-900 leading-none">&times;</button>
-            <h2 class="text-2xl font-bold mb-4">Work in Progress</h2>
-            <p class="text-gray-600">This support portal is an actively developing project. We are continuously working to add more features and improve its functionality to better serve you.</p>
-            <p class="text-gray-600 mt-2">Thank you for your understanding!</p>
+    <!-- Modals -->
+    <div id="infoModal" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-40"><div class="bg-white rounded-2xl shadow-lg p-8 max-w-lg w-full text-gray-800 border relative"><button id="closeInfoModalBtn" class="absolute top-4 right-4 text-2xl text-gray-600 hover:text-gray-900 leading-none">&times;</button><h2 class="text-2xl font-bold mb-4">Work in Progress</h2><p class="text-gray-700 font-semibold text-base">This support portal is an actively developing project. We are continuously working to add more features and improve its functionality to better serve you.</p><p class="text-gray-700 font-semibold mt-2 text-base">Thank you for your understanding!</p></div></div>
+    <div id="monitorModal" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-40"><div class="bg-white rounded-2xl shadow-lg p-8 max-w-lg w-full text-gray-800 border relative"><button id="closeMonitorModalBtn" class="absolute top-4 right-4 text-2xl text-gray-600 hover:text-gray-900 leading-none">&times;</button><h2 class="text-2xl font-bold mb-4">Why a Monitor is Helpful</h2><p class="mb-4 text-gray-700 font-semibold text-base">Having a monitor handy significantly speeds up our call and helps with processes like:</p><ul class="list-disc list-inside space-y-2 text-gray-700 font-semibold text-base"><li>Bringing cameras back online</li><li>Adding new cameras</li><li>Changing time settings</li><li>General system training</li></ul></div></div>
+    <div id="trainingModal" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-40"><div class="bg-white rounded-2xl shadow-lg p-8 max-w-lg w-full text-gray-800 border relative"><button id="closeTrainingModalBtn" class="absolute top-4 right-4 text-2xl text-gray-600 hover:text-gray-900 leading-none">&times;</button><h2 class="text-2xl font-bold mb-4">Request System Training</h2><p class="mb-4 text-gray-700 font-semibold text-base">To schedule additional training, please contact our Lead Service Technician, Levi, at the number below.</p>
+        <div class="text-center bg-gray-100 p-4 rounded-lg">
+            <p class="text-2xl font-bold text-gray-800">
+                <span class="phone-number" data-number="8326106820">832-610-6820</span>
+                <button class="phone-action-btn inline-flex align-middle ml-2">📞</button>
+            </p>
         </div>
-    </div>
-
-    <!-- Monitor Info Modal -->
-    <div id="monitorModal" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-40">
+        <div class="mt-4 text-base text-gray-700 font-semibold"><p><span class="font-bold">Direct Line:</span> 8am - 5pm, Mon-Fri</p><p><span class="font-bold">On-Call Emergency Line:</span> 8am - 10pm, Every Day</p></div></div></div>
+    <div id="alarmPanelModal" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-40"><div class="bg-white rounded-2xl shadow-lg p-8 max-w-lg w-full text-gray-800 border relative"><button id="closeAlarmPanelModalBtn" class="absolute top-4 right-4 text-2xl text-gray-600 hover:text-gray-900 leading-none">&times;</button><h2 class="text-2xl font-bold mb-4">Confirm Your Alarm Panel</h2><p class="mb-4 text-gray-700 font-semibold text-base">The following instructions are for the <span class="font-bold">IQ Panel 4</span>, shown below.</p><div class="my-4 p-2 border rounded-lg bg-gray-100"><img src="https://suretyhome.com/wp-content/uploads/bundle-01-iqp4.png" alt="IQ Panel 4" class="rounded-md w-full max-w-xs mx-auto"></div><p class="text-gray-700 font-semibold text-base">If your panel is different, please text a photo of it to <span class="font-bold phone-number" data-number="8326106820">832-610-6820</span><button class="phone-action-btn inline-flex align-middle ml-2">📞</button> for assistance.</p><div class="mt-6 flex justify-end gap-4"><button id="backFromAlarmModalBtn" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded-lg text-base">Go Back</button><button id="continueToAlarmBtn" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-lg text-base">Continue</button></div></div></div>
+    
+    <!-- UPS Info Modal -->
+    <div id="upsModal" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-40">
         <div class="bg-white rounded-2xl shadow-lg p-8 max-w-lg w-full text-gray-800 border border-gray-200/80 relative">
-            <button id="closeMonitorModalBtn" class="absolute top-4 right-4 text-2xl text-gray-600 hover:text-gray-900 leading-none">&times;</button>
-            <h2 class="text-2xl font-bold mb-4">Why a Monitor is Helpful</h2>
-            <p class="mb-4 text-gray-600">While we can resolve <i class="font-semibold">just about</i> everything remotely, having a monitor handy significantly speeds up our call.</p>
-            <p class="mb-4 text-gray-600">A monitor allows us to directly see the system's interface, which can accelerate processes like:</p>
-            <ul class="list-disc list-inside space-y-2 text-gray-600">
-                <li>Bringing cameras back online</li>
-                <li>Adding new cameras</li>
-                <li>Changing time and date settings</li>
-                <li>General system training and familiarization</li>
-            </ul>
-        </div>
-    </div>
-
-    <!-- Training Request Modal -->
-    <div id="trainingModal" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-40">
-        <div class="bg-white rounded-2xl shadow-lg p-8 max-w-lg w-full text-gray-800 border border-gray-200/80 relative">
-            <button id="closeTrainingModalBtn" class="absolute top-4 right-4 text-2xl text-gray-600 hover:text-gray-900 leading-none">&times;</button>
-            <h2 class="text-2xl font-bold mb-4">Request System Training</h2>
-            <p class="mb-4 text-gray-600">To schedule additional training for your system, please contact our Lead Service Technician, Levi, at the number below.</p>
-            <div class="text-center bg-gray-100 p-4 rounded-lg">
-                <p class="text-2xl font-bold text-gray-800">832-610-6820</p>
-            </div>
-            <div class="mt-4 text-sm text-gray-600">
-                <p><span class="font-semibold">Direct Technician Line:</span> 8am - 5pm, Mon-Fri</p>
-                <p><span class="font-semibold">On-Call Emergency Line:</span> 8am - 10pm, Every Day</p>
+            <button id="closeUpsModalBtn" class="absolute top-4 right-4 text-2xl text-gray-600 hover:text-gray-900 leading-none">&times;</button>
+            <h2 class="text-2xl font-bold mb-4">Example Backup Battery (UPS)</h2>
+            <p class="mb-4 text-gray-700 font-semibold text-base">A backup battery (UPS) often looks like a small black tower or power strip. Here is an example:</p>
+            <div class="my-4 p-2 border rounded-lg bg-gray-100">
+                <img src="https://i.ebayimg.com/images/g/rMIAAOSwqQNm2maj/s-l1200.jpg" alt="Backup Battery / UPS" class="rounded-md w-full max-w-xs mx-auto">
             </div>
         </div>
     </div>
+
+    <!-- Alarm Box Info Modal -->
+    <div id="alarmBoxModal" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-40">
+        <div class="bg-white rounded-2xl shadow-lg p-8 max-w-lg w-full text-gray-800 border border-gray-200/80 relative">
+            <button id="closeAlarmBoxModalBtn" class="absolute top-4 right-4 text-2xl text-gray-600 hover:text-gray-900 leading-none">&times;</button>
+            <h2 class="text-2xl font-bold mb-4">Example Alarm Power Box</h2>
+            <p class="mb-4 text-gray-700 font-semibold text-base">The alarm power supply is often a white box plugged into an outlet with two wires. It's critical this box does not lose power.</p>
+            <div class="my-4 p-2 border rounded-lg bg-gray-100">
+                <img src="https://zionssecurity.com/wp-content/uploads/2022/10/Q9-QR0051840_alt2.jpg" alt="Alarm Power Box" class="rounded-md w-full max-w-xs mx-auto">
+            </div>
+        </div>
+    </div>
+
+    <!-- SN on Phone Modal -->
+    <div id="snOnPhoneModal" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-40">
+        <div class="bg-white rounded-2xl shadow-lg p-8 max-w-lg w-full text-gray-800 border border-gray-200/80 relative">
+            <button id="closeSnOnPhoneModalBtn" class="absolute top-4 right-4 text-2xl text-gray-600 hover:text-gray-900 leading-none">&times;</button>
+            <h2 class="text-2xl font-bold mb-6">Find Your SN in the DMSS App</h2>
+            <div class="space-y-5">
+                <div class="flex items-start"><div class="flex-shrink-0 flex items-center justify-center h-8 w-8 rounded-full bg-blue-100 text-blue-600 font-bold text-base mr-4">1</div><p class="text-gray-700 font-semibold text-base">Open the <span class="font-bold">DMSS app</span> and go to the <span class="font-bold">Home</span> page.</p></div>
+                <div class="flex items-start"><div class="flex-shrink-0 flex items-center justify-center h-8 w-8 rounded-full bg-blue-100 text-blue-600 font-bold text-base mr-4">2</div><p class="text-gray-700 font-semibold text-base">Find your camera system (e.g., "Home Cameras"). To its right, you will see a play icon, an arrow, and three dots (...).</p></div>
+                <div class="flex items-start"><div class="flex-shrink-0 flex items-center justify-center h-8 w-8 rounded-full bg-blue-100 text-blue-600 font-bold text-base mr-4">3</div><p class="text-gray-700 font-semibold text-base">Tap the <span class="font-bold">three dots (...)</span> and select <span class="font-bold">Device Details</span>.</p></div>
+                <div class="flex items-start"><div class="flex-shrink-0 flex items-center justify-center h-8 w-8 rounded-full bg-blue-100 text-blue-600 font-bold text-base mr-4">4</div><p class="text-gray-700 font-semibold text-base">Check the status at the top. If it does not say <span class="font-bold text-blue-600">Online</span>, your system is offline.
+                        <button id="offlineInfoBtn" class="inline-flex align-middle ml-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5 text-blue-600 hover:text-blue-800">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" />
+                            </svg>
+                        </button>
+                    </p>
+                </div>
+                <div class="flex items-start"><div class="flex-shrink-0 flex items-center justify-center h-8 w-8 rounded-full bg-blue-100 text-blue-600 font-bold text-base mr-4">5</div><p class="text-gray-700 font-semibold text-base">If the status is <span class="font-bold text-blue-600">Online</span>, the <span class="font-bold">Serial Number</span> may be listed here.</p></div>
+                <div class="flex items-start"><div class="flex-shrink-0 flex items-center justify-center h-8 w-8 rounded-full bg-blue-100 text-blue-600 font-bold text-base mr-4">6</div><p class="text-gray-700 font-semibold text-base">If not, tap the <span class="font-bold">edit icon</span> (pencil & paper) at the top right to find the Serial Number.</p></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Offline Info Modal -->
+    <div id="offlineInfoModal" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-40">
+        <div class="bg-white rounded-2xl shadow-lg p-8 max-w-lg w-full text-gray-800 border border-gray-200/80 relative">
+            <button id="closeOfflineInfoModalBtn" class="absolute top-4 right-4 text-2xl text-gray-600 hover:text-gray-900 leading-none">&times;</button>
+            <h2 class="text-2xl font-bold mb-4">Camera System Offline</h2>
+            <p class="text-gray-700 font-semibold text-base">If your system is showing as "Offline," it is not connected to the internet. Please continue with the troubleshooting steps in this guide (starting from Step 2), as power cycling the system often resolves this issue.</p>
+            <p class="mt-2 text-gray-700 font-semibold text-base">If the system is still offline after completing all steps, we will address it during our support call.</p>
+        </div>
+    </div>
+
+    <!-- Phone Action Pop-up -->
+    <div id="phoneActionPopup" class="hidden absolute z-50 bg-white rounded-lg shadow-lg border border-gray-200 text-center">
+        <a id="callLink" href="#" class="block px-4 py-2 text-base font-semibold text-blue-600 hover:bg-gray-100 rounded-t-lg">Call</a>
+        <a id="textLink" href="#" class="block px-4 py-2 text-base font-semibold text-blue-600 hover:bg-gray-100 rounded-b-lg">Text</a>
+    </div>
+
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-
             // --- SPLASH SCREEN ---
             window.addEventListener('load', () => {
                 const splashScreen = document.getElementById('splashScreen');
                 setTimeout(() => {
                     splashScreen.classList.add('splash-fade-out', 'pointer-events-none');
-                    setTimeout(() => {
-                        splashScreen.style.display = 'none';
-                    }, 1000);
+                    setTimeout(() => { splashScreen.style.display = 'none'; }, 1000);
                 }, 2000);
             });
 
-
             // --- PAGE LOGIC ---
-            const welcomeView = document.getElementById('welcomeView');
-            const cameraView = document.getElementById('cameraView');
-            const accessControlView = document.getElementById('accessControlView');
-            const alarmHubView = document.getElementById('alarmHubView');
-            const panelIssuesView = document.getElementById('panelIssuesView');
-            const sensorIssuesView = document.getElementById('sensorIssuesView');
-
-            const cameraBtn = document.getElementById('cameraBtn');
-            const accessBtn = document.getElementById('accessBtn');
-            const alarmBtn = document.getElementById('alarmBtn');
-            const cameraBackBtn = document.getElementById('cameraBackBtn');
-            const accessBackBtn = document.getElementById('accessBackBtn');
+            const views = {
+                welcome: document.getElementById('welcomeView'),
+                camera: document.getElementById('cameraView'),
+                access: document.getElementById('accessControlView'),
+                alarmHub: document.getElementById('alarmHubView'),
+                panelIssues: document.getElementById('panelIssuesView'),
+                sensorIssues: document.getElementById('sensorIssuesView'),
+            };
             
-            const panelIssuesBtn = document.getElementById('panelIssuesBtn');
-            const sensorIssuesBtn = document.getElementById('sensorIssuesBtn');
-            const alarmHubBackBtn = document.getElementById('alarmHubBackBtn');
-            const panelIssuesBackBtn = document.getElementById('panelIssuesBackBtn');
-            const sensorIssuesBackBtn = document.getElementById('sensorIssuesBackBtn');
-
-            const monitorModal = document.getElementById('monitorModal');
-            const monitorInfoBtn = document.getElementById('monitorInfoBtn');
-            const closeMonitorModalBtn = document.getElementById('closeMonitorModalBtn');
-            const trainingModal = document.getElementById('trainingModal');
-            const trainingBtn = document.getElementById('trainingBtn');
-            const closeTrainingModalBtn = document.getElementById('closeTrainingModalBtn');
-            const infoModal = document.getElementById('infoModal');
-            const infoBtn = document.getElementById('infoBtn');
-            const closeInfoModalBtn = document.getElementById('closeInfoModalBtn');
+            const modals = {
+                info: { el: document.getElementById('infoModal'), openBtn: document.getElementById('infoBtn'), closeBtn: document.getElementById('closeInfoModalBtn') },
+                monitor: { el: document.getElementById('monitorModal'), openBtn: document.getElementById('monitorInfoBtn'), closeBtn: document.getElementById('closeMonitorModalBtn') },
+                training: { el: document.getElementById('trainingModal'), openBtn: document.getElementById('trainingBtn'), closeBtn: document.getElementById('closeTrainingModalBtn') },
+                alarmPanel: { el: document.getElementById('alarmPanelModal'), openBtn: document.getElementById('alarmBtn'), closeBtn: document.getElementById('closeAlarmPanelModalBtn') },
+                ups: { el: document.getElementById('upsModal'), openBtn: document.getElementById('upsInfoBtn'), closeBtn: document.getElementById('closeUpsModalBtn') },
+                alarmBox: { el: document.getElementById('alarmBoxModal'), openBtn: document.getElementById('alarmBoxInfoBtn'), closeBtn: document.getElementById('closeAlarmBoxModalBtn') },
+                snOnPhone: { el: document.getElementById('snOnPhoneModal'), openBtn: document.getElementById('findOnPhoneBtn'), closeBtn: document.getElementById('closeSnOnPhoneModalBtn') },
+                offlineInfo: { el: document.getElementById('offlineInfoModal'), openBtn: document.getElementById('offlineInfoBtn'), closeBtn: document.getElementById('closeOfflineInfoModalBtn') },
+            };
 
             const showView = (viewToShow) => {
-                welcomeView.classList.add('hidden');
-                cameraView.classList.add('hidden');
-                accessControlView.classList.add('hidden');
-                alarmHubView.classList.add('hidden');
-                panelIssuesView.classList.add('hidden');
-                sensorIssuesView.classList.add('hidden');
+                Object.values(views).forEach(view => view.classList.add('hidden'));
                 viewToShow.classList.remove('hidden');
             };
 
-            cameraBtn.addEventListener('click', () => showView(cameraView));
-            accessBtn.addEventListener('click', () => showView(accessControlView));
-            alarmBtn.addEventListener('click', () => showView(alarmHubView));
+            // View navigation buttons
+            document.getElementById('cameraBtn').addEventListener('click', () => showView(views.camera));
+            document.getElementById('accessBtn').addEventListener('click', () => showView(views.access));
+            document.getElementById('panelIssuesBtn').addEventListener('click', () => showView(views.panelIssues));
+            document.getElementById('sensorIssuesBtn').addEventListener('click', () => showView(views.sensorIssues));
+            
+            // Back buttons
+            document.getElementById('cameraBackBtn').addEventListener('click', () => showView(views.welcome));
+            document.getElementById('accessBackBtn').addEventListener('click', () => showView(views.welcome));
+            document.getElementById('alarmHubBackBtn').addEventListener('click', () => showView(views.welcome));
+            document.getElementById('panelIssuesBackBtn').addEventListener('click', () => showView(views.alarmHub));
+            document.getElementById('sensorIssuesBackBtn').addEventListener('click', () => showView(views.alarmHub));
 
-            cameraBackBtn.addEventListener('click', () => showView(welcomeView));
-            accessBackBtn.addEventListener('click', () => showView(welcomeView));
-            alarmHubBackBtn.addEventListener('click', () => showView(welcomeView));
+            // Camera Step Navigation
+            const cameraSteps = document.querySelectorAll('.camera-step');
+            const cameraProgress = document.getElementById('cameraProgress');
+            let currentStep = 0;
 
-            panelIssuesBtn.addEventListener('click', () => showView(panelIssuesView));
-            sensorIssuesBtn.addEventListener('click', () => showView(sensorIssuesView));
-
-            panelIssuesBackBtn.addEventListener('click', () => showView(alarmHubView));
-            sensorIssuesBackBtn.addEventListener('click', () => showView(alarmHubView));
-
-            const setupModal = (modal, openBtn, closeBtn) => {
-                openBtn.addEventListener('click', () => modal.classList.remove('hidden'));
-                closeBtn.addEventListener('click', () => modal.classList.add('hidden'));
+            const showCameraStep = (stepIndex) => {
+                cameraSteps.forEach((step, index) => {
+                    step.classList.toggle('hidden', index !== stepIndex);
+                });
+                currentStep = stepIndex;
+                cameraProgress.textContent = `Step ${currentStep + 1} of ${cameraSteps.length}`;
             };
 
-            setupModal(monitorModal, monitorInfoBtn, closeMonitorModalBtn);
-            setupModal(trainingModal, trainingBtn, closeTrainingModalBtn);
-            setupModal(infoModal, infoBtn, closeInfoModalBtn);
+            document.querySelectorAll('.next-btn').forEach(button => {
+                button.addEventListener('click', () => {
+                    if (currentStep < cameraSteps.length - 1) {
+                        showCameraStep(currentStep + 1);
+                    }
+                });
+            });
+
+            document.querySelectorAll('.prev-btn').forEach(button => {
+                button.addEventListener('click', () => {
+                    if (currentStep > 0) {
+                        showCameraStep(currentStep - 1);
+                    }
+                });
+            });
+            
+            document.getElementById('cameraFinishedBtn').addEventListener('click', () => {
+                showView(views.welcome);
+                // Optional: reset to first step for next time
+                setTimeout(() => showCameraStep(0), 500);
+            });
+
+            // Set initial step
+            showCameraStep(0);
+
+            // Modal setup
+            Object.values(modals).forEach(modal => {
+                if (modal.openBtn) {
+                    modal.openBtn.addEventListener('click', () => modal.el.classList.remove('hidden'));
+                }
+                if (modal.closeBtn) {
+                    modal.closeBtn.addEventListener('click', () => modal.el.classList.add('hidden'));
+                }
+            });
+
+            // Phone action popup logic
+            const phoneActionPopup = document.getElementById('phoneActionPopup');
+            const callLink = document.getElementById('callLink');
+            const textLink = document.getElementById('textLink');
+
+            document.querySelectorAll('.phone-action-btn').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const phoneNumber = button.previousElementSibling.dataset.number;
+                    
+                    const isTextOnly = button.dataset.textOnly === 'true';
+
+                    if (isTextOnly) {
+                        callLink.classList.add('hidden');
+                        textLink.classList.remove('rounded-b-lg');
+                        textLink.classList.add('rounded-lg');
+                    } else {
+                        callLink.classList.remove('hidden');
+                        textLink.classList.add('rounded-b-lg');
+                        textLink.classList.remove('rounded-lg');
+                    }
+
+                    callLink.href = `tel:${phoneNumber}`;
+                    textLink.href = `sms:${phoneNumber}`;
+                    
+                    const rect = button.getBoundingClientRect();
+                    phoneActionPopup.style.left = `${rect.left + window.scrollX}px`;
+                    phoneActionPopup.style.top = `${rect.bottom + window.scrollY}px`;
+                    
+                    phoneActionPopup.classList.remove('hidden');
+                });
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!phoneActionPopup.contains(e.target) && !e.target.closest('.phone-action-btn')) {
+                    phoneActionPopup.classList.add('hidden');
+                }
+            });
+
+            // Special Alarm Modal Logic
+            document.getElementById('continueToAlarmBtn').addEventListener('click', () => {
+                modals.alarmPanel.el.classList.add('hidden');
+                showView(views.alarmHub);
+            });
+            document.getElementById('backFromAlarmModalBtn').addEventListener('click', () => {
+                modals.alarmPanel.el.classList.add('hidden');
+                showView(views.welcome);
+            });
         });
     </script>
 </body>
