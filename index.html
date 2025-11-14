@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4QYBNMVWWR"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-4QYBNMVWWR');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ageint Security Support Portal</title>
@@ -31,6 +40,24 @@
         .scale-in {
             opacity: 0;
             animation: scaleIn 0.8s ease-out forwards;
+        }
+        .view-transition {
+            transition: opacity 0.3s ease-in-out;
+        }
+        /* Tutorial Styles */
+        .tutorial-step-card {
+            background-color: #f9fafb; /* gray-50 */
+            border: 1px solid #e5e7eb; /* gray-200 */
+            border-radius: 0.75rem; /* rounded-xl */
+            padding: 1.5rem; /* p-6 */
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); /* shadow-md */
+        }
+        .tutorial-highlight {
+            background-color: #dbeafe; /* blue-100 */
+            color: #1e40af; /* blue-800 */
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.375rem; /* rounded-md */
+            font-weight: 600; /* font-semibold */
         }
     </style>
 </head>
@@ -63,21 +90,35 @@
         <main class="w-full max-w-2xl bg-white rounded-2xl shadow-lg p-8 text-gray-800 border border-gray-200/80 relative transition-colors duration-300">
             
             <!-- Choice View -->
-            <div id="choiceView" class="hidden text-center">
+            <div id="choiceView" class="hidden text-center view-transition">
+                <div id="firmwareAlert" class="bg-red-100 border-l-4 border-red-500 text-red-700 p-3 rounded-r-lg mb-4 text-left relative -mt-6">
+                    <button id="closeFirmwareAlert" class="absolute top-1.5 right-1.5 text-red-500 hover:text-red-700">
+                        <svg class="fill-current h-5 w-5" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><title>Close</title><path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"/></svg>
+                    </button>
+                    <div class="flex items-center justify-between pr-8">
+                        <div class="flex items-center">
+                            <div class="py-1"><svg class="fill-current h-5 w-5 text-red-500 mr-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zM9 11v4h2V9H9V7h2v2h2v2H9z"/></svg></div>
+                            <div>
+                                <p class="font-semibold">For customers who need a router firmware update, press Go!</p>
+                            </div>
+                        </div>
+                        <button id="firmwareGoBtn" class="bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-3 rounded-lg ml-3 flex-shrink-0">Go!</button>
+                    </div>
+                </div>
                 <h1 class="text-3xl font-bold mb-4 text-center">How can we help you today?</h1>
                 <p class="text-center mb-6 text-gray-700 text-lg font-semibold">Please select an option below to get started.</p>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-lg mx-auto">
-                    <button id="selfTroubleshootingBtn" class="bg-green-500 hover:bg-green-600 text-white font-bold py-6 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105 text-lg">
+                    <button id="selfTroubleshootingBtn" class="bg-green-500 hover:bg-green-600 text-white font-bold py-6 px-4 rounded-lg shadow-md transition-all duration-300 transform hover:scale-105 hover:shadow-xl text-lg">
                         Self-Service Guides
                     </button>
-                    <button id="remoteSupportBtn" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-6 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105 text-lg">
+                    <button id="remoteSupportBtn" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-6 px-4 rounded-lg shadow-md transition-all duration-300 transform hover:scale-105 hover:shadow-xl text-lg">
                         Prepare for Remote Support
                     </button>
                 </div>
             </div>
 
             <!-- Self Service View -->
-            <div id="selfServiceView" class="hidden">
+            <div id="selfServiceView" class="hidden view-transition">
                 <h1 class="text-3xl font-bold mb-4 text-center">Welcome to the Self-Service Guide</h1>
                 <div class="bg-blue-100 border-l-4 border-blue-500 text-blue-800 p-4 rounded-r-lg mb-6">
                     <p class="font-semibold text-base">This section is a work in progress by our staff. Over time, this will become populated.</p>
@@ -85,12 +126,12 @@
                 <p class="text-center mb-6 text-gray-700 text-lg font-semibold">What system are you having trouble with?</p>
                 <div class="space-y-6">
                     <!-- Camera System Option -->
-                    <div class="bg-gray-50 p-6 rounded-lg border">
+                    <div class="bg-gray-50 p-6 rounded-lg border transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
                         <h2 class="text-2xl font-bold mb-3 text-gray-800">Camera System</h2>
                         <div class="flex flex-col md:flex-row items-center gap-6">
                             <div class="flex-1">
                                 <p class="text-gray-700 font-semibold mb-4">These guides are for camera systems installed by Ageint Security. If your system is different, these steps may not apply.</p>
-                                <button id="troubleshootCameraBtn" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-4 px-4 rounded-lg shadow-md text-lg transition">Troubleshoot Camera System</button>
+                                <button id="troubleshootCameraBtn" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-4 px-4 rounded-lg shadow-md text-lg transition-all duration-300 transform hover:scale-105">Troubleshoot Camera System</button>
                             </div>
                             <div class="w-32 mx-auto md:w-1/3 md:mx-0">
                                 <img src="https://www.alldataresource.com/assets/dahua_technology/Dahua-Technology-C845E42A-Miscellaneous-Main.png" alt="Ageint Security Camera System" class="rounded-md border-2 border-gray-200 shadow-sm">
@@ -99,12 +140,12 @@
                     </div>
 
                     <!-- Alarm System Option -->
-                    <div class="bg-gray-50 p-6 rounded-lg border">
+                    <div class="bg-gray-50 p-6 rounded-lg border transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
                         <h2 class="text-2xl font-bold mb-3 text-gray-800">Alarm System</h2>
                         <div class="flex flex-col md:flex-row items-center gap-6">
                             <div class="flex-1">
                                 <p class="text-gray-700 font-semibold mb-4">This guide is for the <span class="font-bold">IQ Panel 4</span>. If your panel looks different, this guide may not be for you.</p>
-                                <button id="troubleshootAlarmBtn" class="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-4 px-4 rounded-lg shadow-md text-lg transition">Troubleshoot Alarm System</button>
+                                <button id="troubleshootAlarmBtn" class="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-4 px-4 rounded-lg shadow-md text-lg transition-all duration-300 transform hover:scale-105">Troubleshoot Alarm System</button>
                             </div>
                             <div class="w-32 mx-auto md:w-1/3 md:mx-0">
                                 <img src="https://suretyhome.com/wp-content/uploads/bundle-01-iqp4.png" alt="IQ Panel 4" class="rounded-md border-2 border-gray-200 shadow-sm">
@@ -112,14 +153,14 @@
                         </div>
                     </div>
                 </div>
-                <button id="selfServiceBackBtn" class="w-full bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition flex items-center justify-center gap-2 mt-8 text-base">
+                <button id="selfServiceBackBtn" class="w-full bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 mt-8 text-base">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd"></path></svg>
                     <span>Back</span>
                 </button>
             </div>
 
             <!-- Camera Troubleshooting View -->
-            <div id="cameraTroubleshootingView" class="hidden">
+            <div id="cameraTroubleshootingView" class="hidden view-transition">
                 <h1 class="text-3xl font-bold mb-4 text-center">Camera System Troubleshooting</h1>
                 <div class="relative mb-6">
                     <span class="absolute inset-y-0 left-0 flex items-center pl-3">
@@ -152,28 +193,31 @@
                 <!-- Tab Content -->
                 <div id="cameraTabContent">
                     <div class="hidden p-4 rounded-lg bg-gray-50" id="app-content" role="tabpanel" aria-labelledby="app-tab">
-                        <button id="dmssTutorialBtn" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-4 px-4 rounded-lg shadow-md text-lg transition text-left">
+                        <button id="dmssTutorialBtn" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-4 px-4 rounded-lg shadow-md text-lg transition-all duration-300 transform hover:scale-105 text-left">
                             📱 Setting Up DMSS on Another Phone
                         </button>
-                        <button id="nvrTutorialBtn" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-4 px-4 rounded-lg shadow-md text-lg transition text-left mt-4">
+                        <button id="nvrTutorialBtn" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-4 px-4 rounded-lg shadow-md text-lg transition-all duration-300 transform hover:scale-105 text-left mt-4">
                             🖥️ Connecting Your NVR to the DMSS App
                         </button>
                     </div>
                     <div class="hidden p-4 rounded-lg bg-gray-50" id="system-content" role="tabpanel" aria-labelledby="system-tab">
-                        <button id="nvrTutorialSystemBtn" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-4 px-4 rounded-lg shadow-md text-lg transition text-left">
+                        <button id="nvrTutorialSystemBtn" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-4 px-4 rounded-lg shadow-md text-lg transition-all duration-300 transform hover:scale-105 text-left">
                             🖥️ Connecting Your NVR to the DMSS App
+                        </button>
+                        <button id="routerFirmwareBtn" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-4 px-4 rounded-lg shadow-md text-lg transition-all duration-300 transform hover:scale-105 text-left mt-4">
+                            🌐 Upgrading Router Firmware
                         </button>
                     </div>
                 </div>
 
-                <button id="cameraTroubleshootingBackBtn" class="w-full bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition flex items-center justify-center gap-2 mt-8 text-base">
+                <button id="cameraTroubleshootingBackBtn" class="w-full bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 mt-8 text-base">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd"></path></svg>
                     <span>Back to Self-Service</span>
                 </button>
             </div>
 
             <!-- Alarm Troubleshooting View -->
-            <div id="alarmTroubleshootingView" class="hidden">
+            <div id="alarmTroubleshootingView" class="hidden view-transition">
                 <h1 class="text-3xl font-bold mb-4 text-center">Alarm System Troubleshooting</h1>
                 <div class="relative mb-6">
                     <span class="absolute inset-y-0 left-0 flex items-center pl-3">
@@ -184,96 +228,319 @@
                     <input type="text" id="alarmSearch" class="w-full py-2 pl-10 pr-4 text-gray-700 bg-white border rounded-lg focus:outline-none focus:ring focus:ring-opacity-40 focus:ring-blue-300" placeholder="Search alarm guides...">
                 </div>
                 <div id="alarmGuidesContainer" class="p-4 rounded-lg bg-gray-50 text-center">
-                    <button id="batteryTutorialBtn" class="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-4 px-4 rounded-lg shadow-md text-lg transition text-left">
+                    <button id="batteryTutorialBtn" class="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-4 px-4 rounded-lg shadow-md text-lg transition-all duration-300 transform hover:scale-105 text-left">
                         🔋 How to Change Batteries in Your Door/Window Sensor
                     </button>
                 </div>
-                <button id="alarmTroubleshootingBackBtn" class="w-full bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition flex items-center justify-center gap-2 mt-8 text-base">
+                <button id="alarmTroubleshootingBackBtn" class="w-full bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 mt-8 text-base">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd"></path></svg>
                     <span>Back to Self-Service</span>
                 </button>
             </div>
 
             <!-- Battery Tutorial View -->
-            <div id="batteryTutorialView" class="hidden">
-                <h1 class="text-3xl font-bold mb-4 text-center">How to Change Batteries in Your Door/Window Sensor</h1>
-                <div class="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden shadow-lg border">
-                    <iframe src="https://www.youtube.com/embed/w_vKRnemVy4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <div id="batteryTutorialView" class="hidden view-transition">
+                <div class="text-center mb-8">
+                    <h1 class="text-3xl font-bold mb-2">🔋 How to Change Batteries in Your Door/Window Sensor</h1>
+                    <p class="text-gray-700 text-lg font-semibold">Follow these steps to replace the batteries in your sensor.</p>
                 </div>
-                <button id="batteryTutorialBackBtn" class="w-full bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition flex items-center justify-center gap-2 mt-8 text-base">
+
+                <!-- Progress Bar -->
+                <div class="mb-8">
+                    <div class="relative pt-1">
+                        <div class="flex mb-2 items-center justify-between">
+                            <div>
+                                <span id="batteryProgressLabel" class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-yellow-600 bg-yellow-200">
+                                </span>
+                            </div>
+                        </div>
+                        <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-yellow-200">
+                            <div id="batteryProgressBar" style="width: 0%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-yellow-500 transition-all duration-500"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="battery-steps">
+                    <!-- Step 1 -->
+                    <div class="battery-step tutorial-step-card">
+                        <h3 class="font-bold text-2xl mb-4 text-gray-800">Step 1: Watch the Video Guide</h3>
+                        <p class="text-gray-700 font-semibold text-base mb-4">For a visual walkthrough, watch this video guide.</p>
+                        <div class="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden shadow-lg border">
+                            <iframe src="https://www.youtube.com/embed/w_vKRnemVy4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <div class="mt-8 flex justify-end">
+                            <button class="next-btn-battery bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-6 rounded-lg text-base">Next</button>
+                        </div>
+                    </div>
+                    <!-- Step 2 -->
+                    <div class="battery-step hidden tutorial-step-card">
+                        <h3 class="font-bold text-2xl mb-4 text-gray-800">Step 2: Identify the Sensor</h3>
+                        <p class="text-gray-700 font-semibold text-base mb-4">Locate the door or window sensor that needs a battery change. It will be the larger piece of the two-part sensor.</p>
+                        <div class="mt-8 flex justify-between">
+                            <button class="prev-btn-battery bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-lg text-base">Previous</button>
+                            <button class="next-btn-battery bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-6 rounded-lg text-base">Next</button>
+                        </div>
+                    </div>
+                    <!-- Step 3 -->
+                    <div class="battery-step hidden tutorial-step-card">
+                        <h3 class="font-bold text-2xl mb-4 text-gray-800">Step 3: Get Replacement Batteries</h3>
+                        <p class="text-gray-700 font-semibold text-base mb-4">Most sensors use a <strong class="tutorial-highlight">CR2032</strong> or <strong class="tutorial-highlight">CR2450</strong> battery. Check the old battery to be sure.</p>
+                        <div class="mt-8 flex justify-between">
+                            <button class="prev-btn-battery bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-lg text-base">Previous</button>
+                            <button class="next-btn-battery bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-6 rounded-lg text-base">Next</button>
+                        </div>
+                    </div>
+                    <!-- Step 4 -->
+                    <div class="battery-step hidden tutorial-step-card">
+                        <h3 class="font-bold text-2xl mb-4 text-gray-800">Step 4: Open the Sensor</h3>
+                        <p class="text-gray-700 font-semibold text-base mb-4">There is usually a small tab or slot on the side of the sensor. Use a small flathead screwdriver or your fingernail to pry the cover off.</p>
+                        <div class="mt-8 flex justify-between">
+                            <button class="prev-btn-battery bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-lg text-base">Previous</button>
+                            <button class="next-btn-battery bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-6 rounded-lg text-base">Next</button>
+                        </div>
+                    </div>
+                    <!-- Step 5 -->
+                    <div class="battery-step hidden tutorial-step-card">
+                        <h3 class="font-bold text-2xl mb-4 text-gray-800">Step 5: Replace the Batteries</h3>
+                        <p class="text-gray-700 font-semibold text-base mb-4">Remove the old battery and insert the new one, making sure the <strong class="tutorial-highlight">+</strong> side is facing up.</p>
+                        <div class="mt-8 flex justify-between">
+                            <button class="prev-btn-battery bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-lg text-base">Previous</button>
+                            <button class="next-btn-battery bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-6 rounded-lg text-base">Next</button>
+                        </div>
+                    </div>
+                    <!-- Step 6 -->
+                    <div class="battery-step hidden tutorial-step-card">
+                        <h3 class="font-bold text-2xl mb-4 text-gray-800">Step 6: Close the Sensor</h3>
+                        <p class="text-gray-700 font-semibold text-base mb-4">Snap the cover back into place.</p>
+                        <div class="mt-8 flex justify-between">
+                            <button class="prev-btn-battery bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-lg text-base">Previous</button>
+                            <button class="next-btn-battery bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-6 rounded-lg text-base">Next</button>
+                        </div>
+                    </div>
+                    <!-- Step 7 -->
+                    <div class="battery-step hidden tutorial-step-card">
+                        <h3 class="font-bold text-2xl mb-4 text-gray-800">Step 7: Test the Sensor</h3>
+                        <p class="text-gray-700 font-semibold text-base mb-4">Open and close the door or window to ensure the alarm panel recognizes that the sensor is working correctly.</p>
+                        <div class="mt-8 flex justify-between">
+                            <button class="prev-btn-battery bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-lg text-base">Previous</button>
+                            <button id="batteryFinishedBtn" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-6 rounded-lg text-base">All Done!</button>
+                        </div>
+                    </div>
+                </div>
+
+                <button id="batteryTutorialBackBtn" class="w-full bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 mt-8 text-base">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd"></path></svg>
                     <span>Back to Alarm Troubleshooting</span>
                 </button>
             </div>
 
             <!-- DMSS Tutorial View -->
-            <div id="dmssTutorialView" class="hidden">
-                <h1 class="text-3xl font-bold mb-2 text-center">📱 Setting Up DMSS on Another Phone</h1>
-                <p class="text-center mb-6 text-gray-700 text-lg font-semibold">Follow these steps to add your cameras to a new device.</p>
+            <div id="dmssTutorialView" class="hidden view-transition">
+                <div class="text-center mb-8">
+                    <h1 class="text-3xl font-bold mb-2">📱 Setting Up DMSS on Another Phone</h1>
+                    <p class="text-gray-700 text-lg font-semibold">Follow these steps to add your cameras to a new device.</p>
+                </div>
                 
-                <div class="space-y-6 text-left">
-                    <!-- Requirements Card -->
-                    <div class="bg-gray-50 p-6 rounded-lg border">
-                        <h2 class="text-2xl font-bold text-gray-800 mb-3">Required Information</h2>
-                        <ul class="space-y-3 text-gray-700 font-semibold">
-                            <li class="flex items-start"><span class="mr-3 text-2xl">📱</span><div><span class="font-bold">Original phone</span> with working DMSS app.</div></li>
-                            <li class="flex items-start"><span class="mr-3 text-2xl">📱</span><div><span class="font-bold">New phone</span> for adding cameras.</div></li>
-                            <li class="flex items-start"><span class="mr-3 text-2xl">🔐</span><div><span class="font-bold">Camera system password.</span></div></li>
-                        </ul>
-                        <div class="mt-4 bg-white p-4 rounded-lg border">
-                            <p class="font-semibold"><span class="font-bold">Device Name:</span> Pick a clear name for your device.</p>
-                            <p class="font-semibold"><span class="font-bold">Username:</span> admin</p>
-                            <p class="font-semibold"><span class="font-bold">Password:</span> Contact our office if unknown.</p>
+                <!-- Progress Bar -->
+                <div class="mb-8">
+                    <div class="relative pt-1">
+                        <div class="flex mb-2 items-center justify-between">
+                            <div>
+                                <span id="dmssProgressLabel" class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blue-600 bg-blue-200"></span>
+                            </div>
                         </div>
-                    </div>
-
-                    <!-- Steps Card -->
-                    <div class="bg-gray-50 p-6 rounded-lg border">
-                        <h2 class="text-2xl font-bold text-gray-800 mb-3">Steps</h2>
-                        <ol class="list-decimal list-inside space-y-3 text-gray-700 font-semibold">
-                            <li>Access "Device Details" on the original phone.</li>
-                            <li>Find and screenshot the Serial Number.</li>
-                            <li>Send the information (email the serial number and account name to support or keep it ready).</li>
-                            <li class="font-bold text-red-600">Switch to the other phone only after sending the info.</li>
-                            <li>Open DMSS on the new phone and tap the Plus Sign (+).</li>
-                            <li>Choose "Manually Add."</li>
-                            <li>Enter the Serial Number.</li>
-                            <li>Fill in the Device Details (refer to "Required Information" above).</li>
-                            <li>Save and Finish.</li>
-                        </ol>
+                        <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-blue-200">
+                            <div id="dmssProgressBar" style="width: 0%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-500 transition-all duration-500"></div>
+                        </div>
                     </div>
                 </div>
 
-                <button id="dmssTutorialBackBtn" class="w-full bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition flex items-center justify-center gap-2 mt-8 text-base">
+                <div id="dmss-steps">
+                    <!-- Step 1: Requirements -->
+                    <div class="dmss-step tutorial-step-card">
+                        <h3 class="font-bold text-2xl mb-4 text-gray-800">Step 1: Required Information</h3>
+                        <ul class="space-y-3 text-gray-700 font-semibold">
+                            <li class="flex items-start"><span class="mr-3 text-2xl">📱</span><div><strong class="tutorial-highlight">Original phone</strong> with working DMSS app.</div></li>
+                            <li class="flex items-start"><span class="mr-3 text-2xl">📱</span><div><strong class="tutorial-highlight">New phone</strong> for adding cameras.</div></li>
+                            <li class="flex items-start"><span class="mr-3 text-2xl">🔐</span><div><strong class="tutorial-highlight">Camera system password.</strong></div></li>
+                        </ul>
+                        <div class="mt-4 bg-white p-4 rounded-lg border">
+                            <p class="font-semibold"><strong class="tutorial-highlight">Device Name:</strong> Pick a clear name for your device.</p>
+                            <p class="font-semibold"><strong class="tutorial-highlight">Username:</strong> admin</p>
+                            <p class="font-semibold"><strong class="tutorial-highlight">Password:</strong> Contact our office if unknown.</p>
+                        </div>
+                        <div class="mt-8 flex justify-end">
+                            <button class="next-btn-dmss bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-lg text-base">Next</button>
+                        </div>
+                    </div>
+                    <!-- Step 2 -->
+                    <div class="dmss-step hidden tutorial-step-card">
+                        <h3 class="font-bold text-2xl mb-4 text-gray-800">Step 2: Access Device Details</h3>
+                        <p class="text-gray-700 font-semibold text-base mb-4">Access <strong class="tutorial-highlight">"Device Details"</strong> on the original phone.</p>
+                        <div class="mt-8 flex justify-between">
+                            <button class="prev-btn-dmss bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-lg text-base">Previous</button>
+                            <button class="next-btn-dmss bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-lg text-base">Next</button>
+                        </div>
+                    </div>
+                    <!-- Step 3 -->
+                    <div class="dmss-step hidden tutorial-step-card">
+                        <h3 class="font-bold text-2xl mb-4 text-gray-800">Step 3: Find and Screenshot Serial Number</h3>
+                        <p class="text-gray-700 font-semibold text-base mb-4">Find and screenshot the <strong class="tutorial-highlight">Serial Number</strong>.</p>
+                        <div class="mt-8 flex justify-between">
+                            <button class="prev-btn-dmss bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-lg text-base">Previous</button>
+                            <button class="next-btn-dmss bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-lg text-base">Next</button>
+                        </div>
+                    </div>
+                    <!-- Step 4 -->
+                    <div class="dmss-step hidden tutorial-step-card">
+                        <h3 class="font-bold text-2xl mb-4 text-gray-800">Step 4: Send Information</h3>
+                        <p class="text-gray-700 font-semibold text-base mb-4">Send the information (email the serial number and account name to support or keep it ready). <strong class="text-red-600">Switch to the other phone only after sending the info.</strong></p>
+                        <div class="mt-8 flex justify-between">
+                            <button class="prev-btn-dmss bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-lg text-base">Previous</button>
+                            <button class="next-btn-dmss bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-lg text-base">Next</button>
+                        </div>
+                    </div>
+                    <!-- Step 5 -->
+                    <div class="dmss-step hidden tutorial-step-card">
+                        <h3 class="font-bold text-2xl mb-4 text-gray-800">Step 5: Open DMSS and Add Device</h3>
+                        <p class="text-gray-700 font-semibold text-base mb-4">Open DMSS on the new phone and tap the <strong class="tutorial-highlight">Plus Sign (+)</strong>.</p>
+                        <div class="mt-8 flex justify-between">
+                            <button class="prev-btn-dmss bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-lg text-base">Previous</button>
+                            <button class="next-btn-dmss bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-lg text-base">Next</button>
+                        </div>
+                    </div>
+                    <!-- Step 6 -->
+                    <div class="dmss-step hidden tutorial-step-card">
+                        <h3 class="font-bold text-2xl mb-4 text-gray-800">Step 6: Manually Add</h3>
+                        <p class="text-gray-700 font-semibold text-base mb-4">Choose <strong class="tutorial-highlight">"Manually Add."</strong></p>
+                        <div class="mt-8 flex justify-between">
+                            <button class="prev-btn-dmss bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-lg text-base">Previous</button>
+                            <button class="next-btn-dmss bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-lg text-base">Next</button>
+                        </div>
+                    </div>
+                    <!-- Step 7 -->
+                    <div class="dmss-step hidden tutorial-step-card">
+                        <h3 class="font-bold text-2xl mb-4 text-gray-800">Step 7: Enter Serial Number</h3>
+                        <p class="text-gray-700 font-semibold text-base mb-4">Enter the <strong class="tutorial-highlight">Serial Number</strong>.</p>
+                        <div class="mt-8 flex justify-between">
+                            <button class="prev-btn-dmss bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-lg text-base">Previous</button>
+                            <button class="next-btn-dmss bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-lg text-base">Next</button>
+                        </div>
+                    </div>
+                    <!-- Step 8 -->
+                    <div class="dmss-step hidden tutorial-step-card">
+                        <h3 class="font-bold text-2xl mb-4 text-gray-800">Step 8: Fill in Device Details</h3>
+                        <p class="text-gray-700 font-semibold text-base mb-4">Fill in the <strong class="tutorial-highlight">Device Details</strong> (refer to "Required Information" in Step 1).</p>
+                        <div class="mt-8 flex justify-between">
+                            <button class="prev-btn-dmss bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-lg text-base">Previous</button>
+                            <button class="next-btn-dmss bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-lg text-base">Next</button>
+                        </div>
+                    </div>
+                    <!-- Step 9 -->
+                    <div class="dmss-step hidden tutorial-step-card">
+                        <h3 class="font-bold text-2xl mb-4 text-gray-800">Step 9: Save and Finish</h3>
+                        <p class="text-gray-700 font-semibold text-base mb-4">Save and Finish.</p>
+                        <div class="mt-8 flex justify-between">
+                            <button class="prev-btn-dmss bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-lg text-base">Previous</button>
+                            <button id="dmssFinishedBtn" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-6 rounded-lg text-base">All Done!</button>
+                        </div>
+                    </div>
+                </div>
+
+                <button id="dmssTutorialBackBtn" class="w-full bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 mt-8 text-base">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd"></path></svg>
                     <span>Back to Camera Troubleshooting</span>
                 </button>
             </div>
 
             <!-- NVR Tutorial View -->
-            <div id="nvrTutorialView" class="hidden">
-                <h1 class="text-3xl font-bold mb-2 text-center">🖥️ Connecting Your NVR to the DMSS App</h1>
-                <p class="text-center mb-6 text-gray-700 text-lg font-semibold">Follow these steps to link your NVR to the mobile app.</p>
-                
-                <div class="space-y-6 text-left">
-                    <!-- Steps Card -->
-                    <div class="bg-gray-50 p-6 rounded-lg border">
-                        <h2 class="text-2xl font-bold text-gray-800 mb-3">Steps</h2>
-                        <ol class="list-decimal list-inside space-y-3 text-gray-700 font-semibold">
-                            <li><span class="font-bold">Connect Monitor to NVR:</span> A monitor must be connected to configure settings.</li>
-                            <li><span class="font-bold">Access NVR Main Menu:</span> Right-click on the monitor, select Main Menu, enter NVR passcode, press Network, then press P2P at the bottom left.</li>
-                            <li><span class="font-bold">Open DMSS App:</span> Launch the DMSS app on your phone.</li>
-                            <li><span class="font-bold">Tap "+" to Add Device:</span> Select "Manually Add" if needed.</li>
-                            <li><span class="font-bold">Enter Serial Number:</span> Input the NVR's SN (shown in P2P menu).</li>
-                            <li><span class="font-bold">Fill Device Details:</span> Name the device (e.g., "Home Cameras") and enter admin credentials.</li>
-                            <li><span class="font-bold">Save & View:</span> Confirm connection; live feeds should appear in DMSS.</li>
-                        </ol>
-                    </div>
+            <div id="nvrTutorialView" class="hidden view-transition">
+                <div class="text-center mb-8">
+                    <h1 class="text-3xl font-bold mb-2">🖥️ Connecting Your NVR to the DMSS App</h1>
+                    <p class="text-gray-700 text-lg font-semibold">Follow these steps to link your NVR to the mobile app.</p>
+                </div>
 
-                    <!-- Notes Card -->
-                    <div class="bg-gray-50 p-6 rounded-lg border">
-                        <h2 class="text-2xl font-bold text-gray-800 mb-3">Notes</h2>
-                        <ul class="space-y-3 text-gray-700 font-semibold">
+                <!-- Progress Bar -->
+                <div class="mb-8">
+                    <div class="relative pt-1">
+                        <div class="flex mb-2 items-center justify-between">
+                            <div>
+                                <span id="nvrProgressLabel" class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blue-600 bg-blue-200"></span>
+                            </div>
+                        </div>
+                        <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-blue-200">
+                            <div id="nvrProgressBar" style="width: 0%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-500 transition-all duration-500"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="nvr-steps">
+                    <!-- Step 1 -->
+                    <div class="nvr-step tutorial-step-card">
+                        <h3 class="font-bold text-2xl mb-4 text-gray-800">Step 1: Connect Monitor to NVR</h3>
+                        <p class="text-gray-700 font-semibold text-base mb-4">A monitor must be connected to configure settings.</p>
+                        <div class="mt-8 flex justify-end">
+                            <button class="next-btn-nvr bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-lg text-base">Next</button>
+                        </div>
+                    </div>
+                    <!-- Step 2 -->
+                    <div class="nvr-step hidden tutorial-step-card">
+                        <h3 class="font-bold text-2xl mb-4 text-gray-800">Step 2: Access NVR Main Menu</h3>
+                        <p class="text-gray-700 font-semibold text-base mb-4">Right-click on the monitor, select <strong class="tutorial-highlight">Main Menu</strong>, enter NVR passcode, press <strong class="tutorial-highlight">Network</strong>, then press <strong class="tutorial-highlight">P2P</strong> at the bottom left.</p>
+                        <div class="mt-8 flex justify-between">
+                            <button class="prev-btn-nvr bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-lg text-base">Previous</button>
+                            <button class="next-btn-nvr bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-lg text-base">Next</button>
+                        </div>
+                    </div>
+                    <!-- Step 3 -->
+                    <div class="nvr-step hidden tutorial-step-card">
+                        <h3 class="font-bold text-2xl mb-4 text-gray-800">Step 3: Open DMSS App</h3>
+                        <p class="text-gray-700 font-semibold text-base mb-4">Launch the DMSS app on your phone.</p>
+                        <div class="mt-8 flex justify-between">
+                            <button class="prev-btn-nvr bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-lg text-base">Previous</button>
+                            <button class="next-btn-nvr bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-lg text-base">Next</button>
+                        </div>
+                    </div>
+                    <!-- Step 4 -->
+                    <div class="nvr-step hidden tutorial-step-card">
+                        <h3 class="font-bold text-2xl mb-4 text-gray-800">Step 4: Tap "+" to Add Device</h3>
+                        <p class="text-gray-700 font-semibold text-base mb-4">Select <strong class="tutorial-highlight">"Manually Add"</strong> if needed.</p>
+                        <div class="mt-8 flex justify-between">
+                            <button class="prev-btn-nvr bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-lg text-base">Previous</button>
+                            <button class="next-btn-nvr bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-lg text-base">Next</button>
+                        </div>
+                    </div>
+                    <!-- Step 5 -->
+                    <div class="nvr-step hidden tutorial-step-card">
+                        <h3 class="font-bold text-2xl mb-4 text-gray-800">Step 5: Enter Serial Number</h3>
+                        <p class="text-gray-700 font-semibold text-base mb-4">Input the NVR's SN (shown in P2P menu).</p>
+                        <div class="mt-8 flex justify-between">
+                            <button class="prev-btn-nvr bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-lg text-base">Previous</button>
+                            <button class="next-btn-nvr bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-lg text-base">Next</button>
+                        </div>
+                    </div>
+                    <!-- Step 6 -->
+                    <div class="nvr-step hidden tutorial-step-card">
+                        <h3 class="font-bold text-2xl mb-4 text-gray-800">Step 6: Fill Device Details</h3>
+                        <p class="text-gray-700 font-semibold text-base mb-4">Name the device (e.g., "Home Cameras") and enter admin credentials.</p>
+                        <div class="mt-8 flex justify-between">
+                            <button class="prev-btn-nvr bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-lg text-base">Previous</button>
+                            <button class="next-btn-nvr bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-lg text-base">Next</button>
+                        </div>
+                    </div>
+                    <!-- Step 7 -->
+                    <div class="nvr-step hidden tutorial-step-card">
+                        <h3 class="font-bold text-2xl mb-4 text-gray-800">Step 7: Save & View</h3>
+                        <p class="text-gray-700 font-semibold text-base mb-4">Confirm connection; live feeds should appear in DMSS.</p>
+                        <div class="mt-8 flex justify-between">
+                            <button class="prev-btn-nvr bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-lg text-base">Previous</button>
+                            <button class="next-btn-nvr bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-lg text-base">Next</button>
+                        </div>
+                    </div>
+                     <!-- Step 8: Notes -->
+                     <div class="nvr-step hidden tutorial-step-card">
+                        <h3 class="font-bold text-2xl mb-4 text-gray-800">Step 8: Notes</h3>
+                        <ul class="space-y-3 text-gray-700 font-semibold text-base">
                             <li class="flex items-start"><span class="mr-3 text-2xl">🖥️</span><div>To exit the P2P menu on the monitor, just repeatedly right-click until it closes.</div></li>
                             <li class="flex items-start"><span class="mr-3 text-2xl">❗</span><div>If no monitor is available, you can either:
                                 <ul class="list-disc list-inside pl-4 mt-2">
@@ -282,42 +549,159 @@
                                 </ul>
                             </div></li>
                         </ul>
+                        <div class="mt-8 flex justify-between">
+                            <button class="prev-btn-nvr bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-lg text-base">Previous</button>
+                            <button id="nvrFinishedBtn" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-6 rounded-lg text-base">All Done!</button>
+                        </div>
                     </div>
                 </div>
 
-                <button id="nvrTutorialBackBtn" class="w-full bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition flex items-center justify-center gap-2 mt-8 text-base">
+                <button id="nvrTutorialBackBtn" class="w-full bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 mt-8 text-base">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd"></path></svg>
+                    <span>Back to Camera Troubleshooting</span>
+                </button>
+            </div>
+
+            <!-- Router Firmware Tutorial View -->
+            <div id="routerFirmwareView" class="hidden view-transition">
+                <div class="text-center mb-8">
+                    <h1 class="text-3xl font-bold mb-2">Upgrading Router Firmware</h1>
+                    <p class="text-gray-700 text-lg font-semibold">Follow these steps to update your router.</p>
+                </div>
+                
+                <!-- Progress Bar -->
+                <div class="mb-8">
+                    <div class="relative pt-1">
+                        <div class="flex mb-2 items-center justify-between">
+                            <div>
+                                <span id="routerFirmwareProgressLabel" class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blue-600 bg-blue-200">
+                                    Step 1 of 8
+                                </span>
+                            </div>
+                        </div>
+                        <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-blue-200">
+                            <div id="routerFirmwareProgressBar" style="width: 12.5%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-500 transition-all duration-500"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="router-firmware-steps">
+                    <!-- Step 1 -->
+                    <div class="router-firmware-step tutorial-step-card">
+                        <h3 class="font-bold text-2xl mb-4 text-gray-800">Step 1: Connect to Wi-Fi</h3>
+                        <p class="text-gray-700 font-semibold text-base mb-4">On your phone, open Wi-Fi settings and connect to <strong class="tutorial-highlight">'Ageint Data 5'</strong>. You will need the password. If you don't have it, please contact our office at <strong class="tutorial-highlight">832-610-6820</strong>.</p>
+                        <img src="https://previews.dropbox.com/p/thumb/AC3tDNhqm9gaQ0wWEZOcMzmAD-IxQ9Sj1jK4E1fLwD_gtpJs8T7zTDgy8LNFLRhMR-pRhvp2wrZ4O_CLQjAjOUuxlkqhRvJAKsyIskJjtjIrKFQZj1JDaDRzm3rBe3WeFyH6WyR0gZ5u3muyDtJlBNKn59xxse-YQZoxVgxWfUycUIJEyHYinVKCIe1vxEZ58baiQvbH-6TVqtY6ABYdS85vDrYH69U6KLExvLQHTFHz_uCdCiMp_N7nHlA6FgGGZzaI3RFDTZZsS9-oUbd5MPeAsc_ee23Gm6ryEcAT1lzoZp0GBSDPg41LD3dId_xIxgISAyOBmlbVsnmGhjf02R43/p.png?is_prewarmed=true" alt="Step 1" class="max-w-xs mx-auto rounded-lg shadow-md border">
+                        <div class="mt-8 flex justify-end">
+                            <button class="next-btn-router bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-lg text-base">Next</button>
+                        </div>
+                    </div>
+                    <!-- Step 2 -->
+                    <div class="router-firmware-step hidden tutorial-step-card">
+                        <h3 class="font-bold text-2xl mb-4 text-gray-800">Step 2: Access Login Page</h3>
+                        <p class="text-gray-700 font-semibold text-base mb-4">Open a web browser and go to <strong class="tutorial-highlight">192.168.2.1</strong>. Enter the same password you used for the Wi-Fi.</p>
+                        <img src="https://previews.dropbox.com/p/thumb/AC26zmbMeqci8X_h5CFql5RbmE4lz05fyoj9h9B21PuMFtz_eaUP8EwK8DDrs0kDT6vcHI6nqWkSnaaEjiTibSlmSDrlrhlzDeN1XRhcqZpGiuWlnu6ybc_DqTEh14Nqqkv90Z-2pn5DngFkIqyWXO2XBDG8Zxc4LbiQwHueOZQEvd_uEQNNzRgLaRP-BjqiUMrgrGx14l4svVAgC7NFvVwJG4qI85bas0D7MNotOek-4hSDHp0_Vq7RSOmptNVc0iqqs_qkTDp5mcejhruTI-tj9G8X8FVDehI35IBhZ_jIJtkJXDeUqd4g0Hv8naVENLI/p.png" alt="Step 2" class="max-w-xs mx-auto rounded-lg shadow-md border">
+                        <div class="mt-8 flex justify-between">
+                            <button class="prev-btn-router bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-lg text-base">Previous</button>
+                            <button class="next-btn-router bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-lg text-base">Next</button>
+                        </div>
+                    </div>
+                    <!-- Step 3 -->
+                    <div class="router-firmware-step hidden tutorial-step-card">
+                        <h3 class="font-bold text-2xl mb-4 text-gray-800">Step 3: Open Main Menu</h3>
+                        <p class="text-gray-700 font-semibold text-base mb-4">Tap the menu icon (three lines) at the top right. A pop-up might appear; if it does, tap the 'X' to close it.</p>
+                        <div class="flex flex-col md:flex-row gap-4 justify-center">
+                            <img src="https://previews.dropbox.com/p/thumb/AC2LHZcXiQo9-HDc4bt84aq8PCgAhe3kBUkWNvaRhFUhYYTeadvAYwAPC2AKU4sN7T13eK-8ScEsExzUbDLYa5TFTQgFowrPSeh5Og0DcTzC5VcufXOy_zW1DDAzLpsuEDTubyyGmUZqOfdsmX0Tx1z9SdKNRdz5XPdwsfhu72LcILwDFwIu1MFQC6LYzJevG6VEtTlIADUxlzXf181EnW_mAXuU0By6qp0ZmMQxPS-vBjE2FFhxSBY_3Am4CRw-irOtvvl78nXnX4qJME1Un3B5AAiv0uBBg2qExwtoznf3XE-x-TNzr-EOBhEuXIkTo-w/p.png" alt="Step 3 Main" class="max-w-xs mx-auto rounded-lg shadow-md border">
+                            <img src="https://previews.dropbox.com/p/thumb/AC3pUun07wzKZsQTAPZTz1UTyO3TfMVvlK1EQO_-ZU_kl_zPLcBYqLmPpOC77RxkAJQrbIughiDsOODLqgKTPIPaO4gTphb2HADJO9j7bZmuUFDZ57xsdIyqNqa5PDy-XAU9zJoltJMVshBfFyCB6KFG7mUBjNv07awYua8toUGDpjEcD0aC5C06gybl7can2HZAFd9VVmXdiL6nRbktsrN4YKUwQ9IsrMJXKkj7O_zVZVuWE_NFIhT-f2Qk7Y7uX1JYjqo2JSTB2ZR4OpKlAHm8bszxHBjf2IOd54bQqcpOJXHvBE8owzqi_WM0DMtOgPA/p.png" alt="Step 3 Popup" class="max-w-xs mx-auto rounded-lg shadow-md border">
+                        </div>
+                        <div class="mt-8 flex justify-between">
+                            <button class="prev-btn-router bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-lg text-base">Previous</button>
+                            <button class="next-btn-router bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-lg text-base">Next</button>
+                        </div>
+                    </div>
+                    <!-- Step 4 -->
+                    <div class="router-firmware-step hidden tutorial-step-card">
+                        <h3 class="font-bold text-2xl mb-4 text-gray-800">Step 4: Select 'Advanced'</h3>
+                        <p class="text-gray-700 font-semibold text-base mb-4">From the menu, select the <strong class="tutorial-highlight">'Advanced'</strong> option.</p>
+                        <img src="https://previews.dropbox.com/p/thumb/AC3yA5USJb7DJcwYNpuUZdjy4lBQxuN8T-ap8bxc5lc-sYozJTl7QdZwtJWPM7Ei1u1sCB5ugzBYcTyN-TjW8EIc-zYucnCfB5H-imaJzuOIn8zit_pZIFHBDhfgKuc57dewRdz_iDCg5AdA8zm_5vHbMVw276B6-Kuz6NHl0qS2K7vawrYuoH1Z8avAizrdYqfNfybNFrzn1DjkXTuOsM6elTLWNDrDC1VoHHuEkvB757QfblYj0NTxnUDESbAASQWkx0JdybkeBYQJTC3u5G4ZsEM-gqT5VpYA0-QN5Y8rp6nRWtS9xu-6uaBOgSY_71A/p.png" alt="Step 4" class="max-w-xs mx-auto rounded-lg shadow-md border">
+                        <div class="mt-8 flex justify-between">
+                            <button class="prev-btn-router bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-lg text-base">Previous</button>
+                            <button class="next-btn-router bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-lg text-base">Next</button>
+                        </div>
+                    </div>
+                    <!-- Step 5 -->
+                    <div class="router-firmware-step hidden tutorial-step-card">
+                        <h3 class="font-bold text-2xl mb-4 text-gray-800">Step 5: Select 'System'</h3>
+                        <p class="text-gray-700 font-semibold text-base mb-4">In the Advanced menu, scroll down and tap on <strong class="tutorial-highlight">'System'</strong>.</p>
+                        <img src="https://previews.dropbox.com/p/thumb/AC0xallfiQJLPmzcXO8M14oFF972bs4678-eTfs3KjL0YChC8u2h3tqvH-6Qy1LoJQd2Ej0CxCcXRrUUIHdwZpAjIM7PDrUZ-4ahluDYR3mcYwM7pfGmvNfeRg8QUU_VY9pGkgbd9mgbtYON-1_6a9bzFKlWPGA27g5-Hu17xDS0gnl0hO5F3dBarud3XtTMy-P4V79GMqgWYxdHc2q65HwKHZv6Z7a01p5PeWiGB1zWqjn9Ucb70W2CbFMNxZA423IzJHov_Dlj_iAY3CN30y0D8D3HUkD5j42NFnZoEvA5jl1PSwcebQUVJH8Cyv0NCq8/p.png" alt="Step 5" class="max-w-xs mx-auto rounded-lg shadow-md border">
+                        <div class="mt-8 flex justify-between">
+                            <button class="prev-btn-router bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-lg text-base">Previous</button>
+                            <button class="next-btn-router bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-lg text-base">Next</button>
+                        </div>
+                    </div>
+                    <!-- Step 6 -->
+                    <div class="router-firmware-step hidden tutorial-step-card">
+                        <h3 class="font-bold text-2xl mb-4 text-gray-800">Step 6: Select 'Firmware Update'</h3>
+                        <p class="text-gray-700 font-semibold text-base mb-4">Next, select <strong class="tutorial-highlight">'Firmware Update'</strong> from the System menu.</p>
+                        <img src="https://previews.dropbox.com/p/thumb/AC3yq7m8uMRyoqbgWEMrbYWT_Da-zsAqGJiS97-HQFfddg_Y6eoAEPRk_sHg6Tz1eOBm8MFyaeln1_FLltAPCCHrha77qKZPFuxDQ9yhVh-MurqxFPQGzigsnMzxXpWnwaPqagPdOW9X_l3Gr_Nud78XcDPVY7VOi6oIs-lD1pcf4N0vx_TNlGAOmchkhvAs9FDikW2fxL9W2MaEcgBHFCd9ajrDMPD8fIdx5LJzTHYO3UX_i1ZE_2ps3YmfUPNga6LWfZkkegj6fITqFPAipJT4ZMkiAVpLdaAL6SZuJThtQGlVAwc-SbOKrO9MLKc0SLk/p.png" alt="Step 6" class="max-w-xs mx-auto rounded-lg shadow-md border">
+                        <div class="mt-8 flex justify-between">
+                            <button class="prev-btn-router bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-lg text-base">Previous</button>
+                            <button class="next-btn-router bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-lg text-base">Next</button>
+                        </div>
+                    </div>
+                    <!-- Step 7 -->
+                    <div class="router-firmware-step hidden tutorial-step-card">
+                        <h3 class="font-bold text-2xl mb-4 text-gray-800">Step 7: Go to Update Section</h3>
+                        <p class="text-gray-700 font-semibold text-base mb-4">You will now be on the Firmware Update screen. Please scroll down to see the update options.</p>
+                        <img src="https://previews.dropbox.com/p/thumb/AC3XoOXesvT-ohhtLHZeNzT_c-oMK1KOWTeaYgiqK0y7LOhiaQgpHZavAqeCA3zuKNx764iE-5yZzrfKeCjtPOrHIkE7BVaunQYHraoqbonleF4fXjzw_YxG_TjEEl_AWMv2HjfwKrH20_mAMQDAekx6WfEIaSbRRUXwYHCZsCjdQImcYNTajo_xqSlD1ir-U_wI8skJJfenOAboE9m5Sd4POOnKcptDeH9KXmmLwla3Bg2usAlRUlcLDGzsHx4qtmcPILIusVeOL5-YVVQa6QkiriPh0ANHvc0O0K-zyHZMycoHDt2LhQjOI3KbCKWK8WU/p.png" alt="Step 7" class="max-w-xs mx-auto rounded-lg shadow-md border">
+                        <div class="mt-8 flex justify-between">
+                            <button class="prev-btn-router bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-lg text-base">Previous</button>
+                            <button class="next-btn-router bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-lg text-base">Next</button>
+                        </div>
+                    </div>
+                    <!-- Step 8 -->
+                    <div class="router-firmware-step hidden tutorial-step-card">
+                        <h3 class="font-bold text-2xl mb-4 text-gray-800">Step 8: Update and Reboot</h3>
+                        <p class="text-gray-700 font-semibold text-base mb-4">Look for a blue button labeled <strong class="tutorial-highlight">'UPDATE'</strong>. If your router is already up to date, it may say 'Check for update' instead. Press this button to confirm. The router will begin its update process. Please keep this screen open until it has finished rebooting. Once complete, you can reconnect your phone to your main Wi-Fi network.</p>
+                        <img src="https://previews.dropbox.com/p/thumb/AC0ERK1BYCOSLv_KerdCq_0X7rxJ6zIj-lp_A-nu3p9WeZGTr0hug_usBtW51CCJVNY0ZK5oUU239dRbU3SR4u3nM7KY4l-3NW7cf1V_YuN4nLOBw8mQugF2bqvXbghyYLjuYIcQXmsrRzDzQpBsbweHwIZLBQG8NriM2Zc0nSE9qh_rw4Cu0dKDNBVyOTiM8cztRq2XnRt-OL2N4IsRNOD_vDsKiFVQ-D0O3vIiIuiZkyPwHrjPDnxdTAdFzK17f252LMQaSD5jSMqW3Dc4Jxvj6Y6vEp4a4ydp46k8EcQqhToj-UV67Rfg3XlWsU6MLNc/p.png" alt="Step 8" class="max-w-xs mx-auto rounded-lg shadow-md border">
+                        <div class="mt-8 flex justify-between">
+                            <button class="prev-btn-router bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-lg text-base">Previous</button>
+                            <button id="routerFirmwareFinishedBtn" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-6 rounded-lg text-base">All Done!</button>
+                        </div>
+                    </div>
+                </div>
+                <button id="routerFirmwareBackBtn" class="w-full bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 mt-8 text-base">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd"></path></svg>
                     <span>Back to Camera Troubleshooting</span>
                 </button>
             </div>
 
             <!-- Welcome View -->
-            <div id="welcomeView" class="hidden">
+            <div id="welcomeView" class="hidden view-transition">
                 <h1 class="text-3xl font-bold mb-4 text-center">Welcome to Your Support Portal</h1>
                 <p class="text-center mb-6 text-gray-700 text-lg font-semibold">This portal will prepare you for your remote support session, ensuring a fast and efficient resolution.</p>
                 <p class="text-center font-semibold mb-6 text-xl">To get started, please select your system:</p>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <button id="cameraBtn" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-6 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105 text-lg">
+                    <button id="cameraBtn" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-6 px-4 rounded-lg shadow-md transition-all duration-300 transform hover:scale-105 hover:shadow-xl text-lg">
                         Camera System
                     </button>
-                    <button id="accessBtn" class="bg-green-500 hover:bg-green-600 text-white font-bold py-6 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105 text-lg">
+                    <button id="accessBtn" class="bg-green-500 hover:bg-green-600 text-white font-bold py-6 px-4 rounded-lg shadow-md transition-all duration-300 transform hover:scale-105 hover:shadow-xl text-lg">
                         Access Control
                     </button>
-                    <button id="alarmBtn" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-6 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105 text-lg">
+                    <button id="alarmBtn" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-6 px-4 rounded-lg shadow-md transition-all duration-300 transform hover:scale-105 hover:shadow-xl text-lg">
                         Alarm System
                     </button>
                 </div>
                 <div class="text-center mt-8">
-                    <button id="trainingBtn" class="bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold py-2 px-6 rounded-lg border border-gray-200 shadow-sm transition underline">Request Additional System Training</button>
+                    <button id="trainingBtn" class="bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold py-2 px-6 rounded-lg border border-gray-200 shadow-sm transition-all duration-300 underline">Request Additional System Training</button>
                 </div>
-                <button id="welcomeBackBtn" class="w-full bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition flex items-center justify-center gap-2 mt-8 text-base">
+                <button id="welcomeBackBtn" class="w-full bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 mt-8 text-base">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd"></path></svg>
                     <span>Back</span>
                 </button>
             </div>
 
             <!-- Camera System View -->
-            <div id="cameraView" class="hidden">
+            <div id="cameraView" class="hidden view-transition">
                 <h1 class="text-3xl font-bold mb-4">Camera System Preparation</h1>
                 <p class="mb-8 text-gray-700 text-lg font-semibold">Please follow these steps one by one to ensure your support session is as smooth as possible.</p>
                 <div id="cameraProgress" class="text-center font-bold text-lg text-gray-700 mb-6"></div>
@@ -436,14 +820,14 @@
                     </div>
                 </div>
                 
-                <button id="cameraBackBtn" class="w-full bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition flex items-center justify-center gap-2 mt-8 text-base">
-                    <svg xmlns="http://www.w.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" /></svg>
+                <button id="cameraBackBtn" class="w-full bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 mt-8 text-base">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" /></svg>
                     <span>Back to Main Menu</span>
                 </button>
            </div>
 
             <!-- Access Control View -->
-            <div id="accessControlView" class="hidden">
+            <div id="accessControlView" class="hidden view-transition">
                  <h1 class="text-3xl font-bold mb-4">Access Control Preparation</h1>
                  <p class="mb-4 text-gray-700 text-lg font-semibold">To identify your device, please look on the device itself (e.g., keypad, card reader, or garage door motor) for any of the following details:</p>
                  <ul class="list-disc list-inside space-y-2 mb-6 bg-gray-100 p-6 rounded-lg text-lg font-medium text-gray-800">
@@ -452,28 +836,28 @@
                      <li>Brand Name</li>
                  </ul>
                  <p class="mb-6 text-gray-700 font-semibold text-base">Don't worry if you can't find these. We'll assist you on the call.</p>
-                 <button id="accessBackBtn" class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg transition flex items-center justify-center gap-2 text-base">
+                 <button id="accessBackBtn" class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 text-base">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" /></svg>
                     <span>Back</span>
                  </button>
             </div>
 
             <!-- Alarm Hub View -->
-            <div id="alarmHubView" class="hidden">
+            <div id="alarmHubView" class="hidden view-transition">
                 <h1 class="text-3xl font-bold mb-4">Alarm System Preparation</h1>
                 <p class="mb-6 text-gray-700 text-lg font-semibold">Please choose the option that best matches your problem. This will help us get to the core of the issue faster.</p>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <button id="panelIssuesBtn" class="bg-teal-500 hover:bg-teal-600 text-white font-bold py-6 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105 text-lg">General Panel Issues</button>
-                    <button id="sensorIssuesBtn" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-6 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105 text-lg">Sensor Issues</button>
+                    <button id="panelIssuesBtn" class="bg-teal-500 hover:bg-teal-600 text-white font-bold py-6 px-4 rounded-lg shadow-md transition-all duration-300 transform hover:scale-105 hover:shadow-xl text-lg">General Panel Issues</button>
+                    <button id="sensorIssuesBtn" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-6 px-4 rounded-lg shadow-md transition-all duration-300 transform hover:scale-105 hover:shadow-xl text-lg">Sensor Issues</button>
                 </div>
-                <button id="alarmHubBackBtn" class="w-full bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition mt-8 flex items-center justify-center gap-2 text-base">
+                <button id="alarmHubBackBtn" class="w-full bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition-all duration-300 mt-8 flex items-center justify-center gap-2 text-base">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" /></svg>
                     <span>Back to Main Menu</span>
                 </button>
             </div>
 
             <!-- Alarm - General Panel Issues View -->
-            <div id="panelIssuesView" class="hidden">
+            <div id="panelIssuesView" class="hidden view-transition">
                 <h1 class="text-3xl font-bold mb-4">General Panel Issues</h1>
                 <p class="mb-6 text-gray-700 text-lg font-semibold">For a blank screen, connection errors, or an unresponsive system, please follow these steps.</p>
                 <div id="panelIssuesProgress" class="text-center font-bold text-lg text-gray-700 mb-6"></div>
@@ -531,14 +915,14 @@
                         </div>
                     </div>
                 </div>
-                <button id="panelIssuesBackBtn" class="w-full bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition flex items-center justify-center gap-2 text-base mt-8">
+                <button id="panelIssuesBackBtn" class="w-full bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 text-base mt-8">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" /></svg>
                     <span>Back to Alarm Menu</span>
                 </button>
             </div>
 
             <!-- Alarm - Sensor Issues View -->
-            <div id="sensorIssuesView" class="hidden">
+            <div id="sensorIssuesView" class="hidden view-transition">
                 <h1 class="text-3xl font-bold mb-4">Sensor Issues</h1>
                 <p class="mb-6 text-gray-700 text-lg font-semibold">For "sensor open," "low battery," or "sensor tamper" errors, please follow these steps.</p>
                 <div id="sensorIssuesProgress" class="text-center font-bold text-lg text-gray-700 mb-6"></div>
@@ -580,7 +964,7 @@
                         </div>
                     </div>
                 </div>
-                <button id="sensorIssuesBackBtn" class="w-full bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition flex items-center justify-center gap-2 text-base mt-8">
+                <button id="sensorIssuesBackBtn" class="w-full bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 text-base mt-8">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" /></svg>
                     <span>Back to Alarm Menu</span>
                 </button>
@@ -594,9 +978,9 @@
     </footer>
 
     <!-- Modals -->
-    <div id="infoModal" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-40"><div class="bg-white rounded-2xl shadow-lg p-8 max-w-lg w-full text-gray-800 border relative"><button id="closeInfoModalBtn" class="absolute top-4 right-4 text-2xl text-gray-600 hover:text-gray-900 leading-none">&times;</button><h2 class="text-2xl font-bold mb-4">Work in Progress</h2><p class="text-gray-700 font-semibold text-base">This support portal is an actively developing project. We are continuously working to add more features and improve its functionality to better serve you.</p><p class="text-gray-700 font-semibold mt-2 text-base">Thank you for your understanding!</p></div></div>
-    <div id="monitorModal" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-40"><div class="bg-white rounded-2xl shadow-lg p-8 max-w-lg w-full text-gray-800 border relative"><button id="closeMonitorModalBtn" class="absolute top-4 right-4 text-2xl text-gray-600 hover:text-gray-900 leading-none">&times;</button><h2 class="text-2xl font-bold mb-4">Why a Monitor is Helpful</h2><p class="mb-4 text-gray-700 font-semibold text-base">Having a monitor handy significantly speeds up our call and helps with processes like:</p><ul class="list-disc list-inside space-y-2 text-gray-700 font-semibold text-base"><li>Bringing cameras back online</li><li>Adding new cameras</li><li>Changing time settings</li><li>General system training</li></ul></div></div>
-    <div id="trainingModal" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-40"><div class="bg-white rounded-2xl shadow-lg p-8 max-w-lg w-full text-gray-800 border relative"><button id="closeTrainingModalBtn" class="absolute top-4 right-4 text-2xl text-gray-600 hover:text-gray-900 leading-none">&times;</button><h2 class="text-2xl font-bold mb-4">Request System Training</h2><p class="mb-4 text-gray-700 font-semibold text-base">To schedule additional training, please contact our Lead Service Technician, Levi, at the number below.</p>
+    <div id="infoModal" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-40 transition-opacity duration-300"><div class="bg-white rounded-2xl shadow-lg p-8 max-w-lg w-full text-gray-800 border relative transition-transform duration-300 transform scale-95"><button id="closeInfoModalBtn" class="absolute top-4 right-4 text-2xl text-gray-600 hover:text-gray-900 leading-none">&times;</button><h2 class="text-2xl font-bold mb-4">Work in Progress</h2><p class="text-gray-700 font-semibold text-base">This support portal is an actively developing project. We are continuously working to add more features and improve its functionality to better serve you.</p><p class="text-gray-700 font-semibold mt-2 text-base">Thank you for your understanding!</p></div></div>
+    <div id="monitorModal" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-40 transition-opacity duration-300"><div class="bg-white rounded-2xl shadow-lg p-8 max-w-lg w-full text-gray-800 border relative transition-transform duration-300 transform scale-95"><button id="closeMonitorModalBtn" class="absolute top-4 right-4 text-2xl text-gray-600 hover:text-gray-900 leading-none">&times;</button><h2 class="text-2xl font-bold mb-4">Why a Monitor is Helpful</h2><p class="mb-4 text-gray-700 font-semibold text-base">Having a monitor handy significantly speeds up our call and helps with processes like:</p><ul class="list-disc list-inside space-y-2 text-gray-700 font-semibold text-base"><li>Bringing cameras back online</li><li>Adding new cameras</li><li>Changing time settings</li><li>General system training</li></ul></div></div>
+    <div id="trainingModal" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-40 transition-opacity duration-300"><div class="bg-white rounded-2xl shadow-lg p-8 max-w-lg w-full text-gray-800 border relative transition-transform duration-300 transform scale-95"><button id="closeTrainingModalBtn" class="absolute top-4 right-4 text-2xl text-gray-600 hover:text-gray-900 leading-none">&times;</button><h2 class="text-2xl font-bold mb-4">Request System Training</h2><p class="mb-4 text-gray-700 font-semibold text-base">To schedule additional training, please contact our Lead Service Technician, Levi, at the number below.</p>
         <div class="text-center bg-gray-100 p-4 rounded-lg">
             <p class="text-2xl font-bold text-gray-800">
                 <span class="phone-number" data-number="8326106820">832-610-6820</span>
@@ -604,11 +988,11 @@
             </p>
         </div>
         <div class="mt-4 text-base text-gray-700 font-semibold"><p><span class="font-bold">Direct Line:</span> 8am - 5pm, Mon-Fri</p><p><span class="font-bold">On-Call Emergency Line:</span> 8am - 10pm, Every Day</p></div></div></div>
-    <div id="alarmPanelModal" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-40"><div class="bg-white rounded-2xl shadow-lg p-8 max-w-lg w-full text-gray-800 border relative"><button id="closeAlarmPanelModalBtn" class="absolute top-4 right-4 text-2xl text-gray-600 hover:text-gray-900 leading-none">&times;</button><h2 class="text-2xl font-bold mb-4">Confirm Your Alarm Panel</h2><p class="mb-4 text-gray-700 font-semibold text-base">The following instructions are for the <span class="font-bold">IQ Panel 4</span>, shown below.</p><div class="my-4 p-2 border rounded-lg bg-gray-100"><img src="https://suretyhome.com/wp-content/uploads/bundle-01-iqp4.png" alt="IQ Panel 4" class="rounded-md w-full max-w-xs mx-auto"></div><p class="text-gray-700 font-semibold text-base">If your panel is different, please text a photo of it to <span class="font-bold phone-number" data-number="8326106820">832-610-6820</span><button class="phone-action-btn inline-flex align-middle ml-2">📞</button> for assistance.</p><div class="mt-6 flex justify-end gap-4"><button id="backFromAlarmModalBtn" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded-lg text-base">Go Back</button><button id="continueToAlarmBtn" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-lg text-base">Continue</button></div></div></div>
+    <div id="alarmPanelModal" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-40 transition-opacity duration-300"><div class="bg-white rounded-2xl shadow-lg p-8 max-w-lg w-full text-gray-800 border relative transition-transform duration-300 transform scale-95"><button id="closeAlarmPanelModalBtn" class="absolute top-4 right-4 text-2xl text-gray-600 hover:text-gray-900 leading-none">&times;</button><h2 class="text-2xl font-bold mb-4">Confirm Your Alarm Panel</h2><p class="mb-4 text-gray-700 font-semibold text-base">The following instructions are for the <span class="font-bold">IQ Panel 4</span>, shown below.</p><div class="my-4 p-2 border rounded-lg bg-gray-100"><img src="https://suretyhome.com/wp-content/uploads/bundle-01-iqp4.png" alt="IQ Panel 4" class="rounded-md w-full max-w-xs mx-auto"></div><p class="text-gray-700 font-semibold text-base">If your panel is different, please text a photo of it to <span class="font-bold phone-number" data-number="8326106820">832-610-6820</span><button class="phone-action-btn inline-flex align-middle ml-2">📞</button> for assistance.</p><div class="mt-6 flex justify-end gap-4"><button id="backFromAlarmModalBtn" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded-lg text-base">Go Back</button><button id="continueToAlarmBtn" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-lg text-base">Continue</button></div></div></div>
     
     <!-- UPS Info Modal -->
-    <div id="upsModal" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-40">
-        <div class="bg-white rounded-2xl shadow-lg p-8 max-w-lg w-full text-gray-800 border border-gray-200/80 relative">
+    <div id="upsModal" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-40 transition-opacity duration-300">
+        <div class="bg-white rounded-2xl shadow-lg p-8 max-w-lg w-full text-gray-800 border border-gray-200/80 relative transition-transform duration-300 transform scale-95">
             <button id="closeUpsModalBtn" class="absolute top-4 right-4 text-2xl text-gray-600 hover:text-gray-900 leading-none">&times;</button>
             <h2 class="text-2xl font-bold mb-4">Example Backup Battery (UPS)</h2>
             <p class="mb-4 text-gray-700 font-semibold text-base">A backup battery (UPS) often looks like a small black tower or power strip. Here is an example:</p>
@@ -619,8 +1003,8 @@
     </div>
 
     <!-- Alarm Box Info Modal -->
-    <div id="alarmBoxModal" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-40">
-        <div class="bg-white rounded-2xl shadow-lg p-8 max-w-lg w-full text-gray-800 border border-gray-200/80 relative">
+    <div id="alarmBoxModal" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-40 transition-opacity duration-300">
+        <div class="bg-white rounded-2xl shadow-lg p-8 max-w-lg w-full text-gray-800 border border-gray-200/80 relative transition-transform duration-300 transform scale-95">
             <button id="closeAlarmBoxModalBtn" class="absolute top-4 right-4 text-2xl text-gray-600 hover:text-gray-900 leading-none">&times;</button>
             <h2 class="text-2xl font-bold mb-4">Example Alarm Power Box</h2>
             <p class="mb-4 text-gray-700 font-semibold text-base">The alarm power supply is often a white box plugged into an outlet with two wires. It's critical this box does not lose power.</p>
@@ -631,8 +1015,8 @@
     </div>
 
     <!-- SN on Phone Modal -->
-    <div id="snOnPhoneModal" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-40">
-        <div class="bg-white rounded-2xl shadow-lg p-8 max-w-lg w-full text-gray-800 border border-gray-200/80 relative">
+    <div id="snOnPhoneModal" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-40 transition-opacity duration-300">
+        <div class="bg-white rounded-2xl shadow-lg p-8 max-w-lg w-full text-gray-800 border border-gray-200/80 relative transition-transform duration-300 transform scale-95">
             <button id="closeSnOnPhoneModalBtn" class="absolute top-4 right-4 text-2xl text-gray-600 hover:text-gray-900 leading-none">&times;</button>
             <h2 class="text-2xl font-bold mb-6">Find Your SN in the DMSS App</h2>
             <div class="space-y-5">
@@ -654,8 +1038,8 @@
     </div>
 
     <!-- Offline Info Modal -->
-    <div id="offlineInfoModal" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-40">
-        <div class="bg-white rounded-2xl shadow-lg p-8 max-w-lg w-full text-gray-800 border border-gray-200/80 relative">
+    <div id="offlineInfoModal" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-40 transition-opacity duration-300">
+        <div class="bg-white rounded-2xl shadow-lg p-8 max-w-lg w-full text-gray-800 border border-gray-200/80 relative transition-transform duration-300 transform scale-95">
             <button id="closeOfflineInfoModalBtn" class="absolute top-4 right-4 text-2xl text-gray-600 hover:text-gray-900 leading-none">&times;</button>
             <h2 class="text-2xl font-bold mb-4">Camera System Offline</h2>
             <p class="text-gray-700 font-semibold text-base">If your system is showing as "Offline," it is not connected to the internet. Please continue with the troubleshooting steps in this guide (starting from Step 2), as power cycling the system often resolves this issue.</p>
@@ -699,6 +1083,7 @@
                 alarmHub: document.getElementById('alarmHubView'),
                 panelIssues: document.getElementById('panelIssuesView'),
                 sensorIssues: document.getElementById('sensorIssuesView'),
+                routerFirmware: document.getElementById('routerFirmwareView'),
             };
             
             const modals = {
@@ -713,9 +1098,25 @@
             };
 
             const showView = (viewToShow) => {
-                Object.values(views).forEach(view => view.classList.add('hidden'));
-                viewToShow.classList.remove('hidden');
+                const currentView = Object.values(views).find(view => !view.classList.contains('hidden'));
+                
+                if (currentView) {
+                    currentView.classList.add('opacity-0');
+                    currentView.addEventListener('transitionend', () => {
+                        currentView.classList.add('hidden');
+                        viewToShow.classList.remove('hidden');
+                        setTimeout(() => viewToShow.classList.remove('opacity-0'), 20);
+                    }, { once: true });
+                } else {
+                    viewToShow.classList.remove('hidden');
+                    setTimeout(() => viewToShow.classList.remove('opacity-0'), 20);
+                }
             };
+
+            // Initialize all views to be transparent
+            Object.values(views).forEach(view => {
+                view.classList.add('opacity-0');
+            });
 
             // Choice view buttons
             document.getElementById('remoteSupportBtn').addEventListener('click', () => {
@@ -737,6 +1138,10 @@
             document.getElementById('nvrTutorialBtn').addEventListener('click', () => showView(views.nvrTutorial));
             document.getElementById('nvrTutorialSystemBtn').addEventListener('click', () => showView(views.nvrTutorial));
             document.getElementById('batteryTutorialBtn').addEventListener('click', () => showView(views.batteryTutorial));
+            document.getElementById('routerFirmwareBtn').addEventListener('click', () => {
+                showView(views.routerFirmware);
+                showRouterFirmwareStep(0);
+            });
             document.getElementById('cameraBtn').addEventListener('click', () => showView(views.camera));
             document.getElementById('accessBtn').addEventListener('click', () => showView(views.access));
             document.getElementById('panelIssuesBtn').addEventListener('click', () => showView(views.panelIssues));
@@ -755,6 +1160,7 @@
             document.getElementById('alarmHubBackBtn').addEventListener('click', () => showView(views.welcome));
             document.getElementById('panelIssuesBackBtn').addEventListener('click', () => showView(views.alarmHub));
             document.getElementById('sensorIssuesBackBtn').addEventListener('click', () => showView(views.alarmHub));
+            document.getElementById('routerFirmwareBackBtn').addEventListener('click', () => showView(views.cameraTroubleshooting));
 
             // Search Bar Logic
             const setupSearch = (inputId, containerSelector, itemSelector) => {
@@ -941,13 +1347,50 @@
                 showSensorIssueStep(0)
             });
 
+            // Router Firmware Step Navigation
+            const routerFirmwareSteps = document.querySelectorAll('.router-firmware-step');
+            const routerFirmwareProgressLabel = document.getElementById('routerFirmwareProgressLabel');
+            const routerFirmwareProgressBar = document.getElementById('routerFirmwareProgressBar');
+            let currentRouterStep = 0;
+
+            const showRouterFirmwareStep = (stepIndex) => {
+                routerFirmwareSteps.forEach((step, index) => {
+                    step.classList.toggle('hidden', index !== stepIndex);
+                });
+                currentRouterStep = stepIndex;
+                const progressPercentage = ((currentRouterStep + 1) / routerFirmwareSteps.length) * 100;
+                routerFirmwareProgressBar.style.width = `${progressPercentage}%`;
+                routerFirmwareProgressLabel.textContent = `Step ${currentRouterStep + 1} of ${routerFirmwareSteps.length}`;
+            };
+
+            document.querySelectorAll('.next-btn-router').forEach(button => {
+                button.addEventListener('click', () => {
+                    if (currentRouterStep < routerFirmwareSteps.length - 1) {
+                        showRouterFirmwareStep(currentRouterStep + 1);
+                    }
+                });
+            });
+
+            document.querySelectorAll('.prev-btn-router').forEach(button => {
+                button.addEventListener('click', () => {
+                    if (currentRouterStep > 0) {
+                        showRouterFirmwareStep(currentRouterStep - 1);
+                    }
+                });
+            });
+
+            document.getElementById('routerFirmwareFinishedBtn').addEventListener('click', () => {
+                showView(views.cameraTroubleshooting);
+                setTimeout(() => showRouterFirmwareStep(0), 500);
+            });
+
             // Modal setup
             Object.values(modals).forEach(modal => {
                 if (modal.openBtn) {
-                    modal.openBtn.addEventListener('click', () => modal.el.classList.remove('hidden'));
+                    modal.openBtn.addEventListener('click', () => showModal(modal));
                 }
                 if (modal.closeBtn) {
-                    modal.closeBtn.addEventListener('click', () => modal.el.classList.add('hidden'));
+                    modal.closeBtn.addEventListener('click', () => hideModal(modal));
                 }
             });
 
@@ -1000,84 +1443,139 @@
                 showView(views.welcome);
             });
 
-            // Panel Issues Step Navigation
-            // const panelIssueSteps = document.querySelectorAll('.panel-issue-step');
-            // const panelIssuesProgress = document.getElementById('panelIssuesProgress');
-            // let currentPanelStep = 0;
+            // DMSS Tutorial Step Navigation
+            const dmssSteps = document.querySelectorAll('.dmss-step');
+            const dmssProgressBar = document.getElementById('dmssProgressBar');
+            const dmssProgressLabel = document.getElementById('dmssProgressLabel');
+            let currentDmssStep = 0;
 
-            // const showPanelIssueStep = (stepIndex) => {
-            //     panelIssueSteps.forEach((step, index) => {
-            //         step.classList.toggle('hidden', index !== stepIndex);
-            //     });
-            //     currentPanelStep = stepIndex;
-            //     panelIssuesProgress.textContent = `Step ${currentPanelStep + 1} of ${panelIssueSteps.length}`;
-            // };
+            const showDmssStep = (stepIndex) => {
+                dmssSteps.forEach((step, index) => {
+                    step.classList.toggle('hidden', index !== stepIndex);
+                });
+                currentDmssStep = stepIndex;
+                const progressPercentage = ((currentDmssStep + 1) / dmssSteps.length) * 100;
+                dmssProgressBar.style.width = `${progressPercentage}%`;
+                dmssProgressLabel.textContent = `Step ${currentDmssStep + 1} of ${dmssSteps.length}`;
+            };
 
-            // document.querySelectorAll('.next-btn-panel').forEach(button => {
-            //     button.addEventListener('click', () => {
-            //         if (currentPanelStep < panelIssueSteps.length - 1) {
-            //             showPanelIssueStep(currentPanelStep + 1);
-            //         }
-            //     });
-            // });
+            document.querySelectorAll('.next-btn-dmss').forEach(button => {
+                button.addEventListener('click', () => {
+                    if (currentDmssStep < dmssSteps.length - 1) {
+                        showDmssStep(currentDmssStep + 1);
+                    }
+                });
+            });
 
-            // document.querySelectorAll('.prev-btn-panel').forEach(button => {
-            //     button.addEventListener('click', () => {
-            //         if (currentPanelStep > 0) {
-            //             showPanelIssueStep(currentPanelStep - 1);
-            //         }
-            //     });
-            // });
+            document.querySelectorAll('.prev-btn-dmss').forEach(button => {
+                button.addEventListener('click', () => {
+                    if (currentDmssStep > 0) {
+                        showDmssStep(currentDmssStep - 1);
+                    }
+                });
+            });
+
+            document.getElementById('dmssFinishedBtn').addEventListener('click', () => {
+                showView(views.cameraTroubleshooting);
+                setTimeout(() => showDmssStep(0), 500);
+            });
+
+            // NVR Tutorial Step Navigation
+            const nvrSteps = document.querySelectorAll('.nvr-step');
+            const nvrProgressBar = document.getElementById('nvrProgressBar');
+            const nvrProgressLabel = document.getElementById('nvrProgressLabel');
+            let currentNvrStep = 0;
+
+            const showNvrStep = (stepIndex) => {
+                nvrSteps.forEach((step, index) => {
+                    step.classList.toggle('hidden', index !== stepIndex);
+                });
+                currentNvrStep = stepIndex;
+                const progressPercentage = ((currentNvrStep + 1) / nvrSteps.length) * 100;
+                nvrProgressBar.style.width = `${progressPercentage}%`;
+                nvrProgressLabel.textContent = `Step ${currentNvrStep + 1} of ${nvrSteps.length}`;
+            };
+
+            document.querySelectorAll('.next-btn-nvr').forEach(button => {
+                button.addEventListener('click', () => {
+                    if (currentNvrStep < nvrSteps.length - 1) {
+                        showNvrStep(currentNvrStep + 1);
+                    }
+                });
+            });
+
+            document.querySelectorAll('.prev-btn-nvr').forEach(button => {
+                button.addEventListener('click', () => {
+                    if (currentNvrStep > 0) {
+                        showNvrStep(currentNvrStep - 1);
+                    }
+                });
+            });
+
+            document.getElementById('nvrFinishedBtn').addEventListener('click', () => {
+                showView(views.cameraTroubleshooting);
+                setTimeout(() => showNvrStep(0), 500);
+            });
+
+            // Battery Tutorial Step Navigation
+            const batterySteps = document.querySelectorAll('.battery-step');
+            const batteryProgressBar = document.getElementById('batteryProgressBar');
+            const batteryProgressLabel = document.getElementById('batteryProgressLabel');
+            let currentBatteryStep = 0;
+
+            const showBatteryStep = (stepIndex) => {
+                batterySteps.forEach((step, index) => {
+                    step.classList.toggle('hidden', index !== stepIndex);
+                });
+                currentBatteryStep = stepIndex;
+                const progressPercentage = ((currentBatteryStep + 1) / batterySteps.length) * 100;
+                batteryProgressBar.style.width = `${progressPercentage}%`;
+                batteryProgressLabel.textContent = `Step ${currentBatteryStep + 1} of ${batterySteps.length}`;
+            };
+
+            document.querySelectorAll('.next-btn-battery').forEach(button => {
+                button.addEventListener('click', () => {
+                    if (currentBatteryStep < batterySteps.length - 1) {
+                        showBatteryStep(currentBatteryStep + 1);
+                    }
+                });
+            });
+
+            document.querySelectorAll('.prev-btn-battery').forEach(button => {
+                button.addEventListener('click', () => {
+                    if (currentBatteryStep > 0) {
+                        showBatteryStep(currentBatteryStep - 1);
+                    }
+                });
+            });
+
+            document.getElementById('batteryFinishedBtn').addEventListener('click', () => {
+                showView(views.alarmTroubleshooting);
+                setTimeout(() => showBatteryStep(0), 500);
+            });
+
+            // Firmware Alert Logic
+            const firmwareAlert = document.getElementById('firmwareAlert');
+            const closeFirmwareAlert = document.getElementById('closeFirmwareAlert');
+            const firmwareGoBtn = document.getElementById('firmwareGoBtn');
+
+            if (firmwareGoBtn) {
+                firmwareGoBtn.addEventListener('click', () => {
+                    showView(views.routerFirmware);
+                    showRouterFirmwareStep(0);
+                });
+            }
             
-            // document.getElementById('panelFinishedBtn').addEventListener('click', () => {
-            //     showView(views.welcome);
-            //     // Optional: reset to first step for next time
-            //     setTimeout(() => showPanelIssueStep(0), 500);
-            // });
-
-            // // Set initial panel step
-            // showPanelIssueStep(0);
-
-            // // Sensor Issues Step Navigation
-            // const sensorIssueSteps = document.querySelectorAll('.sensor-issue-step');
-            // const sensorIssuesProgress = document.getElementById('sensorIssuesProgress');
-            // let currentSensorStep = 0;
-
-            // const showSensorIssueStep = (stepIndex) => {
-            //     sensorIssueSteps.forEach((step, index) => {
-            //         step.classList.toggle('hidden', index !== stepIndex);
-            //     });
-            //     currentSensorStep = stepIndex;
-            //     sensorIssuesProgress.textContent = `Step ${currentSensorStep + 1} of ${sensorIssueSteps.length}`;
-            // };
-
-            // document.querySelectorAll('.next-btn-sensor').forEach(button => {
-            //     button.addEventListener('click', () => {
-            //         if (currentSensorStep < sensorIssueSteps.length - 1) {
-            //             showSensorIssueStep(currentSensorStep + 1);
-            //         }
-            //     });
-            // });
-
-            // document.querySelectorAll('.prev-btn-sensor').forEach(button => {
-            //     button.addEventListener('click', () => {
-            //         if (currentSensorStep > 0) {
-            //             showSensorIssueStep(currentSensorStep - 1);
-            //         }
-            //     });
-            // });
-            
-            // document.getElementById('sensorFinishedBtn').addEventListener('click', () => {
-            //     showView(views.welcome);
-            //     // Optional: reset to first step for next time
-            //     setTimeout(() => showSensorIssueStep(0), 500);
-            // });
-
-            // // Set initial sensor step
-            // showSensorIssueStep(0);
+            if (closeFirmwareAlert) {
+                closeFirmwareAlert.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    if (firmwareAlert) {
+                        firmwareAlert.style.display = 'none';
+                    }
+                });
+            }
 
         });
     </script>
 </body>
 </html>
-
