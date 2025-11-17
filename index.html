@@ -24,6 +24,7 @@
         }
         .splash-fade-out {
             opacity: 0;
+            transition: opacity 1s ease-out;
         }
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(20px); }
@@ -34,8 +35,12 @@
             to { opacity: 1; transform: scale(1); }
         }
         .fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
             opacity: 0;
-            animation: fadeInUp 1s ease-out forwards;
+        }
+        .fade-out-fast {
+            opacity: 0;
+            transition: opacity 0.2s ease-in-out;
         }
         .scale-in {
             opacity: 0;
@@ -73,22 +78,13 @@
         </div>
     </header>
 
-    <!-- Splash Screen -->
-    <div id="splashScreen" class="fixed inset-0 bg-gradient-to-b from-white to-gray-100 flex flex-col items-center justify-center z-50 transition-opacity duration-1000 ease-in-out">
-        <div class="text-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto text-blue-500 scale-in" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-            </svg>
-            <h1 class="text-4xl font-bold text-gray-800 fade-in-up mt-4" style="animation-delay: 300ms;">Ageint Support Portal</h1>
-        </div>
-    </div>
-
-    <div class="min-h-screen flex items-center justify-center p-4 pt-20">
-        <main class="w-full max-w-2xl bg-white rounded-2xl shadow-lg p-8 text-gray-800 border border-gray-200/80 relative transition-colors duration-300">
+    <!-- Main Content -->
+    <div class="min-h-screen flex items-center justify-center p-4 pt-24 pb-16">
+        <main class="w-full max-w-3xl bg-white rounded-2xl shadow-lg p-6 sm:p-8 text-gray-800 border border-gray-200/80 relative transition-opacity duration-300 opacity-0">
             
             <!-- Choice View -->
-            <div id="choiceView" class="hidden text-center view-transition">
-                <div id="firmwareAlert" role="alert" class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-800 p-4 rounded-r-lg mb-8 text-left relative shadow-md">
+            <div id="choiceView" class="hidden text-center">
+                <div id="firmwareAlert" role="alert" class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-800 p-4 rounded-r-lg mb-8 text-left relative shadow-md" style="z-index: 1000;">
                     <button id="closeFirmwareAlert" aria-label="Close firmware update notification" class="absolute top-2 right-2 text-yellow-600 hover:text-yellow-800">
                         <svg class="fill-current h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><title>Close</title><path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"/></svg>
                     </button>
@@ -108,7 +104,7 @@
                 <h1 class="text-3xl font-bold mb-4 text-center">How can we help you today?</h1>
                 <p class="text-center mb-6 text-gray-700 text-lg font-semibold">Please select an option below to get started.</p>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-lg mx-auto">
-                    <button id="selfTroubleshootingBtn" aria-describedby="selfTroubleshootingDesc" class="bg-green-500 hover:bg-green-600 text-white font-bold py-6 px-4 rounded-lg shadow-md transition-all duration-300 transform hover:scale-105 hover:shadow-xl text-lg">
+                    <button id="selfServiceBtn" aria-describedby="selfTroubleshootingDesc" class="bg-green-500 hover:bg-green-600 text-white font-bold py-6 px-4 rounded-lg shadow-md transition-all duration-300 transform hover:scale-105 hover:shadow-xl text-lg">
                         <div>
                             <span>Self-Service Guides</span>
                             <p id="selfTroubleshootingDesc" class="text-sm font-normal mt-1">Fix common issues yourself.</p>
@@ -191,7 +187,7 @@
                 <div class="mb-4 border-b border-gray-200">
                     <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" id="cameraTabs" role="tablist">
                         <li class="mr-2" role="presentation">
-                            <button class="inline-flex items-center justify-center p-4 border-b-2 rounded-t-lg" id="app-tab" data-tabs-target="#app-content" type="button" role="tab" aria-controls="app-content" aria-selected="false">
+                            <button class="inline-flex items-center justify-center p-4 border-b-2 rounded-t-lg border-blue-500 text-blue-600" id="app-tab" data-tabs-target="#app-content" type="button" role="tab" aria-controls="app-content" aria-selected="true">
                                 <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/f8/09/23/f8092338-4412-cba9-cd48-53a749670589/AppIcon-0-0-1x_U007emarketing-0-6-0-0-sRGB-85-220.png/400x400ia-75.webp" alt="App Logo" class="w-6 h-6 mr-2 rounded-md">
                                 APP
                             </button>
@@ -207,7 +203,7 @@
 
                 <!-- Tab Content -->
                 <div id="cameraTabContent">
-                    <div class="hidden p-4 rounded-lg bg-gray-50" id="app-content" role="tabpanel" aria-labelledby="app-tab">
+                    <div class="p-4 rounded-lg bg-gray-50" id="app-content" role="tabpanel" aria-labelledby="app-tab">
                         <button id="dmssTutorialBtn" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-4 px-4 rounded-lg shadow-md text-lg transition-all duration-300 transform hover:scale-105 text-left">
                             📱 Setting Up DMSS on Another Phone
                         </button>
@@ -335,68 +331,75 @@
 
             <!-- DMSS Tutorial View -->
             <div id="dmssTutorialView" class="hidden view-transition">
-                <h1 class="text-3xl font-bold mb-4 text-center">Connecting NVR to DMSS App</h1>
-                
-                <div class="text-center mb-6">
-                    <button id="monitorToggleBtn" class="bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold py-2 px-4 rounded-lg border border-gray-300 shadow-sm transition-all duration-300">I don't have a monitor</button>
-                </div>
-
-                <div id="dmssWithMonitor">
-                    <div class="space-y-8">
-                        <!-- Step 1 -->
-                        <div class="tutorial-step-card">
-                            <h3 class="font-bold text-2xl mb-4 text-gray-800">Step 1: Open the App</h3>
-                            <p class="text-gray-700 font-semibold text-base mb-4">On your phone, open the DMSS app.</p>
+                <h1 class="text-3xl font-bold mb-4 text-center">📱 Setting Up DMSS on Another Phone</h1>
+                <div id="dmssProgress" class="text-center font-bold text-lg text-gray-700 mb-6"></div>
+                <div id="dmss-steps">
+                    <!-- Step 1 -->
+                    <div class="step">
+                        <div class="flex items-start">
+                            <div class="step-number flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-full bg-blue-500 text-white font-bold text-lg mr-4">1</div>
+                            <div>
+                                <h3 class="font-bold text-2xl mb-4 text-gray-800">Step 1: Open the App</h3>
+                                <p class="text-gray-700 font-semibold text-base mb-4">On your phone, open the DMSS app.</p>
+                            </div>
                         </div>
-                        <!-- Step 2 -->
-                        <div class="tutorial-step-card">
-                            <h3 class="font-bold text-2xl mb-4 text-gray-800">Step 2: Add Device</h3>
-                            <p class="text-gray-700 font-semibold text-base mb-4">Press the <span class="tutorial-highlight">+</span> icon in the top right corner, then select <span class="tutorial-highlight">SN/Scan</span>.</p>
-                        </div>
-                        <!-- Step 3 -->
-                        <div class="tutorial-step-card">
-                            <h3 class="font-bold text-2xl mb-4 text-gray-800">Step 3: Scan QR Code</h3>
-                            <p class="text-gray-700 font-semibold text-base mb-4">On your monitor, navigate to <span class="tutorial-highlight">Main Menu > Network > P2P</span>. Scan the QR code on the right with your phone.</p>
-                        </div>
-                        <!-- Step 4 -->
-                        <div class="tutorial-step-card">
-                            <h3 class="font-bold text-2xl mb-4 text-gray-800">Step 4: Add to App</h3>
-                            <p class="text-gray-700 font-semibold text-base mb-4">Press <span class="tutorial-highlight">Next</span>. Select <span class="tutorial-highlight">NVR</span>, then fill in the device name and password. Press the save icon.</p>
-                        </div>
-                        <!-- Step 5 -->
-                        <div class="tutorial-step-card">
-                            <h3 class="font-bold text-2xl mb-4 text-gray-800">Step 5: Finished</h3>
-                            <p class="text-gray-700 font-semibold text-base mb-4">The device has been added to your app.</p>
+                        <div class="mt-8 flex justify-end">
+                            <button class="next-btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-lg text-base">Next</button>
                         </div>
                     </div>
-                </div>
-
-                <div id="dmssWithoutMonitor" class="hidden">
-                     <div class="space-y-8">
-                        <!-- Step 1 -->
-                        <div class="tutorial-step-card">
-                            <h3 class="font-bold text-2xl mb-4 text-gray-800">Step 1: Open the App</h3>
-                            <p class="text-gray-700 font-semibold text-base mb-4">On your phone, open the DMSS app.</p>
+                    <!-- Step 2 -->
+                    <div class="step hidden">
+                        <div class="flex items-start">
+                            <div class="step-number flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-full bg-blue-500 text-white font-bold text-lg mr-4">2</div>
+                            <div>
+                                <h3 class="font-bold text-2xl mb-4 text-gray-800">Step 2: Add Device</h3>
+                                <p class="text-gray-700 font-semibold text-base mb-4">Press the <span class="tutorial-highlight">+</span> icon in the top right corner, then select <span class="tutorial-highlight">SN/Scan</span>.</p>
+                            </div>
                         </div>
-                        <!-- Step 2 -->
-                        <div class="tutorial-step-card">
-                            <h3 class="font-bold text-2xl mb-4 text-gray-800">Step 2: Add Device</h3>
-                            <p class="text-gray-700 font-semibold text-base mb-4">Press the <span class="tutorial-highlight">+</span> icon in the top right corner, then select <span class="tutorial-highlight">SN/Scan</span>.</p>
+                        <div class="mt-8 flex justify-between">
+                            <button class="prev-btn bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-lg text-base">Previous</button>
+                            <button class="next-btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-lg text-base">Next</button>
                         </div>
-                        <!-- Step 3 -->
-                        <div class="tutorial-step-card">
-                            <h3 class="font-bold text-2xl mb-4 text-gray-800">Step 3: Find Serial Number (SN)</h3>
-                            <p class="text-gray-700 font-semibold text-base mb-4">Locate the serial number (SN) on the sticker on the bottom of your main NVR box. Manually enter this into the app.</p>
+                    </div>
+                    <!-- Step 3 -->
+                    <div class="step hidden">
+                        <div class="flex items-start">
+                            <div class="step-number flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-full bg-blue-500 text-white font-bold text-lg mr-4">3</div>
+                            <div>
+                                <h3 class="font-bold text-2xl mb-4 text-gray-800">Step 3: Scan QR Code</h3>
+                                <p class="text-gray-700 font-semibold text-base mb-4">On your monitor, navigate to <span class="tutorial-highlight">Main Menu > Network > P2P</span>. Scan the QR code on the right with your phone.</p>
+                            </div>
                         </div>
-                        <!-- Step 4 -->
-                        <div class="tutorial-step-card">
-                            <h3 class="font-bold text-2xl mb-4 text-gray-800">Step 4: Add to App</h3>
-                            <p class="text-gray-700 font-semibold text-base mb-4">Press <span class="tutorial-highlight">Next</span>. Select <span class="tutorial-highlight">NVR</span>, then fill in the device name and password. Press the save icon.</p>
+                        <div class="mt-8 flex justify-between">
+                            <button class="prev-btn bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-lg text-base">Previous</button>
+                            <button class="next-btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-lg text-base">Next</button>
                         </div>
-                        <!-- Step 5 -->
-                        <div class="tutorial-step-card">
-                            <h3 class="font-bold text-2xl mb-4 text-gray-800">Step 5: Finished</h3>
-                            <p class="text-gray-700 font-semibold text-base mb-4">The device has been added to your app.</p>
+                    </div>
+                    <!-- Step 4 -->
+                    <div class="step hidden">
+                        <div class="flex items-start">
+                            <div class="step-number flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-full bg-blue-500 text-white font-bold text-lg mr-4">4</div>
+                            <div>
+                                <h3 class="font-bold text-2xl mb-4 text-gray-800">Step 4: Add to App</h3>
+                                <p class="text-gray-700 font-semibold text-base mb-4">Press <span class="tutorial-highlight">Next</span>. Select <span class="tutorial-highlight">NVR</span>, then fill in the device name and password. Press the save icon.</p>
+                            </div>
+                        </div>
+                        <div class="mt-8 flex justify-between">
+                            <button class="prev-btn bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-lg text-base">Previous</button>
+                            <button class="next-btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-lg text-base">Next</button>
+                        </div>
+                    </div>
+                    <!-- Step 5 -->
+                    <div class="step hidden">
+                        <div class="flex items-start">
+                            <div class="step-number flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-full bg-blue-500 text-white font-bold text-lg mr-4">5</div>
+                            <div>
+                                <h3 class="font-bold text-2xl mb-4 text-gray-800">Step 5: Finished</h3>
+                                <p class="text-gray-700 font-semibold text-base mb-4">The device has been added to your app.</p>
+                            </div>
+                        </div>
+                        <div class="mt-8 flex justify-start">
+                            <button class="prev-btn bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-lg text-base">Previous</button>
                         </div>
                     </div>
                 </div>
@@ -414,98 +417,177 @@
                     <p class="text-gray-700 text-lg font-semibold">Follow these steps to link your NVR to the mobile app.</p>
                 </div>
 
-                <!-- Progress Bar -->
-                <div class="mb-8">
-                    <div class="relative pt-1">
-                        <div class="flex mb-2 items-center justify-between">
-                            <div>
-                                <span id="nvrProgressLabel" class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blue-600 bg-blue-200"></span>
+                <div class="text-center mb-6">
+                    <button id="monitorToggleBtn" class="bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold py-2 px-4 rounded-lg border border-gray-300 shadow-sm transition-all duration-300">I don't have a monitor</button>
+                </div>
+
+                <div id="nvrWithMonitor">
+                    <!-- Progress Bar -->
+                    <div class="mb-8">
+                        <div class="relative pt-1">
+                            <div class="flex mb-2 items-center justify-between">
+                                <div>
+                                    <span id="nvrProgressLabel" class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blue-600 bg-blue-200"></span>
+                                </div>
+                            </div>
+                            <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-blue-200">
+                                <div id="nvrProgressBar" style="width: 0%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-500 transition-all duration-500"></div>
                             </div>
                         </div>
-                        <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-blue-200">
-                            <div id="nvrProgressBar" style="width: 0%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-500 transition-all duration-500"></div>
+                    </div>
+
+                    <div id="nvr-steps">
+                        <!-- Step 1 -->
+                        <div class="step tutorial-step-card">
+                            <h3 class="font-bold text-2xl mb-4 text-gray-800">Step 1: Connect Monitor to NVR</h3>
+                            <p class="text-gray-700 font-semibold text-base mb-4">A monitor must be connected to configure settings.</p>
+                            <div class="mt-8 flex justify-end">
+                                <button class="next-btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-lg text-base">Next</button>
+                            </div>
+                        </div>
+                        <!-- Step 2 -->
+                        <div class="step hidden tutorial-step-card">
+                            <h3 class="font-bold text-2xl mb-4 text-gray-800">Step 2: Access NVR Main Menu</h3>
+                            <p class="text-gray-700 font-semibold text-base mb-4">Right-click on the monitor, select <strong class="tutorial-highlight">Main Menu</strong>, enter NVR passcode, press <strong class="tutorial-highlight">Network</strong>, then press <strong class="tutorial-highlight">P2P</strong> at the bottom left.</p>
+                            <div class="mt-8 flex justify-between">
+                                <button class="prev-btn bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-lg text-base">Previous</button>
+                                <button class="next-btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-lg text-base">Next</button>
+                            </div>
+                        </div>
+                        <!-- Step 3 -->
+                        <div class="step hidden tutorial-step-card">
+                            <h3 class="font-bold text-2xl mb-4 text-gray-800">Step 3: Open DMSS App</h3>
+                            <p class="text-gray-700 font-semibold text-base mb-4">Launch the DMSS app on your phone.</p>
+                            <div class="mt-8 flex justify-between">
+                                <button class="prev-btn bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-lg text-base">Previous</button>
+                                <button class="next-btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-lg text-base">Next</button>
+                            </div>
+                        </div>
+                        <!-- Step 4 -->
+                        <div class="step hidden tutorial-step-card">
+                            <h3 class="font-bold text-2xl mb-4 text-gray-800">Step 4: Tap "+" to Add Device</h3>
+                            <p class="text-gray-700 font-semibold text-base mb-4">Select <strong class="tutorial-highlight">"Manually Add"</strong> if needed.</p>
+                            <div class="mt-8 flex justify-between">
+                                <button class="prev-btn bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-lg text-base">Previous</button>
+                                <button class="next-btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-lg text-base">Next</button>
+                            </div>
+                        </div>
+                        <!-- Step 5 -->
+                        <div class="step hidden tutorial-step-card">
+                            <h3 class="font-bold text-2xl mb-4 text-gray-800">Step 5: Enter Serial Number</h3>
+                            <p class="text-gray-700 font-semibold text-base mb-4">Input the NVR's SN (shown in P2P menu).</p>
+                            <div class="mt-8 flex justify-between">
+                                <button class="prev-btn bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-lg text-base">Previous</button>
+                                <button class="next-btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-lg text-base">Next</button>
+                            </div>
+                        </div>
+                        <!-- Step 6 -->
+                        <div class="step hidden tutorial-step-card">
+                            <h3 class="font-bold text-2xl mb-4 text-gray-800">Step 6: Fill Device Details</h3>
+                            <p class="text-gray-700 font-semibold text-base mb-4">Name the device (e.g., "Home Cameras") and enter admin credentials.</p>
+                            <div class="mt-8 flex justify-between">
+                                <button class="prev-btn bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-lg text-base">Previous</button>
+                                <button class="next-btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-lg text-base">Next</button>
+                            </div>
+                        </div>
+                        <!-- Step 7 -->
+                        <div class="step hidden tutorial-step-card">
+                            <h3 class="font-bold text-2xl mb-4 text-gray-800">Step 7: Save & View</h3>
+                            <p class="text-gray-700 font-semibold text-base mb-4">Confirm connection; live feeds should appear in DMSS.</p>
+                            <div class="mt-8 flex justify-between">
+                                <button class="prev-btn bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-lg text-base">Previous</button>
+                                <button class="next-btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-lg text-base">Next</button>
+                            </div>
+                        </div>
+                        <!-- Step 8: Notes -->
+                        <div class="step hidden tutorial-step-card">
+                            <h3 class="font-bold text-2xl mb-4 text-gray-800">Step 8: Notes</h3>
+                            <ul class="space-y-3 text-gray-700 font-semibold text-base">
+                                <li class="flex items-start"><span class="mr-3 text-2xl">🖥️</span><div>To exit the P2P menu on the monitor, just repeatedly right-click until it closes.</div></li>
+                                <li class="flex items-start"><span class="mr-3 text-2xl">❗</span><div>If no monitor is available, you can either:
+                                    <ul class="list-disc list-inside pl-4 mt-2">
+                                        <li>Connect one via HDMI, or</li>
+                                        <li>Find the serial number on the bottom of the NVR and manually enter it in the DMSS app where you would normally scan the QR code.</li>
+                                    </ul>
+                                </div></li>
+                            </ul>
+                            <div class="mt-8 flex justify-between">
+                                <button class="prev-btn bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-lg text-base">Previous</button>
+                                <button id="nvrFinishedBtn" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-6 rounded-lg text-base">All Done!</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-
-                <div id="nvr-steps">
-                    <!-- Step 1 -->
-                    <div class="nvr-step tutorial-step-card">
-                        <h3 class="font-bold text-2xl mb-4 text-gray-800">Step 1: Connect Monitor to NVR</h3>
-                        <p class="text-gray-700 font-semibold text-base mb-4">A monitor must be connected to configure settings.</p>
-                        <div class="mt-8 flex justify-end">
-                            <button class="next-btn-nvr bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-lg text-base">Next</button>
+                <div id="nvrWithoutMonitor" class="hidden">
+                    <div id="dmssWithoutMonitorProgress" class="text-center font-bold text-lg text-gray-700 mb-6"></div>
+                     <div id="dmss-steps">
+                        <!-- Step 1 -->
+                        <div class="step">
+                            <div class="flex items-start">
+                                <div class="step-number flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-full bg-blue-500 text-white font-bold text-lg mr-4">1</div>
+                                <div>
+                                    <h3 class="font-bold text-2xl mb-4 text-gray-800">Step 1: Open the App</h3>
+                                    <p class="text-gray-700 font-semibold text-base mb-4">On your phone, open the DMSS app.</p>
+                                </div>
+                            </div>
+                            <div class="mt-8 flex justify-end">
+                                <button class="next-btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-lg text-base">Next</button>
+                            </div>
                         </div>
-                    </div>
-                    <!-- Step 2 -->
-                    <div class="nvr-step hidden tutorial-step-card">
-                        <h3 class="font-bold text-2xl mb-4 text-gray-800">Step 2: Access NVR Main Menu</h3>
-                        <p class="text-gray-700 font-semibold text-base mb-4">Right-click on the monitor, select <strong class="tutorial-highlight">Main Menu</strong>, enter NVR passcode, press <strong class="tutorial-highlight">Network</strong>, then press <strong class="tutorial-highlight">P2P</strong> at the bottom left.</p>
-                        <div class="mt-8 flex justify-between">
-                            <button class="prev-btn-nvr bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-lg text-base">Previous</button>
-                            <button class="next-btn-nvr bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-lg text-base">Next</button>
+                        <!-- Step 2 -->
+                        <div class="step hidden">
+                            <div class="flex items-start">
+                                <div class="step-number flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-full bg-blue-500 text-white font-bold text-lg mr-4">2</div>
+                                <div>
+                                    <h3 class="font-bold text-2xl mb-4 text-gray-800">Step 2: Add Device</h3>
+                                    <p class="text-gray-700 font-semibold text-base mb-4">Press the <span class="tutorial-highlight">+</span> icon in the top right corner, then select <span class="tutorial-highlight">SN/Scan</span>.</p>
+                                </div>
+                            </div>
+                            <div class="mt-8 flex justify-between">
+                                <button class="prev-btn bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-lg text-base">Previous</button>
+                                <button class="next-btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-lg text-base">Next</button>
+                            </div>
                         </div>
-                    </div>
-                    <!-- Step 3 -->
-                    <div class="nvr-step hidden tutorial-step-card">
-                        <h3 class="font-bold text-2xl mb-4 text-gray-800">Step 3: Open DMSS App</h3>
-                        <p class="text-gray-700 font-semibold text-base mb-4">Launch the DMSS app on your phone.</p>
-                        <div class="mt-8 flex justify-between">
-                            <button class="prev-btn-nvr bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-lg text-base">Previous</button>
-                            <button class="next-btn-nvr bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-lg text-base">Next</button>
+                        <!-- Step 3 -->
+                        <div class="step hidden">
+                            <div class="flex items-start">
+                                <div class="step-number flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-full bg-blue-500 text-white font-bold text-lg mr-4">3</div>
+                                <div>
+                                    <h3 class="font-bold text-2xl mb-4 text-gray-800">Step 3: Find Serial Number (SN)</h3>
+                                    <p class="text-gray-700 font-semibold text-base mb-4">Locate the serial number (SN) on the sticker on the bottom of your main NVR box. Manually enter this into the app.</p>
+                                </div>
+                            </div>
+                            <div class="mt-8 flex justify-between">
+                                <button class="prev-btn bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-lg text-base">Previous</button>
+                                <button class="next-btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-lg text-base">Next</button>
+                            </div>
                         </div>
-                    </div>
-                    <!-- Step 4 -->
-                    <div class="nvr-step hidden tutorial-step-card">
-                        <h3 class="font-bold text-2xl mb-4 text-gray-800">Step 4: Tap "+" to Add Device</h3>
-                        <p class="text-gray-700 font-semibold text-base mb-4">Select <strong class="tutorial-highlight">"Manually Add"</strong> if needed.</p>
-                        <div class="mt-8 flex justify-between">
-                            <button class="prev-btn-nvr bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-lg text-base">Previous</button>
-                            <button class="next-btn-nvr bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-lg text-base">Next</button>
+                        <!-- Step 4 -->
+                        <div class="step hidden">
+                            <div class="flex items-start">
+                                <div class="step-number flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-full bg-blue-500 text-white font-bold text-lg mr-4">4</div>
+                                <div>
+                                    <h3 class="font-bold text-2xl mb-4 text-gray-800">Step 4: Add to App</h3>
+                                    <p class="text-gray-700 font-semibold text-base mb-4">Press <span class="tutorial-highlight">Next</span>. Select <span class="tutorial-highlight">NVR</span>, then fill in the device name and password. Press the save icon.</p>
+                                </div>
+                            </div>
+                            <div class="mt-8 flex justify-between">
+                                <button class="prev-btn bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-lg text-base">Previous</button>
+                                <button class="next-btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-lg text-base">Next</button>
+                            </div>
                         </div>
-                    </div>
-                    <!-- Step 5 -->
-                    <div class="nvr-step hidden tutorial-step-card">
-                        <h3 class="font-bold text-2xl mb-4 text-gray-800">Step 5: Enter Serial Number</h3>
-                        <p class="text-gray-700 font-semibold text-base mb-4">Input the NVR's SN (shown in P2P menu).</p>
-                        <div class="mt-8 flex justify-between">
-                            <button class="prev-btn-nvr bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-lg text-base">Previous</button>
-                            <button class="next-btn-nvr bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-lg text-base">Next</button>
-                        </div>
-                    </div>
-                    <!-- Step 6 -->
-                    <div class="nvr-step hidden tutorial-step-card">
-                        <h3 class="font-bold text-2xl mb-4 text-gray-800">Step 6: Fill Device Details</h3>
-                        <p class="text-gray-700 font-semibold text-base mb-4">Name the device (e.g., "Home Cameras") and enter admin credentials.</p>
-                        <div class="mt-8 flex justify-between">
-                            <button class="prev-btn-nvr bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-lg text-base">Previous</button>
-                            <button class="next-btn-nvr bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-lg text-base">Next</button>
-                        </div>
-                    </div>
-                    <!-- Step 7 -->
-                    <div class="nvr-step hidden tutorial-step-card">
-                        <h3 class="font-bold text-2xl mb-4 text-gray-800">Step 7: Save & View</h3>
-                        <p class="text-gray-700 font-semibold text-base mb-4">Confirm connection; live feeds should appear in DMSS.</p>
-                        <div class="mt-8 flex justify-between">
-                            <button class="prev-btn-nvr bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-lg text-base">Previous</button>
-                            <button class="next-btn-nvr bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-lg text-base">Next</button>
-                        </div>
-                    </div>
-                     <!-- Step 8: Notes -->
-                     <div class="nvr-step hidden tutorial-step-card">
-                        <h3 class="font-bold text-2xl mb-4 text-gray-800">Step 8: Notes</h3>
-                        <ul class="space-y-3 text-gray-700 font-semibold text-base">
-                            <li class="flex items-start"><span class="mr-3 text-2xl">🖥️</span><div>To exit the P2P menu on the monitor, just repeatedly right-click until it closes.</div></li>
-                            <li class="flex items-start"><span class="mr-3 text-2xl">❗</span><div>If no monitor is available, you can either:
-                                <ul class="list-disc list-inside pl-4 mt-2">
-                                    <li>Connect one via HDMI, or</li>
-                                    <li>Find the serial number on the bottom of the NVR and manually enter it in the DMSS app where you would normally scan the QR code.</li>
-                                </ul>
-                            </div></li>
-                        </ul>
-                        <div class="mt-8 flex justify-between">
-                            <button class="prev-btn-nvr bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-lg text-base">Previous</button>
-                            <button id="nvrFinishedBtn" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-6 rounded-lg text-base">All Done!</button>
+                        <!-- Step 5 -->
+                        <div class="step hidden">
+                             <div class="flex items-start">
+                                <div class="step-number flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-full bg-blue-500 text-white font-bold text-lg mr-4">5</div>
+                                <div>
+                                    <h3 class="font-bold text-2xl mb-4 text-gray-800">Step 5: Finished</h3>
+                                    <p class="text-gray-700 font-semibold text-base mb-4">The device has been added to your app.</p>
+                                </div>
+                            </div>
+                            <div class="mt-8 flex justify-start">
+                                <button class="prev-btn bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-lg text-base">Previous</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -673,7 +755,7 @@
                 <div id="cameraProgress" class="text-center font-bold text-lg text-gray-700 mb-6"></div>
                 <div id="camera-steps">
                     <!-- Step 1: SN -->
-                    <div id="cameraStep1" class="camera-step">
+                    <div id="cameraStep1" class="step">
                         <div class="flex items-start">
                             <div class="step-number flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-full bg-blue-500 text-white font-bold text-lg mr-4">1</div>
                             <div>
@@ -697,7 +779,7 @@
                     </div>
 
                     <!-- Step 2: Locate Hub -->
-                    <div id="cameraStep2" class="camera-step hidden">
+                    <div id="cameraStep2" class="step hidden">
                         <div class="flex items-start">
                             <div class="step-number flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-full bg-blue-500 text-white font-bold text-lg mr-4">2</div>
                             <div>
@@ -712,7 +794,7 @@
                     </div>
                     
                     <!-- Step 3: Power Source -->
-                    <div id="cameraStep3" class="camera-step hidden">
+                    <div id="cameraStep3" class="step hidden">
                         <div class="flex items-start">
                              <div class="step-number flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-full bg-blue-500 text-white font-bold text-lg mr-4">3</div>
                              <div>
@@ -731,7 +813,7 @@
                     </div>
 
                     <!-- Step 4: Power Down -->
-                    <div id="cameraStep4" class="camera-step hidden">
+                    <div id="cameraStep4" class="step hidden">
                         <div class="flex items-start">
                             <div class="step-number flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-full bg-blue-500 text-white font-bold text-lg mr-4">4</div>
                             <div>
@@ -754,7 +836,7 @@
                     </div>
 
                     <!-- Step 5: Wait -->
-                    <div id="cameraStep5" class="camera-step hidden">
+                    <div id="cameraStep5" class="step hidden">
                         <div class="flex items-start">
                              <div class="step-number flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-full bg-blue-500 text-white font-bold text-lg mr-4">5</div>
                              <div>
@@ -769,7 +851,7 @@
                     </div>
 
                     <!-- Step 6: Power On -->
-                    <div id="cameraStep6" class="camera-step hidden">
+                    <div id="cameraStep6" class="step hidden">
                         <div class="flex items-start">
                              <div class="step-number flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-full bg-blue-500 text-white font-bold text-lg mr-4">6</div>
                              <div>
@@ -1037,26 +1119,10 @@
         <a id="textLink" href="#" class="block px-4 py-2 text-base font-semibold text-blue-600 hover:bg-gray-100 rounded-b-lg">Text</a>
     </div>
 
-
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // --- SPLASH SCREEN ---
-            const splashScreen = document.getElementById('splashScreen');
-            if (splashScreen) {
-                window.addEventListener('load', () => {
-                    setTimeout(() => {
-                        splashScreen.classList.add('splash-fade-out', 'pointer-events-none');
-                        setTimeout(() => { 
-                            splashScreen.style.display = 'none'; 
-                            if (typeof showView !== 'undefined' && typeof views !== 'undefined') {
-                                showView(views.choice);
-                            }
-                        }, 1000);
-                    }, 2000);
-                });
-            }
-
-            // --- PAGE LOGIC ---
+            
+            // --- CONSTANTS AND ELEMENTS ---
             const views = {
                 choice: document.getElementById('choiceView'),
                 selfService: document.getElementById('selfServiceView'),
@@ -1073,489 +1139,141 @@
                 sensorIssues: document.getElementById('sensorIssuesView'),
                 routerFirmware: document.getElementById('routerFirmwareView'),
             };
-            
+
             const modals = {
-                info: { el: document.getElementById('infoModal'), openBtn: document.getElementById('infoBtn'), closeBtn: document.getElementById('closeInfoModalBtn') },
                 monitor: { el: document.getElementById('monitorModal'), openBtn: document.getElementById('monitorInfoBtn'), closeBtn: document.getElementById('closeMonitorModalBtn') },
                 training: { el: document.getElementById('trainingModal'), openBtn: document.getElementById('trainingBtn'), closeBtn: document.getElementById('closeTrainingModalBtn') },
-                alarmPanel: { el: document.getElementById('alarmPanelModal'), openBtn: document.getElementById('alarmBtn'), closeBtn: document.getElementById('closeAlarmPanelModalBtn') },
                 ups: { el: document.getElementById('upsModal'), openBtn: document.getElementById('upsInfoBtn'), closeBtn: document.getElementById('closeUpsModalBtn') },
                 alarmBox: { el: document.getElementById('alarmBoxModal'), openBtn: document.getElementById('alarmBoxInfoBtn'), closeBtn: document.getElementById('closeAlarmBoxModalBtn') },
                 snOnPhone: { el: document.getElementById('snOnPhoneModal'), openBtn: document.getElementById('findOnPhoneBtn'), closeBtn: document.getElementById('closeSnOnPhoneModalBtn') },
                 offlineInfo: { el: document.getElementById('offlineInfoModal'), openBtn: document.getElementById('offlineInfoBtn'), closeBtn: document.getElementById('closeOfflineInfoModalBtn') },
+                alarmPanel: { el: document.getElementById('alarmPanelModal'), closeBtn: document.getElementById('closeAlarmPanelModalBtn') },
             };
-
+            
+            // --- CORE NAVIGATION ---
             const showView = (viewToShow) => {
-                const currentView = Object.values(views).find(view => view && !view.classList.contains('hidden'));
+                if (!viewToShow) return;
+                const mainContainer = document.querySelector('main');
+                
+                mainContainer.classList.add('fade-out-fast');
 
-                if (currentView) {
-                    currentView.classList.add('opacity-0');
-                    currentView.addEventListener('transitionend', () => {
-                        currentView.classList.add('hidden');
-                        if (viewToShow) {
-                           viewToShow.classList.remove('hidden');
-                           setTimeout(() => viewToShow.classList.remove('opacity-0'), 20);
-                        }
-                    }, { once: true });
-                } else {
-                   if (viewToShow) {
+                mainContainer.addEventListener('transitionend', () => {
+                    Object.values(views).forEach(view => {
+                        if (view) view.classList.add('hidden');
+                    });
                     viewToShow.classList.remove('hidden');
-                    setTimeout(() => viewToShow.classList.remove('opacity-0'), 20);
-                   }
-                }
-
-                const viewName = Object.keys(views).find(key => views[key] === viewToShow);
-                if (viewName) {
-                    gtag('event', 'page_view', {
-                        page_title: viewName.replace(/([A-Z])/g, ' $1').trim(),
-                        page_path: `/${viewName}`
-                    });
-                }
+                    mainContainer.classList.remove('fade-out-fast');
+                    
+                    const viewName = Object.keys(views).find(key => views[key] === viewToShow);
+                    if (viewName) {
+                        gtag('event', 'page_view', {
+                            page_title: viewName.replace(/([A-Z])/g, ' $1').trim(),
+                            page_path: `/${viewName}`
+                        });
+                    }
+                    
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }, { once: true });
             };
 
-            Object.values(views).forEach(view => {
-                if(view) view.classList.add('opacity-0');
-            });
-
-            // --- NAVIGATION AND EVENT LISTENERS ---
-            document.getElementById('remoteSupportBtn').addEventListener('click', () => showView(views.welcome));
-            document.getElementById('selfTroubleshootingBtn').addEventListener('click', () => showView(views.selfService));
-            document.getElementById('troubleshootCameraBtn').addEventListener('click', () => showView(views.cameraTroubleshooting));
-            document.getElementById('troubleshootAlarmBtn').addEventListener('click', () => showView(views.alarmTroubleshooting));
-            document.getElementById('dmssTutorialBtn').addEventListener('click', () => showView(views.dmssTutorial));
-            document.getElementById('nvrTutorialSystemBtn').addEventListener('click', () => showView(views.nvrTutorial));
-            document.getElementById('batteryTutorialBtn').addEventListener('click', () => showView(views.batteryTutorial));
-            document.getElementById('routerFirmwareBtn').addEventListener('click', () => showView(views.routerFirmware));
-            document.getElementById('cameraBtn').addEventListener('click', () => showView(views.camera));
-            document.getElementById('accessBtn').addEventListener('click', () => showView(views.access));
-            document.getElementById('panelIssuesBtn').addEventListener('click', () => showView(views.panelIssues));
-            document.getElementById('sensorIssuesBtn').addEventListener('click', () => showView(views.sensorIssues));
-            document.getElementById('welcomeBackBtn').addEventListener('click', () => showView(views.choice));
-            document.getElementById('cameraTroubleshootingBackBtn').addEventListener('click', () => showView(views.selfService));
-            document.getElementById('alarmTroubleshootingBackBtn').addEventListener('click', () => showView(views.selfService));
-            document.getElementById('batteryTutorialBackBtn').addEventListener('click', () => showView(views.alarmTroubleshooting));
-            document.getElementById('dmssTutorialBackBtn').addEventListener('click', () => showView(views.cameraTroubleshooting));
-            document.getElementById('selfServiceBackBtn').addEventListener('click', () => showView(views.choice));
-            document.getElementById('cameraBackBtn').addEventListener('click', () => showView(views.welcome));
-            document.getElementById('accessBackBtn').addEventListener('click', () => showView(views.welcome));
-            document.getElementById('alarmHubBackBtn').addEventListener('click', () => showView(views.welcome));
-            document.getElementById('panelIssuesBackBtn').addEventListener('click', () => showView(views.alarmHub));
-            document.getElementById('sensorIssuesBackBtn').addEventListener('click', () => showView(views.alarmHub));
-            document.getElementById('routerFirmwareBackBtn').addEventListener('click', () => showView(views.cameraTroubleshooting));
-
-            // Search Bar Logic
-            const setupSearch = (inputId, containerSelector, itemSelector) => {
-                const searchInput = document.getElementById(inputId);
-                if (!searchInput) return;
-
-                searchInput.addEventListener('keyup', () => {
-                    const filter = searchInput.value.toUpperCase();
-                    const container = document.querySelector(containerSelector);
-                    if (!container) return;
-                    
-                    const items = container.querySelectorAll(itemSelector);
-                    
-                    items.forEach(item => {
-                        const txtValue = item.textContent || item.innerText;
-                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                            item.style.display = "";
-                        } else {
-                            item.style.display = "none";
+            // --- MODAL LOGIC ---
+            const showModal = (modal) => {
+                if (modal && modal.el) {
+                    modal.el.classList.remove('hidden');
+                    setTimeout(() => {
+                        const modalContent = modal.el.querySelector('div');
+                        if (modalContent) {
+                            modalContent.classList.remove('scale-95', 'opacity-0');
                         }
-                    });
-                });
-            };
-
-            setupSearch('cameraSearch', '#cameraTabContent', 'button');
-            setupSearch('alarmSearch', '#alarmGuidesContainer', 'button');
-
-            // Camera Troubleshooting Tabs
-            const cameraTabs = document.querySelectorAll('#cameraTabs button');
-            const cameraTabContent = document.querySelectorAll('#cameraTabContent > div');
-
-            cameraTabs.forEach(tab => {
-                tab.addEventListener('click', () => {
-                    // Deactivate all tabs
-                    cameraTabs.forEach(t => {
-                        t.setAttribute('aria-selected', 'false');
-                        t.classList.remove('border-blue-600', 'text-blue-600');
-                        t.classList.add('border-transparent', 'hover:text-gray-600', 'hover:border-gray-300');
-                    });
-                    
-                    // Deactivate all content
-                    cameraTabContent.forEach(content => {
-                        content.classList.add('hidden');
-                    });
-
-                    // Activate clicked tab
-                    tab.setAttribute('aria-selected', 'true');
-                    tab.classList.add('border-blue-600', 'text-blue-600');
-                    tab.classList.remove('border-transparent', 'hover:text-gray-600', 'hover:border-gray-300');
-                    
-                    // Activate corresponding content
-                    const target = document.querySelector(tab.dataset.tabsTarget);
-                    if (target) {
-                        target.classList.remove('hidden');
-                    }
-                });
-            });
-
-            // Set initial active tab for camera troubleshooting
-            document.getElementById('troubleshootCameraBtn').addEventListener('click', () => {
-                showView(views.cameraTroubleshooting);
-                // Default to the first tab
-                if (cameraTabs.length > 0) {
-                    cameraTabs[0].click();
+                    }, 20);
                 }
-            });
-
-            // Camera Step Navigation
-            const cameraSteps = document.querySelectorAll('.camera-step');
-            const cameraProgress = document.getElementById('cameraProgress');
-            let currentStep = 0;
-
-            const showCameraStep = (stepIndex) => {
-                cameraSteps.forEach((step, index) => {
-                    step.classList.toggle('hidden', index !== stepIndex);
-                });
-                currentStep = stepIndex;
-                cameraProgress.textContent = `Step ${currentStep + 1} of ${cameraSteps.length}`;
             };
 
-            document.querySelectorAll('.next-btn').forEach(button => {
-                button.addEventListener('click', () => {
-                    if (currentStep < cameraSteps.length - 1) {
-                        showCameraStep(currentStep + 1);
+            const hideModal = (modal) => {
+                if (modal && modal.el) {
+                    const modalContent = modal.el.querySelector('div');
+                    if (modalContent) {
+                        modalContent.classList.add('scale-95', 'opacity-0');
                     }
-                });
-            });
-
-            document.querySelectorAll('.prev-btn').forEach(button => {
-                button.addEventListener('click', () => {
-                    if (currentStep > 0) {
-                        showCameraStep(currentStep - 1);
-                    }
-                });
-            });
-            
-            document.getElementById('cameraFinishedBtn').addEventListener('click', () => {
-                showView(views.welcome);
-                // Optional: reset to first step for next time
-                setTimeout(() => showCameraStep(0), 500);
-            });
-
-            // Set initial step
-            showCameraStep(0);
-
-            // Panel Issues Step Navigation
-            const panelIssueSteps = document.querySelectorAll('.panel-issue-step');
-            const panelIssuesProgress = document.getElementById('panelIssuesProgress');
-            let currentPanelStep = 0;
-
-            const showPanelIssueStep = (stepIndex) => {
-                panelIssueSteps.forEach((step, index) => {
-                    step.classList.toggle('hidden', index !== stepIndex);
-                });
-                currentPanelStep = stepIndex;
-                panelIssuesProgress.textContent = `Step ${currentPanelStep + 1} of ${panelIssueSteps.length}`;
+                    setTimeout(() => {
+                        modal.el.classList.add('hidden');
+                    }, 300);
+                }
             };
 
-            document.querySelectorAll('.next-btn-panel').forEach(button => {
-                button.addEventListener('click', () => {
-                    if (currentPanelStep < panelIssueSteps.length - 1) {
-                        showPanelIssueStep(currentPanelStep + 1);
-                    }
-                });
-            });
-
-            document.querySelectorAll('.prev-btn-panel').forEach(button => {
-                button.addEventListener('click', () => {
-                    if (currentPanelStep > 0) {
-                        showPanelIssueStep(currentPanelStep - 1);
-                    }
-                });
-            });
-            
-            document.getElementById('panelFinishedBtn').addEventListener('click', () => {
-                showView(views.alarmHub);
-                setTimeout(() => showPanelIssueStep(0), 500);
-            });
-
-            // Set initial panel step
-            document.getElementById('panelIssuesBtn').addEventListener('click', () => {
-                showView(views.panelIssues)
-                showPanelIssueStep(0)
-            });
-
-
-            // Sensor Issues Step Navigation
-            const sensorIssueSteps = document.querySelectorAll('.sensor-issue-step');
-            const sensorIssuesProgress = document.getElementById('sensorIssuesProgress');
-            let currentSensorStep = 0;
-
-            const showSensorIssueStep = (stepIndex) => {
-                sensorIssueSteps.forEach((step, index) => {
-                    step.classList.toggle('hidden', index !== stepIndex);
-                });
-                currentSensorStep = stepIndex;
-                sensorIssuesProgress.textContent = `Step ${currentSensorStep + 1} of ${sensorIssueSteps.length}`;
-            };
-
-            document.querySelectorAll('.next-btn-sensor').forEach(button => {
-                button.addEventListener('click', () => {
-                    if (currentSensorStep < sensorIssueSteps.length - 1) {
-                        showSensorIssueStep(currentSensorStep + 1);
-                    }
-                });
-            });
-
-            document.querySelectorAll('.prev-btn-sensor').forEach(button => {
-                button.addEventListener('click', () => {
-                    if (currentSensorStep > 0) {
-                        showSensorIssueStep(currentSensorStep - 1);
-                    }
-                });
-            });
-            
-            document.getElementById('sensorFinishedBtn').addEventListener('click', () => {
-                showView(views.alarmHub);
-                setTimeout(() => showSensorIssueStep(0), 500);
-            });
-
-            // Set initial sensor step
-            document.getElementById('sensorIssuesBtn').addEventListener('click', () => {
-                showView(views.sensorIssues)
-                showSensorIssueStep(0)
-            });
-
-            // Router Firmware Step Navigation
-            const routerFirmwareSteps = document.querySelectorAll('.router-firmware-step');
-            const routerFirmwareProgressLabel = document.getElementById('routerFirmwareProgressLabel');
-            const routerFirmwareProgressBar = document.getElementById('routerFirmwareProgressBar');
-            let currentRouterStep = 0;
-
-            const showRouterFirmwareStep = (stepIndex) => {
-                routerFirmwareSteps.forEach((step, index) => {
-                    step.classList.toggle('hidden', index !== stepIndex);
-                });
-                currentRouterStep = stepIndex;
-                const progressPercentage = ((currentRouterStep + 1) / routerFirmwareSteps.length) * 100;
-                routerFirmwareProgressBar.style.width = `${progressPercentage}%`;
-                routerFirmwareProgressLabel.textContent = `Step ${currentRouterStep + 1} of ${routerFirmwareSteps.length}`;
-            };
-
-            document.querySelectorAll('.next-btn-router').forEach(button => {
-                button.addEventListener('click', () => {
-                    if (currentRouterStep < routerFirmwareSteps.length - 1) {
-                        showRouterFirmwareStep(currentRouterStep + 1);
-                    }
-                });
-            });
-
-            document.querySelectorAll('.prev-btn-router').forEach(button => {
-                button.addEventListener('click', () => {
-                    if (currentRouterStep > 0) {
-                        showRouterFirmwareStep(currentRouterStep - 1);
-                    }
-                });
-            });
-
-            document.getElementById('routerFirmwareFinishedBtn').addEventListener('click', () => {
-                showView(views.cameraTroubleshooting);
-                setTimeout(() => showRouterFirmwareStep(0), 500);
-            });
-
-            // Modal setup
             Object.values(modals).forEach(modal => {
-                if (modal.openBtn) {
-                    modal.openBtn.addEventListener('click', () => showModal(modal));
-                }
-                if (modal.closeBtn) {
-                    modal.closeBtn.addEventListener('click', () => hideModal(modal));
-                }
+                if (modal.openBtn) modal.openBtn.addEventListener('click', () => showModal(modal));
+                if (modal.closeBtn) modal.closeBtn.addEventListener('click', () => hideModal(modal));
             });
+            
+            // --- EVENT LISTENERS ---
 
-            // Phone action popup logic
-            const phoneActionPopup = document.getElementById('phoneActionPopup');
-            const callLink = document.getElementById('callLink');
-            const textLink = document.getElementById('textLink');
+            // Main Menu
+            document.getElementById('selfServiceBtn')?.addEventListener('click', () => showView(views.selfService));
+            document.getElementById('remoteSupportBtn')?.addEventListener('click', () => showView(views.welcome));
 
-            document.querySelectorAll('.phone-action-btn').forEach(button => {
-                button.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    const phoneNumber = button.previousElementSibling.dataset.number;
-                    
-                    const isTextOnly = button.dataset.textOnly === 'true';
+            // Welcome View (Prepare for Support)
+            document.getElementById('cameraBtn')?.addEventListener('click', () => showView(views.camera));
+            document.getElementById('accessBtn')?.addEventListener('click', () => showView(views.access));
+            document.getElementById('alarmBtn')?.addEventListener('click', () => showModal(modals.alarmPanel));
 
-                    if (isTextOnly) {
-                        callLink.classList.add('hidden');
-                        textLink.classList.remove('rounded-b-lg');
-                        textLink.classList.add('rounded-lg');
-                    } else {
-                        callLink.classList.remove('hidden');
-                        textLink.classList.add('rounded-b-lg');
-                        textLink.classList.remove('rounded-lg');
-                    }
+            // Self-Service View
+            document.getElementById('troubleshootCameraBtn')?.addEventListener('click', () => showView(views.cameraTroubleshooting));
+            document.getElementById('troubleshootAlarmBtn')?.addEventListener('click', () => showView(views.alarmTroubleshooting));
+            
+            // Camera Troubleshooting View
+            document.getElementById('dmssTutorialBtn')?.addEventListener('click', () => showView(views.dmssTutorial));
+            document.getElementById('nvrTutorialBtn')?.addEventListener('click', () => showView(views.nvrTutorial));
 
-                    callLink.href = `tel:${phoneNumber}`;
-                    textLink.href = `sms:${phoneNumber}`;
-                    
-                    const rect = button.getBoundingClientRect();
-                    phoneActionPopup.style.left = `${rect.left + window.scrollX}px`;
-                    phoneActionPopup.style.top = `${rect.bottom + window.scrollY}px`;
-                    
-                    phoneActionPopup.classList.remove('hidden');
-                });
-            });
+            // Alarm Troubleshooting View
+            document.getElementById('batteryTutorialBtn')?.addEventListener('click', () => showView(views.batteryTutorial));
+            document.getElementById('panelIssuesBtn')?.addEventListener('click', () => { showView(views.panelIssues); setupStepView('panelIssuesView', 3); });
+            document.getElementById('sensorIssuesBtn')?.addEventListener('click', () => { showView(views.sensorIssues); setupStepView('sensorIssuesView', 3); });
+            
+            // Back Buttons
+            document.getElementById('welcomeBackBtn')?.addEventListener('click', () => showView(views.choice));
+            document.getElementById('selfServiceBackBtn')?.addEventListener('click', () => showView(views.choice));
+            document.getElementById('cameraTroubleshootingBackBtn')?.addEventListener('click', () => showView(views.selfService));
+            document.getElementById('alarmTroubleshootingBackBtn')?.addEventListener('click', () => showView(views.selfService));
+            document.getElementById('batteryTutorialBackBtn')?.addEventListener('click', () => showView(views.alarmTroubleshooting));
+            document.getElementById('dmssTutorialBackBtn')?.addEventListener('click', () => showView(views.cameraTroubleshooting));
+            document.getElementById('nvrTutorialBackBtn')?.addEventListener('click', () => showView(views.cameraTroubleshooting));
+            document.getElementById('cameraBackBtn')?.addEventListener('click', () => showView(views.welcome));
+            document.getElementById('accessBackBtn')?.addEventListener('click', () => showView(views.welcome));
+            document.getElementById('alarmHubBackBtn')?.addEventListener('click', () => showView(views.welcome));
+            document.getElementById('panelIssuesBackBtn')?.addEventListener('click', () => showView(views.alarmHub));
+            document.getElementById('sensorIssuesBackBtn')?.addEventListener('click', () => showView(views.alarmHub));
+            document.getElementById('routerFirmwareBackBtn')?.addEventListener('click', () => showView(views.cameraTroubleshooting));
 
-            document.addEventListener('click', (e) => {
-                if (!phoneActionPopup.contains(e.target) && !e.target.closest('.phone-action-btn')) {
-                    phoneActionPopup.classList.add('hidden');
-                }
-            });
-
-            // Special Alarm Modal Logic
-            document.getElementById('continueToAlarmBtn').addEventListener('click', () => {
-                modals.alarmPanel.el.classList.add('hidden');
-                showView(views.alarmHub);
-            });
-            document.getElementById('backFromAlarmModalBtn').addEventListener('click', () => {
-                modals.alarmPanel.el.classList.add('hidden');
-                showView(views.welcome);
-            });
-
-            // DMSS Tutorial Step Navigation
-            const dmssSteps = document.querySelectorAll('.dmss-step');
-            const dmssProgressBar = document.getElementById('dmssProgressBar');
-            const dmssProgressLabel = document.getElementById('dmssProgressLabel');
-            let currentDmssStep = 0;
-
-            const showDmssStep = (stepIndex) => {
-                dmssSteps.forEach((step, index) => {
-                    step.classList.toggle('hidden', index !== stepIndex);
-                });
-                currentDmssStep = stepIndex;
-                const progressPercentage = ((currentDmssStep + 1) / dmssSteps.length) * 100;
-                dmssProgressBar.style.width = `${progressPercentage}%`;
-                dmssProgressLabel.textContent = `Step ${currentDmssStep + 1} of ${dmssSteps.length}`;
-            };
-
-            document.querySelectorAll('.next-btn-dmss').forEach(button => {
-                button.addEventListener('click', () => {
-                    if (currentDmssStep < dmssSteps.length - 1) {
-                        showDmssStep(currentDmssStep + 1);
-                    }
-                });
-            });
-
-            document.querySelectorAll('.prev-btn-dmss').forEach(button => {
-                button.addEventListener('click', () => {
-                    if (currentDmssStep > 0) {
-                        showDmssStep(currentDmssStep - 1);
-                    }
-                });
-            });
-
-            document.getElementById('dmssFinishedBtn').addEventListener('click', () => {
-                showView(views.cameraTroubleshooting);
-                setTimeout(() => showDmssStep(0), 500);
-            });
-
-            // NVR Tutorial Step Navigation
-            const nvrSteps = document.querySelectorAll('.nvr-step');
-            const nvrProgressBar = document.getElementById('nvrProgressBar');
-            const nvrProgressLabel = document.getElementById('nvrProgressLabel');
-            let currentNvrStep = 0;
-
-            const showNvrStep = (stepIndex) => {
-                nvrSteps.forEach((step, index) => {
-                    step.classList.toggle('hidden', index !== stepIndex);
-                });
-                currentNvrStep = stepIndex;
-                const progressPercentage = ((currentNvrStep + 1) / nvrSteps.length) * 100;
-                nvrProgressBar.style.width = `${progressPercentage}%`;
-                nvrProgressLabel.textContent = `Step ${currentNvrStep + 1} of ${nvrSteps.length}`;
-            };
-
-            document.querySelectorAll('.next-btn-nvr').forEach(button => {
-                button.addEventListener('click', () => {
-                    if (currentNvrStep < nvrSteps.length - 1) {
-                        showNvrStep(currentNvrStep + 1);
-                    }
-                });
-            });
-
-            document.querySelectorAll('.prev-btn-nvr').forEach(button => {
-                button.addEventListener('click', () => {
-                    if (currentNvrStep > 0) {
-                        showNvrStep(currentNvrStep - 1);
-                    }
-                });
-            });
-
-            document.getElementById('nvrFinishedBtn').addEventListener('click', () => {
-                showView(views.cameraTroubleshooting);
-                setTimeout(() => showNvrStep(0), 500);
-            });
-
-            // Battery Tutorial Step Navigation
-            const batterySteps = document.querySelectorAll('.battery-step');
-            const batteryProgressBar = document.getElementById('batteryProgressBar');
-            const batteryProgressLabel = document.getElementById('batteryProgressLabel');
-            let currentBatteryStep = 0;
-
-            const showBatteryStep = (stepIndex) => {
-                batterySteps.forEach((step, index) => {
-                    step.classList.toggle('hidden', index !== stepIndex);
-                });
-                currentBatteryStep = stepIndex;
-                const progressPercentage = ((currentBatteryStep + 1) / batterySteps.length) * 100;
-                batteryProgressBar.style.width = `${progressPercentage}%`;
-                batteryProgressLabel.textContent = `Step ${currentBatteryStep + 1} of ${batterySteps.length}`;
-            };
-
-            document.querySelectorAll('.next-btn-battery').forEach(button => {
-                button.addEventListener('click', () => {
-                    if (currentBatteryStep < batterySteps.length - 1) {
-                        showBatteryStep(currentBatteryStep + 1);
-                    }
-                });
-            });
-
-            document.querySelectorAll('.prev-btn-battery').forEach(button => {
-                button.addEventListener('click', () => {
-                    if (currentBatteryStep > 0) {
-                        showBatteryStep(currentBatteryStep - 1);
-                    }
-                });
-            });
-
-            document.getElementById('batteryFinishedBtn').addEventListener('click', () => {
-                showView(views.alarmTroubleshooting);
-                setTimeout(() => showBatteryStep(0), 500);
-            });
-
-            // Firmware Alert Logic
+            // Firmware Alert
             const firmwareAlert = document.getElementById('firmwareAlert');
-            const closeFirmwareAlert = document.getElementById('closeFirmwareAlert');
-            const firmwareGoBtn = document.getElementById('firmwareGoBtn');
+            document.getElementById('closeFirmwareAlert')?.addEventListener('click', () => firmwareAlert.style.display = 'none');
+            document.getElementById('firmwareGoBtn')?.addEventListener('click', () => showView(views.routerFirmware));
 
-            if (firmwareGoBtn) {
-                firmwareGoBtn.addEventListener('click', () => {
-                    showView(views.routerFirmware);
-                    showRouterFirmwareStep(0);
+            // Special Modals
+            document.getElementById('continueToAlarmBtn')?.addEventListener('click', () => { hideModal(modals.alarmPanel); showView(views.alarmHub); });
+            document.getElementById('backFromAlarmModalBtn')?.addEventListener('click', () => { hideModal(modals.alarmPanel); showView(views.welcome); });
+            
+            // DMSS Tutorial Toggle
+            const monitorToggleBtn = document.getElementById('monitorToggleBtn');
+            const nvrWithMonitor = document.getElementById('nvrWithMonitor');
+            const nvrWithoutMonitor = document.getElementById('nvrWithoutMonitor');
+
+            if (monitorToggleBtn && nvrWithMonitor && nvrWithoutMonitor) {
+                monitorToggleBtn.addEventListener('click', () => {
+                    const isMonitorView = nvrWithMonitor.classList.contains('hidden');
+                    nvrWithMonitor.classList.toggle('hidden', !isMonitorView);
+                    nvrWithoutMonitor.classList.toggle('hidden', isMonitorView);
+                    monitorToggleBtn.textContent = isMonitorView ? "I don't have a monitor" : 'I have a monitor';
+                    if (isMonitorView) {
+                        setupStepView('nvrWithMonitor', 8);
+                    } else {
+                        setupStepView('nvrWithoutMonitor', 5);
+                    }
                 });
             }
             
-            if (closeFirmwareAlert) {
-                closeFirmwareAlert.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    if (firmwareAlert) {
-                        firmwareAlert.style.display = 'none';
-                    }
-                });
-            }
-
+            // --- STEP-BY-STEP TUTORIAL LOGIC ---
             const setupStepView = (viewId, totalSteps) => {
                 const view = document.getElementById(viewId);
                 if (!view) return;
@@ -1563,16 +1281,13 @@
                 const nextBtns = view.querySelectorAll('.next-btn');
                 const prevBtns = view.querySelectorAll('.prev-btn');
                 const progressIndicator = document.getElementById(`${viewId.replace('View', '')}Progress`);
-
+                
                 let currentStep = 0;
 
                 const updateView = () => {
-                    steps.forEach((step, index) => {
-                        step.classList.toggle('hidden', index !== currentStep);
-                    });
-                    if (progressIndicator) {
-                        progressIndicator.textContent = `Step ${currentStep + 1} of ${totalSteps}`;
-                    }
+                    steps.forEach((step, index) => step.classList.toggle('hidden', index !== currentStep));
+                    if (progressIndicator) progressIndicator.textContent = `Step ${currentStep + 1} of ${totalSteps}`;
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
                 };
                 
                 const markStepComplete = (stepIndex) => {
@@ -1594,10 +1309,8 @@
 
                 prevBtns.forEach(btn => {
                     btn.addEventListener('click', () => {
-                        if (currentStep > 0) {
-                            currentStep--;
-                            updateView();
-                        }
+                        if (currentStep > 0) currentStep--;
+                        updateView();
                     });
                 });
                 updateView();
@@ -1605,29 +1318,66 @@
             
             setupStepView('cameraView', 6);
             setupStepView('accessView', 4);
-            setupStepView('panelIssuesView', 3);
-            setupStepView('sensorIssuesView', 3);
+            setupStepView('nvrWithMonitor', 8);
+            // setupStepView('nvrWithoutMonitor', 5); // This will be initialized on toggle
+            setupStepView('dmssTutorialView', 5);
 
-            const monitorToggleBtn = document.getElementById('monitorToggleBtn');
-            const dmssWithMonitor = document.getElementById('dmssWithMonitor');
-            const dmssWithoutMonitor = document.getElementById('dmssWithoutMonitor');
+            // --- PHONE POPUP ---
+            const phoneActionPopup = document.getElementById('phoneActionPopup');
+            const callLink = document.getElementById('callLink');
+            const textLink = document.getElementById('textLink');
 
-            if (monitorToggleBtn) {
-                monitorToggleBtn.addEventListener('click', () => {
-                    const isMonitorView = !dmssWithMonitor.classList.contains('hidden');
-                    if (isMonitorView) {
-                        dmssWithMonitor.classList.add('hidden');
-                        dmssWithoutMonitor.classList.remove('hidden');
-                        monitorToggleBtn.textContent = 'I have a monitor';
-                    } else {
-                        dmssWithMonitor.classList.remove('hidden');
-                        dmssWithoutMonitor.classList.add('hidden');
-                        monitorToggleBtn.textContent = "I don't have a monitor";
+            document.querySelectorAll('.phone-action-btn').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const phoneNumber = button.closest('.phone-number-container').dataset.number;
+                    callLink.href = `tel:${phoneNumber}`;
+                    textLink.href = `sms:${phoneNumber}`;
+                    
+                    const rect = button.getBoundingClientRect();
+                    phoneActionPopup.style.left = `${rect.left + window.scrollX}px`;
+                    phoneActionPopup.style.top = `${rect.bottom + window.scrollY}px`;
+                    
+                    phoneActionPopup.classList.remove('hidden');
+                });
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!phoneActionPopup.contains(e.target) && !e.target.closest('.phone-action-btn')) {
+                    phoneActionPopup.classList.add('hidden');
+                }
+            });
+
+            // --- INITIALIZATION ---
+            window.addEventListener('load', () => {
+                const mainContent = document.querySelector('main');
+                const choiceView = document.getElementById('choiceView');
+                if (mainContent && choiceView) {
+                    mainContent.classList.remove('opacity-0');
+                    choiceView.classList.remove('hidden');
+                    
+                    gtag('event', 'page_view', {
+                        page_title: 'Choice',
+                        page_path: '/choice'
+                    });
+                }
+            });
+
+            // --- CAMERA TROUBLESHOOTING TABS ---
+            const cameraTabs = document.querySelectorAll('#cameraTabs button');
+            const cameraTabContent = document.querySelectorAll('#cameraTabContent > div');
+
+            cameraTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    cameraTabs.forEach(t => t.classList.remove('border-blue-500', 'text-blue-600'));
+                    tab.classList.add('border-blue-500', 'text-blue-600');
+                    const target = document.querySelector(tab.dataset.tabsTarget);
+                    cameraTabContent.forEach(content => content.classList.add('hidden'));
+                    if (target) {
+                        target.classList.remove('hidden');
                     }
                 });
-            }
-            
-            // ... [Rest of the event listeners like phone popups, modals, etc.]
+            });
         });
     </script>
 </body>
