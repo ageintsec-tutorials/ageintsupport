@@ -1098,8 +1098,8 @@
             };
 
             const showView = (viewToShow) => {
-                const currentView = Object.values(views).find(view => !view.classList.contains('hidden'));
-                
+                const currentView = Object.values(views).find(view => view && !view.classList.contains('hidden'));
+
                 if (currentView) {
                     currentView.classList.add('opacity-0');
                     currentView.addEventListener('transitionend', () => {
@@ -1110,6 +1110,14 @@
                 } else {
                     viewToShow.classList.remove('hidden');
                     setTimeout(() => viewToShow.classList.remove('opacity-0'), 20);
+                }
+
+                const viewName = Object.keys(views).find(key => views[key] === viewToShow);
+                if (viewName) {
+                    gtag('event', 'page_view', {
+                        page_title: viewName.replace(/([A-Z])/g, ' $1').trim(),
+                        page_path: `/${viewName}`
+                    });
                 }
             };
 
