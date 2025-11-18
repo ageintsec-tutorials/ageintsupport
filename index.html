@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -178,7 +179,7 @@
                     <button id="selfServiceBtn" aria-describedby="selfTroubleshootingDesc" class="group bg-white border border-gray-200 rounded-3xl p-5 sm:p-6 text-left shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                         <div class="flex items-start gap-3">
                             <div class="bg-blue-50 text-blue-600 p-3 rounded-2xl">
-                                <img src="https://cdn.jsdelivr.net/gh/ageintsec-tutorials/ageintsupport@main/icons8-user-manual-96.png" alt="Self-Service Guides" class="h-10 w-10 object-contain">
+                                <img src="https://cdn.jsdelivr.net/gh/ageintsec-tutorials/ageintsupport@main/icons8-user-manual-64.png" alt="Self-Service Guides" class="h-10 w-10 object-contain">
                             </div>
                             <div class="space-y-1">
                                 <p class="text-xs uppercase tracking-wide text-blue-500 font-semibold">Self-service guides</p>
@@ -193,7 +194,7 @@
                     <button id="remoteSupportBtn" aria-describedby="remoteSupportDesc" class="group bg-white border border-gray-200 rounded-3xl p-5 sm:p-6 text-left shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                         <div class="flex items-start gap-3">
                             <div class="bg-purple-50 text-purple-600 p-3 rounded-2xl">
-                                <img src="https://cdn.jsdelivr.net/gh/ageintsec-tutorials/ageintsupport@main/icons8-call-94.png" alt="Remote Support" class="h-10 w-10 object-contain">
+                                <img src="https://cdn.jsdelivr.net/gh/ageintsec-tutorials/ageintsupport@main/icons8-phone-64.png" alt="Remote Support" class="h-10 w-10 object-contain">
                             </div>
                             <div class="space-y-1">
                                 <p class="text-xs uppercase tracking-wide text-purple-500 font-semibold">Remote support prep</p>
@@ -718,8 +719,14 @@
                     <!-- Step 1 -->
                     <div class="router-firmware-step tutorial-step-card">
                         <h3 class="font-bold text-2xl mb-4 text-gray-800">Step 1: Connect to Wi-Fi</h3>
-                        <p class="text-gray-700 font-semibold text-base mb-4">On your phone, open Wi-Fi settings and connect to <strong class="tutorial-highlight">'Ageint Data 5'</strong>. You will need the password. If you don't have it, please contact our office at <strong class="tutorial-highlight">832-610-6820</strong>.</p>
-                        <img src="https://cdn.jsdelivr.net/gh/ageintsec-tutorials/ageintsupport@main/step1.PNG" alt="Step 1" class="max-w-xs mx-auto rounded-lg shadow-md border">
+                        <p class="text-gray-700 font-semibold text-base mb-4">On your phone, open Wi-Fi settings and connect to <strong class="tutorial-highlight">'Ageint Data 5'</strong> (preferred) or <strong class="tutorial-highlight">'Ageint Data 2.4'</strong> if 5 GHz isn't available. You will need the password. If you don't have it, please contact our office at <strong class="tutorial-highlight">832-610-6820</strong>.</p>
+                        <button id="wifiMissingBtn" type="button" class="mt-4 mb-6 w-full flex items-center justify-center gap-3 bg-blue-50 border border-blue-200 text-blue-700 font-semibold px-5 py-3 rounded-2xl shadow-sm hover:bg-blue-100 transition text-sm sm:text-base">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4m0 4h.01M21 12A9 9 0 1 1 3 12a9 9 0 0 1 18 0z" />
+                            </svg>
+                            <span>I don't see Ageint Data 2.4 or Ageint Data 5</span>
+                        </button>
+                        <img src="https://cdn.jsdelivr.net/gh/ageintsec-tutorials/ageintsupport@main/step1.PNG" alt="Step 1" class="w-full max-w-md mx-auto rounded-lg shadow-md border">
                         <div class="mt-8 flex justify-end">
                             <button class="next-btn-router bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-lg text-base">Next</button>
                         </div>
@@ -728,7 +735,7 @@
                     <div class="router-firmware-step hidden tutorial-step-card">
                         <h3 class="font-bold text-2xl mb-4 text-gray-800">Step 2: Access Login Page</h3>
                         <p class="text-gray-700 font-semibold text-base mb-4">Open a web browser and go to <strong class="tutorial-highlight">192.168.2.1</strong>. Enter the same password you used for the Wi-Fi.</p>
-                        <img src="https://cdn.jsdelivr.net/gh/ageintsec-tutorials/ageintsupport@main/step2.PNG" alt="Step 2" class="max-w-xs mx-auto rounded-lg shadow-md border">
+                        <img src="https://cdn.jsdelivr.net/gh/ageintsec-tutorials/ageintsupport@main/step2.PNG" alt="Step 2" class="w-full max-w-md mx-auto rounded-lg shadow-md border">
                         <div class="mt-8 flex justify-between">
                             <button class="prev-btn-router bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-lg text-base">Previous</button>
                             <button class="next-btn-router bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-lg text-base">Next</button>
@@ -739,8 +746,8 @@
                         <h3 class="font-bold text-2xl mb-4 text-gray-800">Step 3: Open Main Menu</h3>
                         <p class="text-gray-700 font-semibold text-base mb-4">Tap the menu icon (three lines) at the top right. A pop-up might appear; if it does, tap the 'X' to close it.</p>
                         <div class="flex flex-col md:flex-row gap-4 justify-center">
-                            <img src="https://cdn.jsdelivr.net/gh/ageintsec-tutorials/ageintsupport@main/step3.PNG" alt="Step 3 Main" class="max-w-xs mx-auto rounded-lg shadow-md border">
-                            <img src="https://cdn.jsdelivr.net/gh/ageintsec-tutorials/ageintsupport@main/step%203-disclaimer.PNG" alt="Step 3 Popup" class="max-w-xs mx-auto rounded-lg shadow-md border">
+                            <img src="https://cdn.jsdelivr.net/gh/ageintsec-tutorials/ageintsupport@main/step3.PNG" alt="Step 3 Main" class="w-full max-w-md mx-auto rounded-lg shadow-md border">
+                            <img src="https://cdn.jsdelivr.net/gh/ageintsec-tutorials/ageintsupport@main/step%203-disclaimer.PNG" alt="Step 3 Popup" class="w-full max-w-md mx-auto rounded-lg shadow-md border">
                         </div>
                         <div class="mt-8 flex justify-between">
                             <button class="prev-btn-router bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-lg text-base">Previous</button>
@@ -751,7 +758,7 @@
                     <div class="router-firmware-step hidden tutorial-step-card">
                         <h3 class="font-bold text-2xl mb-4 text-gray-800">Step 4: Select 'Advanced'</h3>
                         <p class="text-gray-700 font-semibold text-base mb-4">From the menu, select the <strong class="tutorial-highlight">'Advanced'</strong> option.</p>
-                        <img src="https://cdn.jsdelivr.net/gh/ageintsec-tutorials/ageintsupport@main/step4.PNG" alt="Step 4" class="max-w-xs mx-auto rounded-lg shadow-md border">
+                        <img src="https://cdn.jsdelivr.net/gh/ageintsec-tutorials/ageintsupport@main/step4.PNG" alt="Step 4" class="w-full max-w-md mx-auto rounded-lg shadow-md border">
                         <div class="mt-8 flex justify-between">
                             <button class="prev-btn-router bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-lg text-base">Previous</button>
                             <button class="next-btn-router bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-lg text-base">Next</button>
@@ -761,7 +768,7 @@
                     <div class="router-firmware-step hidden tutorial-step-card">
                         <h3 class="font-bold text-2xl mb-4 text-gray-800">Step 5: Select 'System'</h3>
                         <p class="text-gray-700 font-semibold text-base mb-4">In the Advanced menu, scroll down and tap on <strong class="tutorial-highlight">'System'</strong>.</p>
-                        <img src="https://cdn.jsdelivr.net/gh/ageintsec-tutorials/ageintsupport@main/step5.PNG" alt="Step 5" class="max-w-xs mx-auto rounded-lg shadow-md border">
+                        <img src="https://cdn.jsdelivr.net/gh/ageintsec-tutorials/ageintsupport@main/step5.PNG" alt="Step 5" class="w-full max-w-md mx-auto rounded-lg shadow-md border">
                         <div class="mt-8 flex justify-between">
                             <button class="prev-btn-router bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-lg text-base">Previous</button>
                             <button class="next-btn-router bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-lg text-base">Next</button>
@@ -771,7 +778,7 @@
                     <div class="router-firmware-step hidden tutorial-step-card">
                         <h3 class="font-bold text-2xl mb-4 text-gray-800">Step 6: Select 'Firmware Update'</h3>
                         <p class="text-gray-700 font-semibold text-base mb-4">Next, select <strong class="tutorial-highlight">'Firmware Update'</strong> from the System menu.</p>
-                        <img src="https://cdn.jsdelivr.net/gh/ageintsec-tutorials/ageintsupport@main/step6.PNG" alt="Step 6" class="max-w-xs mx-auto rounded-lg shadow-md border">
+                        <img src="https://cdn.jsdelivr.net/gh/ageintsec-tutorials/ageintsupport@main/step6.PNG" alt="Step 6" class="w-full max-w-md mx-auto rounded-lg shadow-md border">
                         <div class="mt-8 flex justify-between">
                             <button class="prev-btn-router bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-lg text-base">Previous</button>
                             <button class="next-btn-router bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-lg text-base">Next</button>
@@ -781,7 +788,7 @@
                     <div class="router-firmware-step hidden tutorial-step-card">
                         <h3 class="font-bold text-2xl mb-4 text-gray-800">Step 7: Go to Update Section</h3>
                         <p class="text-gray-700 font-semibold text-base mb-4">You will now be on the Firmware Update screen. Please scroll down to see the update options.</p>
-                        <img src="https://cdn.jsdelivr.net/gh/ageintsec-tutorials/ageintsupport@main/step7.PNG" alt="Step 7" class="max-w-xs mx-auto rounded-lg shadow-md border">
+                        <img src="https://cdn.jsdelivr.net/gh/ageintsec-tutorials/ageintsupport@main/step7.PNG" alt="Step 7" class="w-full max-w-md mx-auto rounded-lg shadow-md border">
                         <div class="mt-8 flex justify-between">
                             <button class="prev-btn-router bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-lg text-base">Previous</button>
                             <button class="next-btn-router bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-lg text-base">Next</button>
@@ -791,7 +798,7 @@
                     <div class="router-firmware-step hidden tutorial-step-card">
                         <h3 class="font-bold text-2xl mb-4 text-gray-800">Step 8: Update and Reboot</h3>
                         <p class="text-gray-700 font-semibold text-base mb-4">Look for a blue button labeled <strong class="tutorial-highlight">'UPDATE'</strong>. If your router is already up to date, it may say 'Check for update' instead. Press this button to confirm. The router will begin its update process. Please keep this screen open until it has finished rebooting. Once complete, you can reconnect your phone to your main Wi-Fi network.</p>
-                        <img src="https://cdn.jsdelivr.net/gh/ageintsec-tutorials/ageintsupport@main/ste8.PNG" alt="Step 8" class="max-w-xs mx-auto rounded-lg shadow-md border">
+                        <img src="https://cdn.jsdelivr.net/gh/ageintsec-tutorials/ageintsupport@main/ste8.PNG" alt="Step 8" class="w-full max-w-md mx-auto rounded-lg shadow-md border">
                         <div class="mt-8 flex justify-between">
                             <button class="prev-btn-router bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-lg text-base">Previous</button>
                             <button id="routerFirmwareFinishedBtn" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-6 rounded-lg text-base">All Done!</button>
@@ -842,8 +849,8 @@
                                     <img src="https://cdn.jsdelivr.net/gh/ageintsec-tutorials/ageintsupport@main/camera.png" alt="Camera System" class="h-10 w-10 object-contain">
                                 </div>
                                 <div class="space-y-1">
-                                    <p class="text-xs uppercase tracking-wide text-blue-500 font-semibold">Camera system</p>
-                                    <p class="text-xl font-bold text-gray-900 leading-tight">Troubleshoot cameras</p>
+                                    <p class="text-xs uppercase tracking-wide text-blue-500 font-semibold">Prepare</p>
+                                    <p class="text-xl font-bold text-gray-900 leading-tight">Camera System</p>
                                     <p class="text-xs text-gray-500 font-semibold">DMSS access, NVR prep, serial capture</p>
                                 </div>
                             </div>
@@ -854,8 +861,8 @@
                                     <img src="https://cdn.jsdelivr.net/gh/ageintsec-tutorials/ageintsupport@main/access.png" alt="Access Control" class="h-10 w-10 object-contain">
                                 </div>
                                 <div class="space-y-1">
-                                    <p class="text-xs uppercase tracking-wide text-amber-500 font-semibold">Access control</p>
-                                    <p class="text-xl font-bold text-gray-900 leading-tight">Prepare access control</p>
+                                    <p class="text-xs uppercase tracking-wide text-amber-500 font-semibold">Prepare</p>
+                                    <p class="text-xl font-bold text-gray-900 leading-tight">Access Control</p>
                                     <p class="text-xs text-gray-500 font-semibold">Have controller models, badge roster, event logs ready</p>
                                 </div>
                             </div>
@@ -866,8 +873,8 @@
                                     <img src="https://cdn.jsdelivr.net/gh/ageintsec-tutorials/ageintsupport@main/alarm.png" alt="Alarm System" class="h-10 w-10 object-contain">
                                 </div>
                                 <div class="space-y-1">
-                                    <p class="text-xs uppercase tracking-wide text-purple-500 font-semibold">Alarm system</p>
-                                    <p class="text-xl font-bold text-gray-900 leading-tight">Prepare IQ Panel</p>
+                                    <p class="text-xs uppercase tracking-wide text-purple-500 font-semibold">Prepare</p>
+                                    <p class="text-xl font-bold text-gray-900 leading-tight">Alarm System</p>
                                     <p class="text-xs text-gray-500 font-semibold">Panel reboot, sensors, monitoring</p>
                                 </div>
                             </div>
@@ -875,7 +882,7 @@
                     </div>
 
                     <div class="text-center bg-white border border-gray-200 rounded-2xl p-5 shadow-sm">
-                        <p class="text-sm text-gray-600 mb-2">Need a guided tour of your platform? We can walk you through every screen.</p>
+                        <p class="text-sm text-gray-600 mb-2">Need additional training on your system? We can walk you through as little or as much as you’d like.</p>
                         <button id="trainingBtn" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-white hover:bg-gray-500 text-gray-600 hover:text-white border-2 border-gray-400 font-bold py-2.5 px-5 rounded-xl shadow-md transition-all duration-300 transform hover:scale-105">
                                 <img src="https://cdn.jsdelivr.net/gh/ageintsec-tutorials/ageintsupport@main/icons8-information-64.png" alt="Information" class="h-6 w-6">
                                 <span>Get to know your system</span>
@@ -1570,8 +1577,8 @@
                                 <img src="https://cdn.jsdelivr.net/gh/ageintsec-tutorials/ageintsupport@main/speechbubble.png" alt="Text or Call" class="h-8 w-8">
                             </button>
                         </div>
-                        <a href="mailto:lmccarty@ageintsecurity.com" class="inline-flex items-center justify-center gap-2 w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2.5 rounded-full transition text-xs sm:text-sm leading-snug text-center whitespace-normal break-words">
-                            <span class="inline-block">Email lmccarty@ageintsecurity.com</span>
+                        <a href="mailto:lmccarty@ageintsecurity.com" class="inline-flex items-center justify-center gap-2 w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2.5 rounded-full transition text-[11px] sm:text-xs leading-tight text-center whitespace-normal break-words">
+                            <span class="inline-block max-w-full">Email lmccarty@ageintsecurity.com</span>
                         </a>
                     </div>
                     <div class="space-y-2 text-sm font-semibold text-gray-600">
@@ -1626,7 +1633,7 @@
             <h2 class="text-2xl font-bold mb-4">Example Backup Battery (UPS)</h2>
             <p class="mb-4 text-gray-700 font-semibold text-base">A backup battery (UPS) often looks like a small black tower or power strip. Here is an example:</p>
             <div class="my-4 p-2 border rounded-lg bg-gray-100">
-                <img src="https://i.ebayimg.com/images/g/rMIAAOSwqQNm2maj/s-l1200.jpg" alt="Backup Battery / UPS" class="rounded-md w-full max-w-xs mx-auto">
+                <img src="https://i.ebayimg.com/images/g/rMIAAOSwqQNm2maj/s-l1200.jpg" alt="Backup Battery / UPS" class="rounded-md w-full w-full max-w-md mx-auto">
             </div>
         </div>
     </div>
@@ -1638,7 +1645,7 @@
             <h2 class="text-2xl font-bold mb-4">Example Alarm Power Box</h2>
             <p class="mb-4 text-gray-700 font-semibold text-base">The alarm power supply is often a white box plugged into an outlet with two wires. It's critical this box does not lose power.</p>
             <div class="my-4 p-2 border rounded-lg bg-gray-100">
-                <img src="https://zionssecurity.com/wp-content/uploads/2022/10/Q9-QR0051840_alt2.jpg" alt="Alarm Power Box" class="rounded-md w-full max-w-xs mx-auto">
+                <img src="https://zionssecurity.com/wp-content/uploads/2022/10/Q9-QR0051840_alt2.jpg" alt="Alarm Power Box" class="rounded-md w-full w-full max-w-md mx-auto">
             </div>
         </div>
     </div>
@@ -1658,7 +1665,7 @@
                     <p>2. Include your name + “Run alarm diagnostic”</p>
                     <p>3. We’ll confirm results in about <span class="text-gray-900 font-bold">10 minutes</span></p>
                 </div>
-                <a href="sms:18326106820?body=Hi%20this%20is%20%5Byour%20name%5D.%20Please%20run%20a%20full%20alarm%20diagnostic." class="inline-flex items-center justify-center gap-3 w-full bg-rose-600 hover:bg-rose-700 text-white font-bold px-4 py-2.5 rounded-2xl transition">
+                <a id="diagnosticTextLink" href="sms:18326106820?body=Hi%20this%20is%20%5Byour%20name%5D.%20Please%20run%20a%20full%20alarm%20diagnostic." class="inline-flex items-center justify-center gap-3 w-full bg-rose-600 hover:bg-rose-700 text-white font-bold px-4 py-2.5 rounded-2xl transition">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5h2l1 5h13l1-5h2M6 10l1.5 9h9L18 10H6z"/></svg>
                     <span>Text diagnostic request</span>
                 </a>
@@ -1699,6 +1706,58 @@
         </div>
     </div>
 
+    <!-- Wi-Fi Missing Modal -->
+    <div id="wifiMissingModal" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-40 transition-opacity duration-300">
+        <div class="bg-white rounded-3xl shadow-2xl p-6 sm:p-8 max-w-xl w-full text-gray-800 border border-blue-100 relative transition-transform duration-300 transform scale-95">
+            <button id="closeWifiMissingModalBtn" class="absolute top-4 right-4 text-2xl text-gray-600 hover:text-gray-900 leading-none">&times;</button>
+            <div class="space-y-6">
+                <div class="space-y-3 text-center sm:text-left">
+                    <p class="inline-flex items-center gap-2 bg-blue-50 text-blue-700 font-semibold text-xs uppercase tracking-wide px-3 py-1 rounded-full mx-auto sm:mx-0">Can't see Ageint Wi-Fi</p>
+                    <h2 class="text-2xl font-bold leading-tight text-gray-900">Quick router refresh</h2>
+                    <p class="text-gray-600 font-semibold text-sm sm:text-base">Let’s power-cycle the white router so the <span class="font-semibold text-blue-700">Ageint Data 2.4 / 5</span> networks reappear.</p>
+                </div>
+                <div class="space-y-4">
+                    <div class="flex gap-3">
+                        <div class="h-9 w-9 rounded-2xl bg-blue-100 text-blue-700 font-bold flex items-center justify-center">1</div>
+                        <div>
+                            <p class="font-semibold text-gray-900">Locate the white router near your system.</p>
+                            <p class="text-gray-600 text-sm font-medium">It’s usually next to the NVR or modem.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-3">
+                        <div class="h-9 w-9 rounded-2xl bg-blue-100 text-blue-700 font-bold flex items-center justify-center">2</div>
+                        <div>
+                            <p class="font-semibold text-gray-900">Unplug the router for a full 60 seconds.</p>
+                            <p class="text-gray-600 text-sm font-medium">Count it out—this clears the cache.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-3">
+                        <div class="h-9 w-9 rounded-2xl bg-blue-100 text-blue-700 font-bold flex items-center justify-center">3</div>
+                        <div>
+                            <p class="font-semibold text-gray-900">Plug it back in and wait 3 minutes.</p>
+                            <p class="text-gray-600 text-sm font-medium">Lights should turn solid again.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-3">
+                        <div class="h-9 w-9 rounded-2xl bg-blue-100 text-blue-700 font-bold flex items-center justify-center">4</div>
+                        <div>
+                            <p class="font-semibold text-gray-900">Check your Wi-Fi list again.</p>
+                            <p class="text-gray-600 text-sm font-medium">Look for <span class="font-semibold text-blue-700">Ageint Data 2.4</span> or <span class="font-semibold text-blue-700">Ageint Data 5</span>.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-blue-50 border border-blue-100 rounded-2xl p-4 space-y-2 text-sm font-semibold text-blue-900">
+                    <p class="flex items-center gap-2"><span class="h-2 w-2 rounded-full bg-blue-500"></span>If you still don’t see it, text us a screenshot of the Wi-Fi list.</p>
+                    <p class="text-blue-700">832-610-6820 · Levi / Ageint Security</p>
+                    <a href="sms:18326106820?body=Hi%20Levi%2C%20I%20still%20cannot%20see%20Ageint%20Data.%20Here%20is%20a%20screenshot%20of%20my%20Wi-Fi%20list." data-contact-context="wifi_missing_screenshot" class="inline-flex items-center justify-center gap-2 bg-white text-blue-700 border border-blue-200 rounded-xl px-3 py-2 text-sm font-semibold hover:bg-blue-100 transition">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-9a2 2 0 0 1 2-2h2m4-4h6a2 2 0 0 1 2 2v2H9a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg>
+                        <span>Text screenshot</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Phone Action Pop-up -->
     <div id="phoneActionPopup" class="hidden absolute z-50 bg-white rounded-lg shadow-lg border border-gray-200 text-center">
         <a id="callLink" href="#" class="block px-4 py-2 text-base font-semibold text-blue-600 hover:bg-gray-100 rounded-t-lg">Call</a>
@@ -1735,6 +1794,21 @@
                 offlineInfo: { el: document.getElementById('offlineInfoModal'), openBtn: document.getElementById('offlineInfoBtn'), closeBtn: document.getElementById('closeOfflineInfoModalBtn') },
                 alarmPanel: { el: document.getElementById('alarmPanelModal'), closeBtn: document.getElementById('closeAlarmPanelModalBtn') },
                 diagnostic: { el: document.getElementById('diagnosticModal'), openBtn: document.getElementById('diagnosticRequestBtn'), closeBtn: document.getElementById('closeDiagnosticModalBtn') },
+                wifiHelp: { el: document.getElementById('wifiMissingModal'), openBtn: document.getElementById('wifiMissingBtn'), closeBtn: document.getElementById('closeWifiMissingModalBtn') },
+            };
+
+            const trackEvent = (name, params = {}) => {
+                if (typeof gtag === 'function') {
+                    gtag('event', name, params);
+                }
+            };
+
+            const trackTutorialCompletion = (tutorialId, stepsCount) => {
+                const payload = { tutorial_id: tutorialId };
+                if (stepsCount) {
+                    payload.step_total = stepsCount;
+                }
+                trackEvent('customer_complete_tutorial', payload);
             };
             
             // --- CORE NAVIGATION ---
@@ -1753,7 +1827,7 @@
                     
                     const viewName = Object.keys(views).find(key => views[key] === viewToShow);
                     if (viewName) {
-                        gtag('event', 'page_view', {
+                        trackEvent('customer_view_page', {
                             page_title: viewName.replace(/([A-Z])/g, ' $1').trim(),
                             page_path: `/${viewName}`
                         });
@@ -1773,6 +1847,7 @@
                             modalContent.classList.remove('scale-95', 'opacity-0');
                         }
                     }, 20);
+                    trackEvent('customer_modal_opened', { modal_id: modal.el.id });
                 }
             };
 
@@ -1794,6 +1869,7 @@
             });
             
             const prepControllers = {};
+            const tutorialMeta = {};
 
             const nvrWithMonitor = document.getElementById('nvrWithMonitor');
             const nvrWithoutMonitor = document.getElementById('nvrWithoutMonitor');
@@ -1824,6 +1900,8 @@
                 monitorPrompt?.classList.add('hidden');
                 monitorQuestionCard?.classList.add('hidden');
 
+                trackEvent('customer_workflow_selected', { workflow_id: hasMonitor ? 'nvr_monitor_option' : 'nvr_no_monitor_option' });
+
                 if (hasMonitor) {
                     prepControllers['nvr-steps']?.();
                 } else {
@@ -1849,33 +1927,68 @@
             // --- EVENT LISTENERS ---
 
             // Main Menu
-            document.getElementById('selfServiceBtn')?.addEventListener('click', () => showView(views.selfService));
-            document.getElementById('remoteSupportBtn')?.addEventListener('click', () => showView(views.welcome));
+            document.getElementById('selfServiceBtn')?.addEventListener('click', () => {
+                trackEvent('customer_workflow_selected', { workflow_id: 'dashboard_self_service' });
+                showView(views.selfService);
+            });
+            document.getElementById('remoteSupportBtn')?.addEventListener('click', () => {
+                trackEvent('customer_workflow_selected', { workflow_id: 'dashboard_remote_support' });
+                showView(views.welcome);
+            });
 
             // Welcome View (Prepare for Support)
-            document.getElementById('cameraBtn')?.addEventListener('click', () => showView(views.camera));
-            document.getElementById('accessBtn')?.addEventListener('click', () => showView(views.access));
-            document.getElementById('alarmBtn')?.addEventListener('click', () => showModal(modals.alarmPanel));
+            document.getElementById('cameraBtn')?.addEventListener('click', () => {
+                trackEvent('customer_workflow_selected', { workflow_id: 'prep_camera' });
+                showView(views.camera);
+            });
+            document.getElementById('accessBtn')?.addEventListener('click', () => {
+                trackEvent('customer_workflow_selected', { workflow_id: 'prep_access' });
+                showView(views.access);
+            });
+            document.getElementById('alarmBtn')?.addEventListener('click', () => {
+                trackEvent('customer_workflow_selected', { workflow_id: 'prep_alarm' });
+                showModal(modals.alarmPanel);
+            });
 
             // Self-Service View
-            document.getElementById('troubleshootCameraBtn')?.addEventListener('click', () => showView(views.cameraTroubleshooting));
-            document.getElementById('troubleshootAlarmBtn')?.addEventListener('click', () => showView(views.alarmTroubleshooting));
+            document.getElementById('troubleshootCameraBtn')?.addEventListener('click', () => {
+                trackEvent('customer_workflow_selected', { workflow_id: 'selfservice_camera' });
+                showView(views.cameraTroubleshooting);
+            });
+            document.getElementById('troubleshootAlarmBtn')?.addEventListener('click', () => {
+                trackEvent('customer_workflow_selected', { workflow_id: 'selfservice_alarm' });
+                showView(views.alarmTroubleshooting);
+            });
             
             // Camera Troubleshooting View
             document.getElementById('dmssTutorialBtn')?.addEventListener('click', () => {
                 resetMonitorSelection();
+                trackEvent('customer_workflow_selected', { workflow_id: 'camera_dmss_nvr' });
                 showView(views.dmssTutorial);
             });
             document.getElementById('nvrTutorialSystemBtn')?.addEventListener('click', () => {
                 resetMonitorSelection();
+                trackEvent('customer_workflow_selected', { workflow_id: 'camera_dmss_nvr' });
                 showView(views.dmssTutorial);
             });
-            document.getElementById('routerFirmwareBtn')?.addEventListener('click', () => showView(views.routerFirmware));
+            document.getElementById('routerFirmwareBtn')?.addEventListener('click', () => {
+                trackEvent('customer_workflow_selected', { workflow_id: 'router_firmware' });
+                showView(views.routerFirmware);
+            });
 
             // Alarm Troubleshooting View
-            document.getElementById('batteryTutorialBtn')?.addEventListener('click', () => showView(views.batteryTutorial));
-            document.getElementById('panelIssuesBtn')?.addEventListener('click', () => showView(views.panelIssues));
-            document.getElementById('sensorIssuesBtn')?.addEventListener('click', () => showView(views.sensorIssues));
+            document.getElementById('batteryTutorialBtn')?.addEventListener('click', () => {
+                trackEvent('customer_workflow_selected', { workflow_id: 'alarm_battery_tutorial' });
+                showView(views.batteryTutorial);
+            });
+            document.getElementById('panelIssuesBtn')?.addEventListener('click', () => {
+                trackEvent('customer_workflow_selected', { workflow_id: 'alarm_panel_workflow' });
+                showView(views.panelIssues);
+            });
+            document.getElementById('sensorIssuesBtn')?.addEventListener('click', () => {
+                trackEvent('customer_workflow_selected', { workflow_id: 'alarm_sensor_workflow' });
+                showView(views.sensorIssues);
+            });
             
             // Back Buttons
             document.getElementById('welcomeBackBtn')?.addEventListener('click', () => showView(views.choice));
@@ -1889,11 +2002,15 @@
             });
             document.getElementById('cameraBackBtn')?.addEventListener('click', () => showView(views.welcome));
             document.getElementById('cameraFinishedBtn')?.addEventListener('click', () => {
+                const meta = tutorialMeta['camera-steps'];
+                trackTutorialCompletion(meta?.analyticsId || 'camera_prep', meta?.stepsCount);
                 prepControllers['camera-steps']?.();
                 showView(views.choice);
             });
             document.getElementById('accessBackBtn')?.addEventListener('click', () => showView(views.welcome));
             document.getElementById('accessFinishedBtn')?.addEventListener('click', () => {
+                const meta = tutorialMeta['accessSteps'];
+                trackTutorialCompletion(meta?.analyticsId || 'access_prep', meta?.stepsCount);
                 prepControllers['accessSteps']?.();
                 showView(views.choice);
             });
@@ -1901,27 +2018,46 @@
             document.getElementById('panelIssuesBackBtn')?.addEventListener('click', () => showView(views.alarmHub));
             document.getElementById('sensorIssuesBackBtn')?.addEventListener('click', () => showView(views.alarmHub));
             document.getElementById('panelFinishedBtn')?.addEventListener('click', () => {
+                const meta = tutorialMeta['panelIssuesSteps'];
+                trackTutorialCompletion(meta?.analyticsId || 'alarm_panel_workflow', meta?.stepsCount);
                 prepControllers['panelIssuesSteps']?.();
                 showView(views.alarmHub);
             });
             document.getElementById('sensorFinishedBtn')?.addEventListener('click', () => {
+                const meta = tutorialMeta['sensorIssuesSteps'];
+                trackTutorialCompletion(meta?.analyticsId || 'alarm_sensor_workflow', meta?.stepsCount);
                 prepControllers['sensorIssuesSteps']?.();
                 showView(views.alarmHub);
             });
             document.getElementById('routerFirmwareBackBtn')?.addEventListener('click', () => showView(views.cameraTroubleshooting));
             document.getElementById('nvrFinishedBtn')?.addEventListener('click', () => {
+                const inMonitorFlow = nvrWithMonitor && !nvrWithMonitor.classList.contains('hidden');
+                const metaKey = inMonitorFlow ? 'nvr-steps' : 'nvrWithoutMonitorSteps';
+                const meta = tutorialMeta[metaKey];
+                trackTutorialCompletion(meta?.analyticsId || (inMonitorFlow ? 'nvr_monitor_flow' : 'nvr_no_monitor_flow'), meta?.stepsCount);
                 resetMonitorSelection();
+                showView(views.cameraTroubleshooting);
+            });
+            document.getElementById('routerFirmwareFinishedBtn')?.addEventListener('click', () => {
+                const meta = tutorialMeta['routerFirmware'];
+                trackTutorialCompletion(meta?.analyticsId || 'router_firmware', meta?.stepsCount);
                 showView(views.cameraTroubleshooting);
             });
 
             // Firmware Alert
             const firmwareAlert = document.getElementById('firmwareAlert');
             document.getElementById('closeFirmwareAlert')?.addEventListener('click', () => firmwareAlert.style.display = 'none');
-            document.getElementById('firmwareGoBtn')?.addEventListener('click', () => showView(views.routerFirmware));
+            document.getElementById('firmwareGoBtn')?.addEventListener('click', () => {
+                trackEvent('customer_firmware_launch', {});
+                showView(views.routerFirmware);
+            });
 
             // Special Modals
             document.getElementById('continueToAlarmBtn')?.addEventListener('click', () => { hideModal(modals.alarmPanel); showView(views.alarmHub); });
             document.getElementById('backFromAlarmModalBtn')?.addEventListener('click', () => { hideModal(modals.alarmPanel); showView(views.welcome); });
+            document.getElementById('diagnosticTextLink')?.addEventListener('click', () => {
+                trackEvent('customer_diagnostic_requested', { channel: 'sms', context: 'alarm_diagnostic' });
+            });
             
             const setupRouterFirmwareSteps = () => {
                 const stepsContainer = document.getElementById('router-firmware-steps');
@@ -1931,6 +2067,7 @@
                 const progressLabel = document.getElementById('routerFirmwareProgressLabel');
                 const progressBar = document.getElementById('routerFirmwareProgressBar');
                 let currentStep = 0;
+                tutorialMeta['routerFirmware'] = { stepsCount: steps.length, analyticsId: 'router_firmware' };
 
                 const updateProgress = () => {
                     steps.forEach((step, index) => {
@@ -1943,6 +2080,10 @@
                         progressBar.style.width = `${((currentStep + 1) / steps.length) * 100}%`;
                     }
                     window.scrollTo({ top: 0, behavior: 'smooth' });
+                    trackEvent('customer_tutorial_step', {
+                        tutorial_id: 'router_firmware',
+                        step_index: currentStep + 1
+                    });
                 };
 
                 stepsContainer.addEventListener('click', (event) => {
@@ -1961,7 +2102,7 @@
 
             setupRouterFirmwareSteps();
 
-            const setupLinearPrep = ({ containerId, nextSelector, prevSelector, progressLabelId, progressBarId }) => {
+            const setupLinearPrep = ({ containerId, nextSelector, prevSelector, progressLabelId, progressBarId, analyticsId }) => {
                 const container = document.getElementById(containerId);
                 if (!container) return;
                 const steps = Array.from(container.querySelectorAll('.camera-prep-step'));
@@ -1969,6 +2110,7 @@
                 const progressLabel = progressLabelId ? document.getElementById(progressLabelId) : null;
                 const progressBar = progressBarId ? document.getElementById(progressBarId) : null;
                 let currentStep = 0;
+                tutorialMeta[containerId] = { stepsCount: steps.length, analyticsId };
 
                 const updateView = () => {
                     steps.forEach((step, index) => {
@@ -1997,6 +2139,12 @@
                         progressBar.style.width = `${((currentStep + 1) / steps.length) * 100}%`;
                     }
                     window.scrollTo({ top: 0, behavior: 'smooth' });
+                    if (analyticsId) {
+                        trackEvent('customer_tutorial_step', {
+                            tutorial_id: analyticsId,
+                            step_index: currentStep + 1
+                        });
+                    }
                 };
 
                 container.addEventListener('click', (event) => {
@@ -2024,7 +2172,8 @@
                 nextSelector: '.next-btn-camera',
                 prevSelector: '.prev-btn-camera',
                 progressLabelId: 'cameraProgressLabel',
-                progressBarId: 'cameraProgressBar'
+                progressBarId: 'cameraProgressBar',
+                analyticsId: 'camera_prep'
             });
 
             setupLinearPrep({
@@ -2032,7 +2181,8 @@
                 nextSelector: '.next-btn-access',
                 prevSelector: '.prev-btn-access',
                 progressLabelId: 'accessProgressLabel',
-                progressBarId: 'accessProgressBar'
+                progressBarId: 'accessProgressBar',
+                analyticsId: 'access_prep'
             });
 
             setupLinearPrep({
@@ -2040,7 +2190,8 @@
                 nextSelector: '.next-btn-panel',
                 prevSelector: '.prev-btn-panel',
                 progressLabelId: 'panelProgressLabel',
-                progressBarId: 'panelProgressBar'
+                progressBarId: 'panelProgressBar',
+                analyticsId: 'alarm_panel_workflow'
             });
 
             setupLinearPrep({
@@ -2048,7 +2199,8 @@
                 nextSelector: '.next-btn-sensor',
                 prevSelector: '.prev-btn-sensor',
                 progressLabelId: 'sensorProgressLabel',
-                progressBarId: 'sensorProgressBar'
+                progressBarId: 'sensorProgressBar',
+                analyticsId: 'alarm_sensor_workflow'
             });
 
             setupLinearPrep({
@@ -2056,7 +2208,8 @@
                 nextSelector: '.next-btn-nvr',
                 prevSelector: '.prev-btn-nvr',
                 progressLabelId: 'nvrProgressLabel',
-                progressBarId: 'nvrProgressBar'
+                progressBarId: 'nvrProgressBar',
+                analyticsId: 'nvr_monitor_flow'
             });
 
             setupLinearPrep({
@@ -2064,19 +2217,22 @@
                 nextSelector: '.next-btn-nvr-no-monitor',
                 prevSelector: '.prev-btn-nvr-no-monitor',
                 progressLabelId: 'nvrWithoutMonitorProgressLabel',
-                progressBarId: 'nvrWithoutMonitorProgressBar'
+                progressBarId: 'nvrWithoutMonitorProgressBar',
+                analyticsId: 'nvr_no_monitor_flow'
             });
 
             // --- PHONE POPUP ---
             const phoneActionPopup = document.getElementById('phoneActionPopup');
             const callLink = document.getElementById('callLink');
             const textLink = document.getElementById('textLink');
+            let currentContactContext = 'support_number';
 
             document.querySelectorAll('.phone-action-btn').forEach(button => {
                 button.addEventListener('click', (e) => {
                     e.stopPropagation();
                     const container = button.closest('.phone-number-container') || button.closest('[data-number]');
                     const phoneNumber = container?.dataset.number || button.dataset.number;
+                    currentContactContext = container?.dataset.contactContext || button.dataset.contactContext || 'support_number';
                     if (!phoneNumber) return;
                     callLink.href = `tel:${phoneNumber}`;
                     textLink.href = `sms:${phoneNumber}`;
@@ -2095,6 +2251,30 @@
                 }
             });
 
+            callLink?.addEventListener('click', () => {
+                trackEvent('customer_contact_action', { channel: 'call', context: currentContactContext });
+            });
+            textLink?.addEventListener('click', () => {
+                trackEvent('customer_contact_action', { channel: 'text', context: currentContactContext });
+            });
+
+            document.querySelectorAll('a[href^="mailto:"]').forEach(link => {
+                link.addEventListener('click', () => {
+                    trackEvent('customer_contact_action', { channel: 'email', context: link.dataset.contactContext || 'email_link' });
+                });
+            });
+
+            document.addEventListener('click', (event) => {
+                const telAnchor = event.target.closest('a[href^="tel:"]');
+                if (telAnchor && telAnchor !== callLink) {
+                    trackEvent('customer_contact_action', { channel: 'call', context: telAnchor.dataset.contactContext || 'tel_link' });
+                }
+                const smsAnchor = event.target.closest('a[href^="sms:"]');
+                if (smsAnchor && smsAnchor !== textLink) {
+                    trackEvent('customer_contact_action', { channel: 'text', context: smsAnchor.dataset.contactContext || 'sms_link' });
+                }
+            });
+
             // --- INITIALIZATION ---
             window.addEventListener('load', () => {
                 const mainContent = document.querySelector('main');
@@ -2103,7 +2283,7 @@
                     mainContent.classList.remove('opacity-0');
                     choiceView.classList.remove('hidden');
                     
-                    gtag('event', 'page_view', {
+                    trackEvent('customer_view_page', {
                         page_title: 'Choice',
                         page_path: '/choice'
                     });
