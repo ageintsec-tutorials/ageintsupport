@@ -138,7 +138,7 @@
                             <div class="flex-1 space-y-3 text-center lg:text-left lg:max-w-2xl">
                                 <p class="inline-flex items-center gap-2 text-xs uppercase tracking-wide font-semibold bg-white/20 px-3 py-1 rounded-full mx-auto lg:mx-0">Ageint Security</p>
                                 <h1 class="text-3xl sm:text-4xl font-black leading-tight">How can we help you today?</h1>
-                                <p class="text-white/80 font-medium text-base">Choose the experience that fits—guided DIY playbooks or a premium remote session with an Ageint technician.</p>
+                                <p class="text-white/80 font-medium text-base">Everything you need for system care in one place: services, troubleshooting guides, and remote support prep.</p>
                             </div>
                             <div class="grid grid-cols-2 gap-3 text-center w-full lg:w-auto lg:max-w-xs">
                                 <div class="bg-white/20 rounded-2xl px-3 py-2">
@@ -153,45 +153,61 @@
                         </div>
                     </div>
 
-                    <div id="firmwareAlert" role="alert" class="relative overflow-hidden bg-white border border-yellow-200 rounded-2xl p-4 sm:p-5 shadow-md">
-                        <button id="closeFirmwareAlert" aria-label="Close firmware update notification" class="absolute top-3 right-3 text-yellow-600 hover:text-yellow-800">
-                        <svg class="fill-current h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><title>Close</title><path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"/></svg>
-                    </button>
-                        <div class="flex flex-col sm:flex-row gap-4 sm:items-center">
+                    <div id="firmwareAlert" role="alert" class="relative overflow-hidden bg-white border border-yellow-200 rounded-xl p-3 sm:p-4 shadow-sm">
+                        <button id="closeFirmwareAlert" aria-label="Close firmware update notification" class="absolute top-2 right-2 text-yellow-600 hover:text-yellow-800">
+                            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><title>Close</title><path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"/></svg>
+                        </button>
+                        <div class="flex flex-col sm:flex-row gap-3 sm:items-center">
                             <div class="flex items-start gap-3 text-yellow-800">
-                                <div class="h-12 w-12 rounded-2xl bg-yellow-50 flex items-center justify-center overflow-hidden">
-                                    <img src="https://cdn.jsdelivr.net/gh/ageintsec-tutorials/ageintsupport@main/icons8-update.gif" alt="Update in progress" class="h-10 w-10 object-contain">
-                            </div>
+                                <div class="h-10 w-10 rounded-xl bg-yellow-50 flex items-center justify-center overflow-hidden">
+                                    <img src="https://cdn.jsdelivr.net/gh/ageintsec-tutorials/ageintsupport@main/icons8-update.gif" alt="Update in progress" class="h-8 w-8 object-contain">
+                                </div>
                                 <div>
-                                    <p class="font-bold text-lg">Important firmware update required</p>
-                                    <p class="text-sm font-semibold">For installs between 9/1/2025 and 11/7/2025</p>
-                                    <p class="text-sm text-gray-700 mt-1">Run this before your next service call to keep your system secure.</p>
-                        </div>
+                                    <p class="font-bold text-base leading-tight">Important firmware update required</p>
+                                    <p class="text-xs font-semibold">For installs between 9/1/2025 and 11/7/2025</p>
+                                    <p class="text-xs text-gray-700 mt-1">Run this before your next service call to keep your system secure.</p>
+                                </div>
                             </div>
                             <div class="flex sm:flex-col gap-2 sm:items-end">
-                                <button id="firmwareGoBtn" class="inline-flex items-center justify-center bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2.5 px-4 rounded-xl shadow-sm transition-all">Launch update</button>
+                                <button id="firmwareGoBtn" class="inline-flex items-center justify-center bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-1.5 px-3 rounded-lg shadow-sm transition-all text-xs sm:text-sm">Launch update</button>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
-                    <button id="selfServiceBtn" aria-describedby="selfTroubleshootingDesc" class="group bg-white border border-gray-200 rounded-3xl p-5 sm:p-6 text-left shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                <div class="mt-8 space-y-4">
+                    <button id="newInstallBtn" class="w-full group bg-white border border-emerald-200 rounded-3xl p-5 sm:p-6 text-left shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                        <div class="flex items-start gap-3">
+                            <div class="bg-emerald-50 text-emerald-600 p-3 rounded-2xl">
+                                <img src="https://cdn.jsdelivr.net/gh/ageintsec-tutorials/ageintsupport@main/icons8-administrative-tools-64.png" alt="Your New System" class="h-10 w-10 object-contain">
+                            </div>
+                            <div class="space-y-1">
+                                <p class="text-xs uppercase tracking-wide text-emerald-500 font-semibold">New install</p>
+                                <p class="text-2xl font-bold text-gray-900">Your New System</p>
+                                <p class="text-sm text-gray-600 font-semibold">Diagnostic, training, upgrade planning, and punch-list support.</p>
+                            </div>
+                        </div>
+                        <div class="pt-5 flex items-center justify-end text-sm font-semibold text-gray-500">
+                            <span class="text-emerald-600 group-hover:translate-x-1 transition">Open &rarr;</span>
+                        </div>
+                    </button>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <button id="selfServiceBtn" aria-describedby="selfTroubleshootingDesc" class="group bg-white border border-gray-200 rounded-3xl p-5 sm:p-6 text-left shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                         <div class="flex items-start gap-3">
                             <div class="bg-blue-50 text-blue-600 p-3 rounded-2xl">
                                 <img src="https://cdn.jsdelivr.net/gh/ageintsec-tutorials/ageintsupport@main/icons8-user-manual-64.png" alt="Self-Service Guides" class="h-10 w-10 object-contain">
                             </div>
                             <div class="space-y-1">
                                 <p class="text-xs uppercase tracking-wide text-blue-500 font-semibold">Self-service guides</p>
-                                <p class="text-2xl font-bold text-gray-900">Fix it yourself</p>
+                                <p class="text-2xl font-bold text-gray-900">Quick Fix Guides</p>
                                 <p id="selfTroubleshootingDesc" class="text-sm text-gray-600 font-semibold">Camera + alarm playbooks, DMSS flows, and prep checklists.</p>
                             </div>
                         </div>
                         <div class="pt-5 flex items-center justify-end text-sm font-semibold text-gray-500">
-                            <span class="text-blue-600 group-hover:translate-x-1 transition">Start →</span>
+                            <span class="text-blue-600 group-hover:translate-x-1 transition">Start &rarr;</span>
                         </div>
                     </button>
-                    <button id="remoteSupportBtn" aria-describedby="remoteSupportDesc" class="group bg-white border border-gray-200 rounded-3xl p-5 sm:p-6 text-left shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                        <button id="remoteSupportBtn" aria-describedby="remoteSupportDesc" class="group bg-white border border-gray-200 rounded-3xl p-5 sm:p-6 text-left shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                         <div class="flex items-start gap-3">
                             <div class="bg-purple-50 text-purple-600 p-3 rounded-2xl">
                                 <img src="https://cdn.jsdelivr.net/gh/ageintsec-tutorials/ageintsupport@main/icons8-phone-64.png" alt="Remote Support" class="h-10 w-10 object-contain">
@@ -204,10 +220,176 @@
                         </div>
                         <div class="pt-5 flex items-center justify-between text-sm font-semibold text-gray-500">
                             <span>Average prep: 10 minutes</span>
-                            <span class="text-purple-600 group-hover:translate-x-1 transition">Prep →</span>
+                            <span class="text-purple-600 group-hover:translate-x-1 transition">Prep &rarr;</span>
                         </div>
-                    </button>
+                        </button>
+                    </div>
                 </div>
+            </div>
+
+            <!-- New Install View -->
+            <div id="newInstallView" class="hidden view-transition">
+                <div class="space-y-6">
+                    <div class="bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 text-white rounded-3xl p-6 sm:p-8 shadow-lg">
+                        <div class="flex flex-col lg:flex-row items-start gap-6">
+                            <div class="flex-1 space-y-3 text-center lg:text-left">
+                                <p class="inline-flex items-center gap-2 text-xs uppercase tracking-wide font-semibold bg-white/20 px-3 py-1 rounded-full mx-auto lg:mx-0">Welcome kit</p>
+                                <h1 class="text-2xl sm:text-4xl font-black leading-tight">Welcome to your new system</h1>
+                                <p class="text-white/80 font-medium text-sm sm:text-base">Confirm everything feels perfect, request free diagnostics, and line up training so your team is confident from day one.</p>
+                            </div>
+                            <div class="grid grid-cols-2 gap-3 text-center w-full lg:w-auto">
+                                <div class="bg-white/20 rounded-2xl px-3 py-2">
+                                    <p class="text-xl font-black">Free</p>
+                                    <p class="text-[10px] uppercase tracking-wide text-white/80">Remote QC</p>
+                                </div>
+                                <div class="bg-white/20 rounded-2xl px-3 py-2">
+                                    <p class="text-xl font-black">24/7</p>
+                                    <p class="text-[10px] uppercase tracking-wide text-white/80">Text support</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4 sm:space-y-5">
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-5 items-start">
+                            <div class="relative overflow-hidden bg-gradient-to-br from-white via-emerald-50 to-emerald-100/50 backdrop-blur-sm border border-emerald-100 rounded-3xl p-5 sm:p-6 shadow-md shadow-emerald-100 lg:self-start" data-collapsible-card="quality">
+                                <div class="absolute -top-8 -right-6 w-24 h-24 bg-emerald-100/40 blur-2xl rounded-full pointer-events-none"></div>
+                                <div class="flex flex-col gap-3 relative">
+                                    <div class="flex items-center justify-between gap-3 flex-wrap">
+                                <div class="flex items-center gap-3">
+                                            <div class="bg-emerald-600/10 text-emerald-600 p-3 rounded-2xl ring-1 ring-emerald-100">
+                                                <img src="https://cdn.jsdelivr.net/gh/ageintsec-tutorials/ageintsupport@main/icons8-verify-64.png" alt="Complimentary system check" class="h-10 w-10 object-contain">
+                                    </div>
+                                    <div>
+                                        <p class="text-xs uppercase tracking-wide text-emerald-500 font-semibold">Remote quality</p>
+                                                <div class="flex items-center gap-2 flex-wrap">
+                                                    <p class="text-lg font-bold text-gray-900">Enjoy a complimentary system check</p>
+                                                    <span class="inline-flex items-center text-[10px] font-black tracking-widest uppercase text-emerald-700 bg-white/80 border border-emerald-200 rounded-full px-2 py-0.5">Free</span>
+                                    </div>
+                                                <p class="text-xs font-semibold text-emerald-600/80 mt-1">Free health scan + technician summary in minutes.</p>
+                                </div>
+                                        </div>
+                                        <div class="flex items-center gap-2 shrink-0">
+                                            <button type="button" class="text-xs font-semibold text-emerald-700 border border-emerald-200/80 rounded-full px-3 py-1 hover:bg-emerald-50 transition" data-open-card>Open</button>
+                                            <button type="button" class="text-xs font-semibold text-white bg-emerald-600 border border-emerald-600 rounded-full px-3 py-1 hover:bg-emerald-700 transition hidden" data-close-card>Close</button>
+                                        </div>
+                                    </div>
+                                    <div class="border-t border-emerald-50 pt-4 flex flex-col gap-4 hidden" data-collapsible-content>
+                                        <p class="text-sm text-gray-600 font-semibold leading-relaxed">Request a complimentary diagnostic and a technician will remotely verify cameras, access, and alarm health before you notice an issue.</p>
+                                        <ul class="text-xs text-gray-600 font-semibold space-y-1.5">
+                                            <li class="flex items-start gap-2"><span class="text-emerald-500 text-lg leading-none">•</span><span>Same-day notes from an Ageint technician</span></li>
+                                        </ul>
+                                <div class="flex flex-col gap-2">
+                                            <button id="newInstallDiagnosticBtn" type="button" data-contact-context="new_install_diagnostic" class="inline-flex items-center justify-center gap-2 w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-4 py-2.5 rounded-xl transition shadow-md shadow-emerald-200/60">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></svg>
+                                                <span>Request Alarm Diagnostic</span>
+                                            </button>
+                                            <button id="newInstallQualityBtn" type="button" data-contact-context="new_install_quality" class="inline-flex items-center justify-center gap-2 w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-4 py-2.5 rounded-xl transition shadow-md shadow-emerald-200/60">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></svg>
+                                                <span>Schedule remote quality control</span>
+                                            </button>
+                                </div>
+                                        <p class="text-xs font-semibold text-emerald-700/70 text-center">Average diagnostic turnaround: ~10 minutes.</p>
+                            </div>
+                                </div>
+                            </div>
+                            <div class="relative overflow-hidden bg-gradient-to-br from-white via-sky-50 to-sky-100/60 backdrop-blur-sm border border-sky-100 rounded-3xl p-5 sm:p-6 shadow-md shadow-sky-100 lg:self-start" data-collapsible-card="training">
+                                <div class="absolute -bottom-7 -left-8 w-24 h-24 bg-sky-100/40 blur-2xl rounded-full pointer-events-none"></div>
+                                <div class="flex flex-col gap-3 relative">
+                                    <div class="flex items-center justify-between gap-3 flex-wrap">
+                                <div class="flex items-center gap-3">
+                                            <div class="bg-sky-600/10 text-sky-600 p-3 rounded-2xl ring-1 ring-sky-100">
+                                                <img src="https://cdn.jsdelivr.net/gh/ageintsec-tutorials/ageintsupport@main/icons8-study-64.png" alt="Remote training" class="h-10 w-10 object-contain">
+                                    </div>
+                                    <div>
+                                        <p class="text-xs uppercase tracking-wide text-sky-500 font-semibold">Training & onboarding</p>
+                                                <div class="flex items-center gap-2 flex-wrap">
+                                                    <p class="text-lg font-bold text-gray-900">Book a remote training session</p>
+                                                    <span class="inline-flex items-center text-[10px] font-black tracking-widest uppercase text-sky-700 bg-white/80 border border-sky-200 rounded-full px-2 py-0.5">Free</span>
+                                    </div>
+                                                <p class="text-xs font-semibold text-sky-600/80 mt-1">Live coaching for households, staff, or new hires.</p>
+                                </div>
+                                        </div>
+                                        <div class="flex items-center gap-2 shrink-0">
+                                            <button type="button" class="text-xs font-semibold text-sky-700 border border-sky-200 rounded-full px-3 py-1 hover:bg-sky-50 transition" data-open-card>Open</button>
+                                            <button type="button" class="text-xs font-semibold text-white bg-sky-600 border border-sky-600 rounded-full px-3 py-1 hover:bg-sky-700 transition hidden" data-close-card>Close</button>
+                                        </div>
+                                    </div>
+                                    <div class="border-t border-sky-50 pt-4 flex flex-col gap-4 hidden" data-collapsible-content>
+                                        <p class="text-sm text-gray-600 font-semibold leading-relaxed">Tap once to schedule a remote onboarding or refresher session for your team’s daily workflows.</p>
+                                        <ul class="text-xs text-gray-600 font-semibold space-y-1.5">
+                                            <li class="flex items-start gap-2"><span class="text-sky-500 text-lg leading-none">•</span><span>Camera, access, and alarm walkthroughs</span></li>
+                                            <li class="flex items-start gap-2"><span class="text-sky-500 text-lg leading-none">•</span><span>Perfect for onboarding new staff or refreshers</span></li>
+                                        </ul>
+                                        <button id="newInstallTrainingBtn" class="inline-flex items-center justify-center gap-2 w-full bg-sky-600 hover:bg-sky-700 text-white font-semibold px-4 py-2.5 rounded-xl transition shadow-md shadow-sky-200/60">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422A12.083 12.083 0 0 1 21 13.255M12 14l-6.16-3.422A12.083 12.083 0 0 0 3 13.255m9 4.745v6"/></svg>
+                                    <span>Request training session</span>
+                                </button>
+                                        <p class="text-xs font-semibold text-sky-700/70 text-center">Most remote walkthroughs wrap in 20–30 minutes.</p>
+                            </div>
+                        </div>
+                            </div>
+                        </div>
+                        <div class="relative overflow-hidden bg-gradient-to-br from-white via-amber-50 to-amber-100/60 backdrop-blur-sm border border-amber-100 rounded-3xl p-5 sm:p-6 shadow-lg shadow-amber-100 lg:self-start" data-collapsible-card="roadmap">
+                            <div class="absolute -top-6 left-8 w-24 h-24 bg-amber-100/40 blur-2xl rounded-full pointer-events-none"></div>
+                            <div class="flex flex-col gap-3 relative">
+                                <div class="flex items-center justify-between gap-3 flex-wrap">
+                            <div class="flex items-center gap-3">
+                                        <div class="bg-amber-500/10 text-amber-600 p-3 rounded-2xl ring-1 ring-amber-100">
+                                            <img src="https://cdn.jsdelivr.net/gh/ageintsec-tutorials/ageintsupport@main/icons8-up-64.png" alt="Upgrade planning" class="h-10 w-10 object-contain">
+                                </div>
+                                <div>
+                                    <p class="text-xs uppercase tracking-wide text-amber-500 font-semibold">Future roadmap</p>
+                                    <p class="text-lg font-bold text-gray-900">Plan enhancements & next steps</p>
+                                            <p class="text-xs font-semibold text-amber-700/80 mt-1">Stay ahead with scheduled upgrades and prep guides.</p>
+                                </div>
+                            </div>
+                                    <div class="flex items-center gap-2 shrink-0">
+                                        <button type="button" class="text-xs font-semibold text-amber-700 border border-amber-200 rounded-full px-3 py-1 hover:bg-amber-50 transition" data-open-card>Open</button>
+                                        <button type="button" class="text-xs font-semibold text-white bg-amber-500 border border-amber-500 rounded-full px-3 py-1 hover:bg-amber-600 transition hidden" data-close-card>Close</button>
+                                    </div>
+                                </div>
+                                <div class="border-t border-amber-50 pt-4 flex flex-col gap-4 hidden" data-collapsible-content>
+                                    <p class="text-sm text-gray-600 font-semibold leading-relaxed">Keep firmware maintenance, phased upgrades, and add-ons organized with a personalized roadmap so every visit builds toward the bigger picture.</p>
+                                    <div class="rounded-2xl border border-amber-100 bg-gradient-to-br from-amber-50 via-white to-amber-50/80 p-4 space-y-4">
+                                        <div class="grid sm:grid-cols-2 gap-3 text-sm font-semibold text-gray-700">
+                                            <div class="bg-white/80 rounded-2xl p-3 border border-amber-100 shadow-sm">
+                                                <p class="text-amber-700 font-bold text-sm uppercase tracking-wide">Upgrade path</p>
+                                                <p class="text-xs mt-1 leading-relaxed">Meet with your sales rep to map the smartest “what’s next” steps for your exact install.</p>
+                                            </div>
+                                            <div class="bg-white/80 rounded-2xl p-3 border border-amber-100 shadow-sm">
+                                                <p class="text-amber-700 font-bold text-sm uppercase tracking-wide">Ready to add on?</p>
+                                                <p class="text-xs mt-1 leading-relaxed">They’ll coordinate approvals, billing, and technician scheduling so changes go live smoothly.</p>
+                                            </div>
+                                        </div>
+                                        <button id="openRoadmapModalBtn" type="button" class="inline-flex items-center justify-center gap-2 w-full bg-amber-500 hover:bg-amber-600 text-white font-semibold px-4 py-2.5 rounded-xl transition shadow-md shadow-amber-200/70">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6v12m6-6H6"/></svg>
+                                            <span>Open roadmap guide</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="border-t border-gray-200/60 pt-6 mt-6">
+                        <div class="camera-contact-bubble space-y-3 sm:space-y-4">
+                        <p class="text-sm uppercase tracking-wide text-emerald-600 font-semibold">Front desk</p>
+                        <div class="phone-number-container" data-number="7139623558" data-contact-context="front_desk_main">
+                            <p class="text-3xl font-black text-gray-900">713-962-3558</p>
+                        <p class="text-sm text-gray-600 font-semibold">Need anything else? Give us a quick call and we’ll take care of it.</p>
+                        <a href="tel:7139623558" class="inline-flex items-center gap-2 bg-white border border-gray-200 rounded-full px-4 py-2 font-semibold text-gray-700 hover:border-emerald-400 transition">
+                            <img src="https://cdn.jsdelivr.net/gh/ageintsec-tutorials/ageintsupport@main/icons8-phone-64.png" alt="Call" class="h-6 w-6">
+                            <span>Call now</span>
+                        </a>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <button id="newInstallBackBtn" class="w-full bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold py-2 px-4 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 mt-8 text-base">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 111.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" /></svg>
+                    <span>Return to Main Menu</span>
+                </button>
             </div>
 
             <!-- Self Service View -->
@@ -217,7 +399,7 @@
                         <div class="flex flex-col lg:flex-row items-start gap-6">
                             <div class="flex-1 space-y-3 text-center lg:text-left">
                                 <p class="inline-flex items-center gap-2 text-xs uppercase tracking-wide font-semibold bg-white/20 px-3 py-1 rounded-full mx-auto lg:mx-0">Self-service center</p>
-                                <h1 class="text-2xl sm:text-4xl font-black leading-tight">Fix it yourself with guided playbooks</h1>
+                                <h1 class="text-2xl sm:text-4xl font-black leading-tight">Quick Fix Guides with playbooks</h1>
                                 <p class="text-white/80 font-medium text-sm sm:text-base">Pick the system you need help with and follow the streamlined checklist to get back online quickly.</p>
                             </div>
                             <div class="grid grid-cols-1 gap-4 text-center w-full lg:w-auto">
@@ -506,7 +688,7 @@
                                 <div class="space-y-4">
                                     <p class="text-sm uppercase tracking-wide text-blue-600 font-semibold">Navigate menus</p>
                                     <h3 class="font-bold text-2xl text-gray-900">Open the P2P Screen</h3>
-                                    <p class="text-gray-600 font-medium">Right-click → <span class="tutorial-highlight">Main Menu</span> → enter passcode → <span class="tutorial-highlight">Network</span> → <span class="tutorial-highlight">P2P</span>.</p>
+                                    <p class="text-gray-600 font-medium">Right-click &rarr; <span class="tutorial-highlight">Main Menu</span> &rarr; enter passcode &rarr; <span class="tutorial-highlight">Network</span> &rarr; <span class="tutorial-highlight">P2P</span>.</p>
                             </div>
                         </div>
                         <div class="mt-8 flex justify-between">
@@ -635,7 +817,7 @@
                                 <div class="camera-step-badge">2</div>
                                 <div class="space-y-4">
                                     <p class="text-sm uppercase tracking-wide text-blue-600 font-semibold">Begin add flow</p>
-                                    <h3 class="font-bold text-2xl text-gray-900">Tap “+” → “SN/Scan”</h3>
+                                    <h3 class="font-bold text-2xl text-gray-900">Tap “+” &rarr; “SN/Scan”</h3>
                                     <p class="text-gray-600 font-medium">Choose <span class="tutorial-highlight">SN/Scan</span>; we’ll enter the serial manually.</p>
                                 </div>
                             </div>
@@ -1248,7 +1430,7 @@
                             <li>• Connectivity dropouts</li>
                             <li>• Slow or unresponsive menus</li>
                         </ul>
-                        <span class="text-sm font-semibold text-rose-500 group-hover:translate-x-1 transition inline-flex items-center gap-1">Launch panel prep →</span>
+                        <span class="text-sm font-semibold text-rose-500 group-hover:translate-x-1 transition inline-flex items-center gap-1">Launch panel prep &rarr;</span>
                     </button>
                     <button id="sensorIssuesBtn" class="group bg-white border border-orange-100 rounded-3xl p-5 text-left shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 space-y-3">
                         <div class="flex items-center gap-3">
@@ -1265,7 +1447,7 @@
                             <li>• Tamper or low-battery warnings</li>
                             <li>• Devices falling offline intermittently</li>
                         </ul>
-                        <span class="text-sm font-semibold text-orange-500 group-hover:translate-x-1 transition inline-flex items-center gap-1">Launch sensor prep →</span>
+                        <span class="text-sm font-semibold text-orange-500 group-hover:translate-x-1 transition inline-flex items-center gap-1">Launch sensor prep &rarr;</span>
                     </button>
                 </div>
                 <div class="camera-contact-bubble space-y-3 text-center sm:text-left mt-6">
@@ -1348,7 +1530,7 @@
                             <div>
                                 <p class="text-sm uppercase tracking-wide text-teal-600 font-semibold">Open advanced settings</p>
                                 <h3 class="font-bold text-2xl text-gray-900 mt-1">Access the Reboot Menu</h3>
-                                <p class="text-gray-600 font-medium mt-2 text-base">Swipe down from the top, then tap <span class="font-semibold">Settings → Advanced Settings</span>.</p>
+                                <p class="text-gray-600 font-medium mt-2 text-base">Swipe down from the top, then tap <span class="font-semibold">Settings &rarr; Advanced Settings</span>.</p>
                             </div>
                         </div>
                         <div class="mt-8 flex justify-between">
@@ -1545,25 +1727,25 @@
                     <h2 class="text-3xl font-bold leading-tight">Request System Training</h2>
                     <p class="text-gray-600 text-base font-semibold">Already installed but still learning? I’ll hop on a screen-share or call and walk you or your team through the everyday tasks that matter.</p>
                     <div class="space-y-3">
-                        <div class="camera-tip">
+                        <div class="flex items-start gap-3 rounded-2xl border border-emerald-100 bg-emerald-50/70 p-3 shadow-sm">
                             <span class="text-xl">📋</span>
                             <div>
                                 <p class="font-semibold text-gray-800">Focus on your setup</p>
-                                <p>We’ll review your installed cameras, sensors, or access devices and show you how to use them confidently.</p>
+                                <p class="text-sm leading-relaxed text-gray-600">We’ll review your installed cameras, sensors, or access devices and show you how to use them confidently.</p>
         </div>
                         </div>
-                        <div class="camera-tip">
+                        <div class="flex items-start gap-3 rounded-2xl border border-emerald-100 bg-white p-3 shadow-sm">
                             <span class="text-xl">👥</span>
                             <div>
                                 <p class="font-semibold text-gray-800">Perfect for new staff</p>
-                                <p>Schedule a quick onboarding session whenever you bring someone new onto the system.</p>
+                                <p class="text-sm leading-relaxed text-gray-600">Schedule a quick onboarding session whenever you bring someone new onto the system.</p>
                             </div>
                         </div>
-                        <div class="camera-tip">
+                        <div class="flex items-start gap-3 rounded-2xl border border-emerald-100 bg-white p-3 shadow-sm">
                             <span class="text-xl">💡</span>
                             <div>
                                 <p class="font-semibold text-gray-800">Ask anything</p>
-                                <p>Firmware updates, notification rules, exporting clips—bring a list and we’ll check them off together.</p>
+                                <p class="text-sm leading-relaxed text-gray-600">Firmware updates, notification rules, exporting clips—bring a list and we’ll check them off together.</p>
                             </div>
                         </div>
                     </div>
@@ -1572,9 +1754,9 @@
                     <p class="text-sm uppercase tracking-wide text-gray-500 font-semibold">Talk with Levi</p>
                     <div class="camera-contact-bubble space-y-3">
                         <div class="phone-number-container flex items-center justify-center gap-3" data-number="8326106820">
-                            <span class="phone-number font-bold text-3xl text-gray-900" data-number="8326106820">832-610-6820</span>
-                            <button class="phone-action-btn inline-flex align-middle" data-text-only="false">
-                                <img src="https://cdn.jsdelivr.net/gh/ageintsec-tutorials/ageintsupport@main/speechbubble.png" alt="Text or Call" class="h-8 w-8">
+                            <span class="phone-number font-bold text-xl text-gray-900" data-number="8326106820">832-610-6820</span>
+                            <button class="phone-action-btn inline-flex align-middle shrink-0" data-text-only="false">
+                                <img src="https://cdn.jsdelivr.net/gh/ageintsec-tutorials/ageintsupport@main/speechbubble.png" alt="Text or Call" class="h-6 w-6 object-contain">
                             </button>
                         </div>
                         <a href="mailto:lmccarty@ageintsecurity.com" class="inline-flex items-center justify-center gap-2 w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2.5 rounded-full transition text-[11px] sm:text-xs leading-tight text-center whitespace-normal break-words">
@@ -1628,12 +1810,11 @@
     
     <!-- UPS Info Modal -->
     <div id="upsModal" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-40 transition-opacity duration-300">
-        <div class="bg-white rounded-2xl shadow-lg p-8 max-w-lg w-full text-gray-800 border border-gray-200/80 relative transition-transform duration-300 transform scale-95">
-            <button id="closeUpsModalBtn" class="absolute top-4 right-4 text-2xl text-gray-600 hover:text-gray-900 leading-none">&times;</button>
-            <h2 class="text-2xl font-bold mb-4">Example Backup Battery (UPS)</h2>
-            <p class="mb-4 text-gray-700 font-semibold text-base">A backup battery (UPS) often looks like a small black tower or power strip. Here is an example:</p>
-            <div class="my-4 p-2 border rounded-lg bg-gray-100">
-                <img src="https://i.ebayimg.com/images/g/rMIAAOSwqQNm2maj/s-l1200.jpg" alt="Backup Battery / UPS" class="rounded-md w-full w-full max-w-md mx-auto">
+        <div class="bg-white rounded-2xl shadow-2xl p-5 max-w-md w-full text-gray-800 border border-slate-200 relative transition-transform duration-300 transform scale-95">
+            <button id="closeUpsModalBtn" class="absolute top-3 right-3 text-2xl text-gray-600 hover:text-gray-900 leading-none">&times;</button>
+            <div class="space-y-4 text-center">
+                <h2 class="text-xl font-bold text-gray-900">Backup Battery (UPS)</h2>
+                <img src="https://i.ebayimg.com/images/g/rMIAAOSwqQNm2maj/s-l1200.jpg" alt="Backup Battery / UPS" class="rounded-xl w-full h-auto max-h-64 object-contain border border-slate-200 mx-auto">
             </div>
         </div>
     </div>
@@ -1749,7 +1930,7 @@
                 <div class="bg-blue-50 border border-blue-100 rounded-2xl p-4 space-y-2 text-sm font-semibold text-blue-900">
                     <p class="flex items-center gap-2"><span class="h-2 w-2 rounded-full bg-blue-500"></span>If you still don’t see it, text us a screenshot of the Wi-Fi list.</p>
                     <p class="text-blue-700">832-610-6820 · Levi / Ageint Security</p>
-                    <a href="sms:18326106820?body=Hi%20Levi%2C%20I%20still%20cannot%20see%20Ageint%20Data.%20Here%20is%20a%20screenshot%20of%20my%20Wi-Fi%20list." data-contact-context="wifi_missing_screenshot" class="inline-flex items-center justify-center gap-2 bg-white text-blue-700 border border-blue-200 rounded-xl px-3 py-2 text-sm font-semibold hover:bg-blue-100 transition">
+                    <a href="sms:18326106820?body=Hi%2C%20I%20still%20cannot%20see%20Ageint%20Data.%20Here%20is%20a%20screenshot%20of%20my%20Wi-Fi%20list." data-contact-context="wifi_missing_screenshot" class="inline-flex items-center justify-center gap-2 bg-white text-blue-700 border border-blue-200 rounded-xl px-3 py-2 text-sm font-semibold hover:bg-blue-100 transition">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-9a2 2 0 0 1 2-2h2m4-4h6a2 2 0 0 1 2 2v2H9a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg>
                         <span>Text screenshot</span>
                     </a>
@@ -1758,10 +1939,87 @@
         </div>
     </div>
 
+    <!-- SMS Prefill Modal -->
+    <div id="smsPrefillModal" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-50 transition-opacity duration-300">
+        <div class="bg-white rounded-3xl shadow-2xl p-6 sm:p-8 max-w-lg w-full text-gray-800 border border-gray-200/80 relative transition-transform duration-300 transform scale-95">
+            <button id="closeSmsPrefillModalBtn" class="absolute top-4 right-4 text-2xl text-gray-600 hover:text-gray-900 leading-none">&times;</button>
+            <div class="space-y-5">
+                <div class="space-y-1">
+                    <p id="smsPrefillBadge" class="inline-flex items-center gap-2 text-[10px] uppercase tracking-wide font-semibold px-3 py-1 rounded-full bg-emerald-50 text-emerald-700">Alarm systems</p>
+                    <h2 id="smsPrefillTitle" class="text-2xl font-bold text-gray-900">Request Alarm Diagnostic</h2>
+                    <p id="smsPrefillSubtitle" class="text-sm text-gray-600 font-semibold">Tell us who we’re helping so we can personalize the diagnostic text for you.</p>
+                </div>
+                <div class="space-y-2">
+                    <label for="smsPrefillNameInput" class="text-sm font-semibold text-gray-800">Name on the account</label>
+                    <input id="smsPrefillNameInput" type="text" class="w-full rounded-xl border border-gray-200 px-4 py-2.5 text-gray-800 font-semibold focus:ring-2 focus:ring-emerald-200 focus:border-emerald-300 transition" placeholder="e.g., Alex Parker">
+                    <p class="text-xs font-semibold text-gray-500">We’ll drop this into your text automatically.</p>
+                </div>
+                <p id="smsPrefillError" class="text-sm text-red-600 font-semibold hidden">Please add the account name before sending.</p>
+                <div class="flex flex-col sm:flex-row gap-3">
+                    <button id="smsPrefillCancelBtn" type="button" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-gray-200 text-gray-700 font-semibold hover:bg-gray-50 transition">Close</button>
+                    <button id="smsPrefillSendBtn" type="button" disabled class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-semibold opacity-60 cursor-not-allowed transition">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 7v13a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V7M16 3H8a1 1 0 0 0-1 1v3h10V4a1 1 0 0 0-1-1z"/></svg>
+                        <span>Open text message</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Roadmap Info Modal -->
+    <div id="roadmapInfoModal" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-50 transition-opacity duration-300">
+        <div class="bg-gradient-to-br from-white via-amber-50 to-white rounded-3xl shadow-2xl p-6 sm:p-8 max-w-2xl w-full text-gray-800 border border-amber-100 relative transition-transform duration-300 transform scale-95">
+            <button id="closeRoadmapInfoModalBtn" class="absolute top-4 right-4 text-2xl text-gray-600 hover:text-gray-900 leading-none">&times;</button>
+            <div class="space-y-6">
+                <div class="space-y-5">
+                    <div class="space-y-3">
+                        <p class="inline-flex items-center gap-2 text-[10px] uppercase tracking-wide font-semibold px-3 py-1 rounded-full bg-amber-100 text-amber-800 w-max">Future roadmap</p>
+                        <h2 class="text-3xl font-bold text-gray-900 leading-tight">Plan enhancements & next steps</h2>
+                        <p class="text-gray-600 font-semibold text-sm">Your sales representative will help you build a personalized upgrade strategy tailored to your site.</p>
+                    </div>
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <div class="bg-gradient-to-br from-white to-amber-50/40 rounded-2xl border border-amber-200/80 p-5 shadow-sm hover:shadow-md transition">
+                            <div class="flex items-start gap-3 mb-3">
+                                <div class="bg-amber-100 rounded-xl p-2 shrink-0">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-700" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="text-amber-700 font-bold text-sm uppercase tracking-wide mb-2">Tailored upgrade path</p>
+                                    <p class="text-sm leading-relaxed text-gray-700 font-medium">Connect with your sales representative to map the smartest upgrade order for your exact site layout.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-gradient-to-br from-white to-amber-50/40 rounded-2xl border border-amber-200/80 p-5 shadow-sm hover:shadow-md transition">
+                            <div class="flex items-start gap-3 mb-3">
+                                <div class="bg-amber-100 rounded-xl p-2 shrink-0">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-700" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="text-amber-700 font-bold text-sm uppercase tracking-wide mb-2">Ready-to-go execution</p>
+                                    <p class="text-sm leading-relaxed text-gray-700 font-medium">When you're ready to add hardware or services, they'll handle approvals, paperwork, and technician scheduling.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="rounded-3xl border-2 border-amber-200 bg-gradient-to-br from-amber-50/60 to-white p-6 space-y-4 shadow-md">
+                    <div class="space-y-2">
+                        <p class="text-lg font-bold text-gray-900">Don't know who your sales rep is?</p>
+                        <p class="text-sm font-semibold text-gray-600 leading-relaxed">Click below and we'll text you back with their contact information.</p>
+                    </div>
+                    <button id="salesRepRequestBtn" type="button" class="inline-flex items-center justify-center gap-2 w-full sm:w-auto bg-amber-500 hover:bg-amber-600 text-white font-semibold px-6 py-3 rounded-xl transition shadow-lg shadow-amber-200/60 hover:shadow-xl">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6v12m6-6H6"/></svg>
+                        <span>Request</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Phone Action Pop-up -->
-    <div id="phoneActionPopup" class="hidden absolute z-50 bg-white rounded-lg shadow-lg border border-gray-200 text-center">
-        <a id="callLink" href="#" class="block px-4 py-2 text-base font-semibold text-blue-600 hover:bg-gray-100 rounded-t-lg">Call</a>
-        <a id="textLink" href="#" class="block px-4 py-2 text-base font-semibold text-blue-600 hover:bg-gray-100 rounded-b-lg">Text</a>
+    <div id="phoneActionPopup" class="hidden absolute z-50 bg-white rounded-xl shadow-lg border border-gray-200 text-center w-44">
+        <a id="callLink" href="#" class="block px-4 py-2 text-base font-semibold text-blue-600 hover:bg-gray-100 rounded-t-xl">Call</a>
+        <a id="textLink" href="#" class="block px-4 py-2 text-base font-semibold text-blue-600 hover:bg-gray-100 rounded-b-xl">Text</a>
     </div>
 
     <script>
@@ -1771,6 +2029,7 @@
             const views = {
                 choice: document.getElementById('choiceView'),
                 selfService: document.getElementById('selfServiceView'),
+                newInstall: document.getElementById('newInstallView'),
                 cameraTroubleshooting: document.getElementById('cameraTroubleshootingView'),
                 alarmTroubleshooting: document.getElementById('alarmTroubleshootingView'),
                 batteryTutorial: document.getElementById('batteryTutorialView'),
@@ -1795,6 +2054,51 @@
                 alarmPanel: { el: document.getElementById('alarmPanelModal'), closeBtn: document.getElementById('closeAlarmPanelModalBtn') },
                 diagnostic: { el: document.getElementById('diagnosticModal'), openBtn: document.getElementById('diagnosticRequestBtn'), closeBtn: document.getElementById('closeDiagnosticModalBtn') },
                 wifiHelp: { el: document.getElementById('wifiMissingModal'), openBtn: document.getElementById('wifiMissingBtn'), closeBtn: document.getElementById('closeWifiMissingModalBtn') },
+                smsPrefill: { el: document.getElementById('smsPrefillModal'), closeBtn: document.getElementById('closeSmsPrefillModalBtn') },
+                roadmapInfo: { el: document.getElementById('roadmapInfoModal'), closeBtn: document.getElementById('closeRoadmapInfoModalBtn') },
+            };
+
+            const smsPrefillElements = {
+                badge: document.getElementById('smsPrefillBadge'),
+                title: document.getElementById('smsPrefillTitle'),
+                subtitle: document.getElementById('smsPrefillSubtitle'),
+                nameInput: document.getElementById('smsPrefillNameInput'),
+                error: document.getElementById('smsPrefillError'),
+                cancelBtn: document.getElementById('smsPrefillCancelBtn'),
+                sendBtn: document.getElementById('smsPrefillSendBtn'),
+            };
+            const smsPrefillBadgeBaseClasses = 'inline-flex items-center gap-2 text-[10px] uppercase tracking-wide font-semibold px-3 py-1 rounded-full';
+            const supportSmsNumber = '18326106820';
+            const smsPrefillOptions = {
+                diagnostic: {
+                    title: 'Request Alarm Diagnostic',
+                    subtitle: 'Tell us who we’re helping so we can personalize the diagnostic text for you.',
+                    badgeLabel: 'Alarm systems',
+                    badgeClasses: 'bg-emerald-50 text-emerald-700',
+                    template: 'Name: {name_prefill}, Requesting alarm diagnostic.',
+                    context: 'new_install_diagnostic',
+                },
+                quality: {
+                    title: 'Schedule Remote Quality Control',
+                    subtitle: 'We’ll line up a remote QC session at a time that works best for you.',
+                    badgeLabel: 'Remote quality',
+                    badgeClasses: 'bg-emerald-50 text-emerald-700',
+                    template: 'Name: {name_prefill}, requesting scheduled remote quality control.',
+                    context: 'new_install_quality',
+                },
+                salesRep: {
+                    title: 'Request My Sales Representative',
+                    subtitle: 'We’ll look up your sales representative and text you their info.',
+                    badgeLabel: 'Sales support',
+                    badgeClasses: 'bg-amber-50 text-amber-700',
+                    template: 'Name: {name_prefill}. Requesting to know who my sales representitive is.',
+                    context: 'sales_rep_lookup',
+                },
+            };
+            const smsPrefillState = {
+                template: smsPrefillOptions.diagnostic.template,
+                context: smsPrefillOptions.diagnostic.context,
+                phoneNumber: supportSmsNumber,
             };
 
             const trackEvent = (name, params = {}) => {
@@ -1863,9 +2167,68 @@
                 }
             };
 
+            const replaceNameTokens = (template, nameValue) => template.replace(/\{name(_prefill)?\}/gi, nameValue);
+            const setSmsPrefillButtonState = (enabled) => {
+                if (!smsPrefillElements.sendBtn) return;
+                smsPrefillElements.sendBtn.disabled = !enabled;
+                smsPrefillElements.sendBtn.classList.toggle('opacity-60', !enabled);
+                smsPrefillElements.sendBtn.classList.toggle('cursor-not-allowed', !enabled);
+            };
+            const resetSmsPrefillForm = () => {
+                if (smsPrefillElements.nameInput) {
+                    smsPrefillElements.nameInput.value = '';
+                }
+                smsPrefillElements.error?.classList.add('hidden');
+                setSmsPrefillButtonState(false);
+            };
+            const openSmsPrefillModal = (type) => {
+                const config = smsPrefillOptions[type];
+                if (!config || !modals.smsPrefill) return;
+                smsPrefillState.template = config.template;
+                smsPrefillState.context = config.context;
+                smsPrefillState.phoneNumber = config.phoneNumber || supportSmsNumber;
+                if (smsPrefillElements.title) smsPrefillElements.title.textContent = config.title;
+                if (smsPrefillElements.subtitle) smsPrefillElements.subtitle.textContent = config.subtitle;
+                if (smsPrefillElements.badge) {
+                    smsPrefillElements.badge.textContent = config.badgeLabel;
+                    smsPrefillElements.badge.className = `${smsPrefillBadgeBaseClasses} ${config.badgeClasses || ''}`.trim();
+                }
+                resetSmsPrefillForm();
+                showModal(modals.smsPrefill);
+            };
+            smsPrefillElements.nameInput?.addEventListener('input', () => {
+                smsPrefillElements.error?.classList.add('hidden');
+                const hasValue = !!smsPrefillElements.nameInput.value.trim();
+                setSmsPrefillButtonState(hasValue);
+            });
+            smsPrefillElements.cancelBtn?.addEventListener('click', () => hideModal(modals.smsPrefill));
+            smsPrefillElements.sendBtn?.addEventListener('click', () => {
+                const enteredName = smsPrefillElements.nameInput?.value.trim();
+                if (!enteredName) {
+                    smsPrefillElements.error?.classList.remove('hidden');
+                    smsPrefillElements.nameInput?.focus();
+                    setSmsPrefillButtonState(false);
+                    return;
+                }
+                const message = replaceNameTokens(smsPrefillState.template, enteredName);
+                const smsUrl = `sms:${smsPrefillState.phoneNumber}?body=${encodeURIComponent(message)}`;
+                trackEvent('customer_contact_action', { channel: 'text', context: smsPrefillState.context });
+                hideModal(modals.smsPrefill);
+                setTimeout(() => {
+                    window.location.href = smsUrl;
+                }, 200);
+            });
+
             Object.values(modals).forEach(modal => {
                 if (modal.openBtn) modal.openBtn.addEventListener('click', () => showModal(modal));
                 if (modal.closeBtn) modal.closeBtn.addEventListener('click', () => hideModal(modal));
+                if (modal.el) {
+                    modal.el.addEventListener('click', (event) => {
+                        if (event.target === modal.el) {
+                            hideModal(modal);
+                        }
+                    });
+                }
             });
             
             const prepControllers = {};
@@ -1927,6 +2290,10 @@
             // --- EVENT LISTENERS ---
 
             // Main Menu
+            document.getElementById('newInstallBtn')?.addEventListener('click', () => {
+                trackEvent('customer_workflow_selected', { workflow_id: 'new_install_checklist' });
+                showView(views.newInstall);
+            });
             document.getElementById('selfServiceBtn')?.addEventListener('click', () => {
                 trackEvent('customer_workflow_selected', { workflow_id: 'dashboard_self_service' });
                 showView(views.selfService);
@@ -2007,6 +2374,7 @@
                 prepControllers['camera-steps']?.();
                 showView(views.choice);
             });
+            document.getElementById('newInstallBackBtn')?.addEventListener('click', () => showView(views.choice));
             document.getElementById('accessBackBtn')?.addEventListener('click', () => showView(views.welcome));
             document.getElementById('accessFinishedBtn')?.addEventListener('click', () => {
                 const meta = tutorialMeta['accessSteps'];
@@ -2057,6 +2425,42 @@
             document.getElementById('backFromAlarmModalBtn')?.addEventListener('click', () => { hideModal(modals.alarmPanel); showView(views.welcome); });
             document.getElementById('diagnosticTextLink')?.addEventListener('click', () => {
                 trackEvent('customer_diagnostic_requested', { channel: 'sms', context: 'alarm_diagnostic' });
+            });
+            document.getElementById('newInstallDiagnosticBtn')?.addEventListener('click', () => {
+                trackEvent('customer_diagnostic_requested', { channel: 'sms', context: 'new_install' });
+                openSmsPrefillModal('diagnostic');
+            });
+            document.getElementById('newInstallTrainingBtn')?.addEventListener('click', () => {
+                trackEvent('customer_modal_opened', { modal_id: 'trainingModal', source: 'new_install' });
+                showModal(modals.training);
+            });
+            document.getElementById('newInstallQualityBtn')?.addEventListener('click', () => {
+                trackEvent('customer_quality_control_requested', { channel: 'sms', context: 'new_install' });
+                openSmsPrefillModal('quality');
+            });
+            document.getElementById('newInstallUpgradeBtn')?.addEventListener('click', () => {
+                trackEvent('customer_upgrade_inquiry', { channel: 'email', context: 'new_install' });
+            });
+            document.getElementById('openRoadmapModalBtn')?.addEventListener('click', () => {
+                trackEvent('customer_modal_opened', { modal_id: 'roadmapInfoModal', source: 'new_install' });
+                showModal(modals.roadmapInfo);
+            });
+            document.getElementById('salesRepRequestBtn')?.addEventListener('click', () => {
+                trackEvent('customer_sales_rep_request', { channel: 'sms', context: 'sales_rep_lookup' });
+                hideModal(modals.roadmapInfo);
+                setTimeout(() => openSmsPrefillModal('salesRep'), 200);
+            });
+            document.getElementById('newInstallFirmwareBtn')?.addEventListener('click', () => {
+                trackEvent('customer_workflow_selected', { workflow_id: 'new_install_firmware' });
+                showView(views.routerFirmware);
+            });
+            document.getElementById('newInstallCameraPrepBtn')?.addEventListener('click', () => {
+                trackEvent('customer_workflow_selected', { workflow_id: 'new_install_camera_prep' });
+                showView(views.camera);
+            });
+            document.getElementById('newInstallAlarmPrepBtn')?.addEventListener('click', () => {
+                trackEvent('customer_workflow_selected', { workflow_id: 'new_install_alarm_prep' });
+                showModal(modals.alarmPanel);
             });
             
             const setupRouterFirmwareSteps = () => {
@@ -2167,6 +2571,28 @@
                 updateView();
             };
             
+            const setupCollapsibleCards = () => {
+                const cards = document.querySelectorAll('[data-collapsible-card]');
+                cards.forEach(card => {
+                    const openBtn = card.querySelector('[data-open-card]');
+                    const closeBtn = card.querySelector('[data-close-card]');
+                    const content = card.querySelector('[data-collapsible-content]');
+                    if (!openBtn || !closeBtn || !content) return;
+
+                    const setState = (isOpen) => {
+                        content.classList.toggle('hidden', !isOpen);
+                        openBtn.classList.toggle('hidden', isOpen);
+                        closeBtn.classList.toggle('hidden', !isOpen);
+                        card.setAttribute('data-expanded', isOpen ? 'true' : 'false');
+                        content.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+                    };
+
+                    setState(false);
+                    openBtn.addEventListener('click', () => setState(true));
+                    closeBtn.addEventListener('click', () => setState(false));
+                });
+            };
+            
             setupLinearPrep({
                 containerId: 'camera-steps',
                 nextSelector: '.next-btn-camera',
@@ -2220,6 +2646,8 @@
                 progressBarId: 'nvrWithoutMonitorProgressBar',
                 analyticsId: 'nvr_no_monitor_flow'
             });
+            
+            setupCollapsibleCards();
 
             // --- PHONE POPUP ---
             const phoneActionPopup = document.getElementById('phoneActionPopup');
@@ -2309,12 +2737,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
