@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -223,83 +222,6 @@
         </div>
     </nav>
 
-    <div id="welcomeModal"
-        class="hidden fixed inset-0 bg-slate-900/50 backdrop-blur-sm flex items-center justify-center p-4 z-50 transition-opacity duration-300">
-        <div class="glass-panel rounded-3xl shadow-2xl max-w-2xl w-full overflow-hidden transform transition-all duration-300 scale-95 opacity-0"
-            id="welcomeModalContent">
-            <!-- Header (Clean) -->
-            <div class="p-8 pb-0">
-                <div class="flex items-center justify-between mb-4">
-                    <div class="inline-flex items-center gap-2 bg-emerald-50 border border-emerald-100 px-3 py-1 rounded-full">
-                        <span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
-                        <span class="text-xs font-bold uppercase tracking-wide text-emerald-700">Live Portal</span>
-                    </div>
-                </div>
-                <h2 class="text-3xl font-bold text-slate-900 mb-2">Welcome to Your Support Hub</h2>
-                <p class="text-slate-500 text-lg">We're constantly improving this experience to better serve you.</p>
-            </div>
-
-            <!-- Content -->
-            <div class="p-8 pt-6">
-                <div class="space-y-6">
-                    <!-- New Feature Highlight -->
-                    <div
-                        class="flex gap-4 items-start bg-white rounded-xl p-5 border border-slate-200 shadow-sm">
-                        <div class="flex-shrink-0 bg-blue-50 text-blue-600 rounded-lg p-2.5">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
-                                viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M13 10V3L4 14h7v7l9-11h-7z" />
-                            </svg>
-                        </div>
-                        <div class="flex-1">
-                            <div class="flex items-center gap-2 mb-1">
-                                <h3 class="text-base font-semibold text-slate-900">Network Health Check</h3>
-                                <span class="bg-blue-100 text-blue-700 text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wide">Just Added</span>
-                            </div>
-                            <p class="text-sm text-slate-600 leading-relaxed">Instantly test your internet speed, latency, and jitter to ensure your cameras can stream flawlessly in 4K.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="flex items-start gap-4 p-1">
-                        <div class="h-10 w-10 bg-slate-50 rounded-lg flex items-center justify-center shrink-0 border border-slate-100">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-slate-600" fill="none"
-                                viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                            </svg>
-                        </div>
-                        <div class="flex-1">
-                            <h3 class="text-base font-semibold text-slate-900 mb-1">300+ Home Router Guides</h3>
-                            <p class="text-sm text-slate-600 leading-relaxed">If your router has connectivity
-                                issues, we now provide quick access to official support for TP-Link, Netgear, ASUS, and
-                                30+ brands.</p>
-                        </div>
-                    </div>
-
-                    <!-- Additional Info -->
-                    <div class="bg-slate-50 rounded-xl p-5 border border-slate-200/60">
-                        <p class="text-sm text-slate-600 font-medium leading-relaxed">
-                            <span class="font-bold text-slate-900">Our goal is simple:</span> Give you everything you
-                            need in one place—even resources beyond your security system.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- CTA Button -->
-                <button id="closeWelcomeModal"
-                    class="w-full mt-6 bg-slate-900 hover:bg-slate-800 text-white font-semibold py-3.5 px-6 rounded-xl shadow-sm hover:shadow transition-all duration-200 flex items-center justify-center gap-2 group">
-                    <span>Continue to Support Portal</span>
-                    <svg xmlns="http://www.w3.org/2000/svg"
-                        class="h-4 w-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                    </svg>
-                </button>
-            </div>
-        </div>
-    </div>
 
     <!-- Main Content -->
     <div class="min-h-screen flex items-center justify-center p-4 pt-24 pb-16">
@@ -4840,44 +4762,6 @@
                     });
                 }
 
-                // Show Welcome Modal (Always show on load)
-                const welcomeModal = document.getElementById('welcomeModal');
-                const welcomeModalContent = document.getElementById('welcomeModalContent');
-                const closeWelcomeModalBtn = document.getElementById('closeWelcomeModal');
-
-                if (welcomeModal && welcomeModalContent) {
-                    // Check if already shown in this session
-                    if (!sessionStorage.getItem('welcomeShown')) {
-                        // Show modal with animation after a brief delay
-                        setTimeout(() => {
-                            welcomeModal.classList.remove('hidden');
-                            setTimeout(() => {
-                                welcomeModalContent.classList.remove('scale-95', 'opacity-0');
-                                welcomeModalContent.classList.add('scale-100', 'opacity-100');
-                            }, 50);
-                            sessionStorage.setItem('welcomeShown', 'true');
-                        }, 600);
-                    }
-                }
-
-                // Handle modal dismissal
-                closeWelcomeModalBtn?.addEventListener('click', () => {
-                    if (welcomeModal && welcomeModalContent) {
-                        welcomeModalContent.classList.remove('scale-100', 'opacity-100');
-                        welcomeModalContent.classList.add('scale-95', 'opacity-0');
-                        setTimeout(() => {
-                            welcomeModal.classList.add('hidden');
-                        }, 300);
-                        trackEvent('customer_welcome_modal_closed', { timestamp: Date.now() });
-                    }
-                });
-
-                // Close modal when clicking outside
-                welcomeModal?.addEventListener('click', (e) => {
-                    if (e.target === welcomeModal) {
-                        closeWelcomeModalBtn?.click();
-                    }
-                });
             });
 
             // --- GUIDE SEARCH FUNCTIONALITY ---
@@ -4950,13 +4834,11 @@
             // --- NAVIGATION ---
             // Navbar Links Logic
             document.getElementById('navNewSystemBtn')?.addEventListener('click', () => {
-                document.getElementById('welcomeModal').classList.add('hidden');
                 trackEvent('customer_workflow_selected', { workflow_id: 'nav_new_install' });
                 showView(views.newInstall);
             });
 
             document.getElementById('navQuickFixBtn')?.addEventListener('click', () => {
-                document.getElementById('welcomeModal').classList.add('hidden');
                 trackEvent('customer_workflow_selected', { workflow_id: 'nav_self_service' });
                 showView(views.selfService);
             });
@@ -4974,14 +4856,12 @@
             // Mobile Nav Links
             document.getElementById('mobileNavNewSystemBtn')?.addEventListener('click', () => {
                 mobileMenu.classList.add('hidden');
-                document.getElementById('welcomeModal').classList.add('hidden');
                 trackEvent('customer_workflow_selected', { workflow_id: 'nav_new_install_mobile' });
                 showView(views.newInstall);
             });
             
             document.getElementById('mobileNavQuickFixBtn')?.addEventListener('click', () => {
                 mobileMenu.classList.add('hidden');
-                document.getElementById('welcomeModal').classList.add('hidden');
                 trackEvent('customer_workflow_selected', { workflow_id: 'nav_self_service_mobile' });
                 showView(views.selfService);
             });
